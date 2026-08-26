@@ -1,0 +1,34 @@
+{
+  "title": "CVD XAI multi-paradigm benchmark reproducibility package",
+  "version": "1.0.0",
+  "publication_date": "2026-08-26",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "language": "eng",
+  "description": "Executed notebooks, corrected analysis scripts, prediction arrays, model artifacts, figures, and tables for a 15-model cardiovascular disease status classification benchmark with cross-pipeline feature-ranking analysis. Fifteen classifiers were evaluated on one stratified held-out test set (n = 10,281); the corrected stacking ensemble reached ROC-AUC 0.800367 (bootstrap 95% CI 0.791538-0.809095), and no pairwise DeLong comparison among the six highest-ranked models was statistically significant. Licensing is mixed: source code under src/ and tools/ is MIT, while documentation, figures, tables, prediction arrays, and model artifacts are CC BY 4.0 (see LICENSE.md). Patient-level CSV files are not redistributed; data/README.md documents the source, schema, cleaning rules, and checksums. This is a retrospective research benchmark and not a clinical device.",
+  "creators": [
+    {"name": "Hossain, Md. Zaid", "affiliation": "Khulna University of Engineering and Technology"},
+    {"name": "Islam, Md. Shahriar", "affiliation": "Khulna University of Engineering and Technology"},
+    {"name": "Ratul, Shahriar Hasan", "affiliation": "Khulna University of Engineering and Technology"},
+    {"name": "Ullah, Shah Muhammad Azmat", "affiliation": "Khulna University of Engineering and Technology"},
+    {"name": "Rahman, Md. Ashikur", "affiliation": "Khulna University of Engineering and Technology"}
+  ],
+  "keywords": [
+    "cardiovascular disease",
+    "machine learning",
+    "explainable artificial intelligence",
+    "tabular deep learning",
+    "DeLong test",
+    "calibration",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://www.kaggle.com/datasets/sulianova/cardiovascular-disease-dataset",
+      "relation": "isSupplementTo",
+      "resource_type": "dataset"
+    }
+  ],
+  "notes": "Before publishing the Zenodo record: add ORCID identifiers to each creator, confirm creator order, and add the GitHub repository URL as a related identifier."
+}

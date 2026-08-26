@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the archived release and the associated article."
+type: software
+title: "CVD XAI multi-paradigm benchmark reproducibility package"
+version: 1.0.0
+date-released: 2026-08-26
+abstract: >-
+  Executed notebooks, corrected analysis scripts, prediction arrays, model
+  artifacts, figures, and tables for a 15-model cardiovascular disease status
+  classification benchmark with cross-pipeline feature-ranking analysis.
+authors:
+  - given-names: "Md. Zaid"
+    family-names: "Hossain"
+    affiliation: "Khulna University of Engineering and Technology"
+  - given-names: "Md. Shahriar"
+    family-names: "Islam"
+    affiliation: "Khulna University of Engineering and Technology"
+  - given-names: "Shahriar Hasan"
+    family-names: "Ratul"
+    affiliation: "Khulna University of Engineering and Technology"
+  - given-names: "Shah Muhammad Azmat"
+    family-names: "Ullah"
+    affiliation: "Khulna University of Engineering and Technology"
+  - given-names: "Md. Ashikur"
+    family-names: "Rahman"
+    affiliation: "Khulna University of Engineering and Technology"
+keywords:
+  - cardiovascular disease
+  - machine learning
+  - explainable artificial intelligence
+  - tabular deep learning
+  - DeLong test
+  - calibration
+  - reproducibility
+license: MIT
