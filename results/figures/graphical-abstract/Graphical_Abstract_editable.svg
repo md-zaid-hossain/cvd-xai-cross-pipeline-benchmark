@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="510.24" height="368.50" viewBox="0 0 510.24 368.50">
+<rect x="0.00" y="0.00" width="510.24" height="368.50" rx="0" fill="#ffffff" stroke="none" stroke-width="0.5"/>
+<text x="255.12" y="17.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="13" fill="#1a1a1a" font-weight="bold" text-anchor="middle">Explainable Machine Learning for Cardiovascular Disease Status Classification</text>
+<text x="255.12" y="29.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="8.2" fill="#494949" font-weight="normal" text-anchor="middle" font-style="italic">A multi-paradigm benchmark of 15 models with paired DeLong testing and cross-pipeline feature-ranking analysis</text>
+<rect x="18.00" y="35.40" width="92.85" height="1.80" rx="0" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<rect x="112.85" y="35.40" width="92.85" height="1.80" rx="0" fill="#b0603f" stroke="none" stroke-width="0.5"/>
+<rect x="207.69" y="35.40" width="92.85" height="1.80" rx="0" fill="#007f95" stroke="none" stroke-width="0.5"/>
+<rect x="302.54" y="35.40" width="92.85" height="1.80" rx="0" fill="#b5822a" stroke="none" stroke-width="0.5"/>
+<rect x="397.39" y="35.40" width="92.85" height="1.80" rx="0" fill="#715ba5" stroke="none" stroke-width="0.5"/>
+<text x="18.00" y="50.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#2a6fa8" font-weight="bold" text-anchor="start" letter-spacing="1.7">STUDY WORKFLOW</text>
+<line x1="114.00" y1="47.70" x2="492.24" y2="47.70" stroke="#dde3e7" stroke-width="0.7" stroke-linecap="butt"/>
+<rect x="18.00" y="57.00" width="85.25" height="82.00" rx="2" fill="#eef3f9" stroke="#d3e0ee" stroke-width="0.7"/>
+<rect x="18.00" y="57.00" width="85.25" height="2.60" rx="0" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<text x="24.00" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="8.8" fill="#2a6fa8" font-weight="bold" text-anchor="start">1</text>
+<text x="32.00" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="7.6" fill="#1a1a1a" font-weight="bold" text-anchor="start">Cohort</text>
+<ellipse cx="90.25" cy="65.20" rx="5.60" ry="2.20" fill="none" stroke="#2a6fa8" stroke-width="0.95"/>
+<line x1="84.65" y1="65.20" x2="84.65" y2="72.80" stroke="#2a6fa8" stroke-width="0.95" stroke-linecap="butt"/>
+<line x1="95.85" y1="65.20" x2="95.85" y2="72.80" stroke="#2a6fa8" stroke-width="0.95" stroke-linecap="butt"/>
+<path d="M 84.65 69.00 A 5.6 2.2 0 0 0 95.85 69.00" fill="none" stroke="#2a6fa8" stroke-width="0.95" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 84.65 72.80 A 5.6 2.2 0 0 0 95.85 72.80" fill="none" stroke="#2a6fa8" stroke-width="0.95" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="24.00" y1="77.50" x2="97.25" y2="77.50" stroke="#d3e0ee" stroke-width="0.7" stroke-linecap="butt"/>
+<text x="24.00" y="87.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">70,000 records screened</text>
+<text x="24.00" y="95.40" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">− 1,466 implausible values</text>
+<text x="24.00" y="103.80" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">(BP, BMI, DBP ≥ SBP)</text>
+<text x="24.00" y="112.20" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">68,534 records analysed</text>
+<text x="24.00" y="120.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">49.4 % CVD-positive</text>
+<text x="24.00" y="129.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">no missing data</text>
+<path d="M 106.65 93.60 L 111.65 98.00 L 106.65 102.40" fill="none" stroke="#98a2a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="115.25" y="57.00" width="85.25" height="82.00" rx="2" fill="#faf1ec" stroke="#eedcd3" stroke-width="0.7"/>
+<rect x="115.25" y="57.00" width="85.25" height="2.60" rx="0" fill="#b0603f" stroke="none" stroke-width="0.5"/>
+<text x="121.25" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="8.8" fill="#b0603f" font-weight="bold" text-anchor="start">2</text>
+<text x="129.25" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="7.6" fill="#1a1a1a" font-weight="bold" text-anchor="start">Predictors</text>
+<rect x="181.69" y="63.60" width="11.60" height="10.80" rx="1" fill="none" stroke="#b0603f" stroke-width="0.95"/>
+<line x1="185.56" y1="63.60" x2="185.56" y2="74.40" stroke="#b0603f" stroke-width="0.76" stroke-linecap="butt"/>
+<line x1="181.69" y1="67.20" x2="193.29" y2="67.20" stroke="#b0603f" stroke-width="0.76" stroke-linecap="butt"/>
+<line x1="189.43" y1="63.60" x2="189.43" y2="74.40" stroke="#b0603f" stroke-width="0.76" stroke-linecap="butt"/>
+<line x1="181.69" y1="70.80" x2="193.29" y2="70.80" stroke="#b0603f" stroke-width="0.76" stroke-linecap="butt"/>
+<line x1="121.25" y1="77.50" x2="194.49" y2="77.50" stroke="#eedcd3" stroke-width="0.7" stroke-linecap="butt"/>
+<text x="121.25" y="87.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">13 features per record</text>
+<text x="121.25" y="95.40" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">10 routinely collected</text>
+<text x="121.25" y="103.80" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">clinical and lifestyle</text>
+<text x="121.25" y="112.20" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">variables, plus three</text>
+<text x="121.25" y="120.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">engineered: pulse pressure,</text>
+<text x="121.25" y="129.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">MAP, composite risk count</text>
+<path d="M 203.89 93.60 L 208.89 98.00 L 203.89 102.40" fill="none" stroke="#98a2a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="212.49" y="57.00" width="85.25" height="82.00" rx="2" fill="#e9f4f6" stroke="#cfe5ea" stroke-width="0.7"/>
+<rect x="212.49" y="57.00" width="85.25" height="2.60" rx="0" fill="#007f95" stroke="none" stroke-width="0.5"/>
+<text x="218.49" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="8.8" fill="#007f95" font-weight="bold" text-anchor="start">3</text>
+<text x="226.49" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="7.6" fill="#1a1a1a" font-weight="bold" text-anchor="start">Partition</text>
+<rect x="278.94" y="66.40" width="7.40" height="5.20" rx="0.8" fill="#007f95" stroke="none" stroke-width="0.5"/>
+<rect x="287.14" y="66.40" width="1.60" height="5.20" rx="0.5" fill="none" stroke="#007f95" stroke-width="0.855"/>
+<rect x="289.54" y="66.40" width="1.60" height="5.20" rx="0.5" fill="none" stroke="#007f95" stroke-width="0.855"/>
+<line x1="218.49" y1="77.50" x2="291.74" y2="77.50" stroke="#cfe5ea" stroke-width="0.7" stroke-linecap="butt"/>
+<text x="218.49" y="87.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Stratified 70 / 15 / 15</text>
+<rect x="218.49" y="90.40" width="50.27" height="5.20" rx="0.8" fill="#007f95" stroke="none" stroke-width="0.5"/>
+<rect x="269.77" y="90.40" width="9.99" height="5.20" rx="0.8" fill="#b6c3c7" stroke="none" stroke-width="0.5"/>
+<rect x="280.75" y="90.40" width="9.99" height="5.20" rx="0.8" fill="#b0603f" stroke="none" stroke-width="0.5"/>
+<text x="218.49" y="103.80" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">train  47,971</text>
+<text x="218.49" y="112.20" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">validation  10,282</text>
+<text x="218.49" y="120.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">test  10,281 (held out)</text>
+<text x="218.49" y="129.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">single fixed random seed</text>
+<path d="M 301.14 93.60 L 306.14 98.00 L 301.14 102.40" fill="none" stroke="#98a2a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="309.74" y="57.00" width="85.25" height="82.00" rx="2" fill="#faf5e8" stroke="#eee3c9" stroke-width="0.7"/>
+<rect x="309.74" y="57.00" width="85.25" height="2.60" rx="0" fill="#b5822a" stroke="none" stroke-width="0.5"/>
+<text x="315.74" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="8.8" fill="#b5822a" font-weight="bold" text-anchor="start">4</text>
+<text x="323.74" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="7.6" fill="#1a1a1a" font-weight="bold" text-anchor="start">Models</text>
+<line x1="376.99" y1="66.20" x2="381.99" y2="64.60" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<line x1="376.99" y1="66.20" x2="381.99" y2="69.00" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<line x1="376.99" y1="66.20" x2="381.99" y2="73.40" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<line x1="376.99" y1="71.80" x2="381.99" y2="64.60" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<line x1="376.99" y1="71.80" x2="381.99" y2="69.00" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<line x1="376.99" y1="71.80" x2="381.99" y2="73.40" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<line x1="381.99" y1="64.60" x2="386.99" y2="69.00" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<line x1="381.99" y1="69.00" x2="386.99" y2="69.00" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<line x1="381.99" y1="73.40" x2="386.99" y2="69.00" stroke="#b5822a" stroke-width="0.5225" stroke-linecap="butt"/>
+<circle cx="376.99" cy="66.20" r="1.25" fill="#ffffff" stroke="#b5822a" stroke-width="0.855"/>
+<circle cx="376.99" cy="71.80" r="1.25" fill="#ffffff" stroke="#b5822a" stroke-width="0.855"/>
+<circle cx="381.99" cy="64.60" r="1.25" fill="#ffffff" stroke="#b5822a" stroke-width="0.855"/>
+<circle cx="381.99" cy="69.00" r="1.25" fill="#ffffff" stroke="#b5822a" stroke-width="0.855"/>
+<circle cx="381.99" cy="73.40" r="1.25" fill="#ffffff" stroke="#b5822a" stroke-width="0.855"/>
+<circle cx="386.99" cy="69.00" r="1.25" fill="#ffffff" stroke="#b5822a" stroke-width="0.855"/>
+<line x1="315.74" y1="77.50" x2="388.99" y2="77.50" stroke="#eee3c9" stroke-width="0.7" stroke-linecap="butt"/>
+<text x="315.74" y="87.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">15 supervised models in</text>
+<text x="315.74" y="95.40" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">5 implementation groups:</text>
+<text x="315.74" y="103.80" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">classical ML (7), gradient</text>
+<text x="315.74" y="112.20" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">boosting (3), stacking (1),</text>
+<text x="315.74" y="120.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">tabular deep learning (2),</text>
+<text x="315.74" y="129.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">specialised tabular (2)</text>
+<path d="M 398.39 93.60 L 403.39 98.00 L 398.39 102.40" fill="none" stroke="#98a2a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="406.99" y="57.00" width="85.25" height="82.00" rx="2" fill="#f3f0fa" stroke="#e0d9ef" stroke-width="0.7"/>
+<rect x="406.99" y="57.00" width="85.25" height="2.60" rx="0" fill="#715ba5" stroke="none" stroke-width="0.5"/>
+<text x="412.99" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="8.8" fill="#715ba5" font-weight="bold" text-anchor="start">5</text>
+<text x="420.99" y="72.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="7.6" fill="#1a1a1a" font-weight="bold" text-anchor="start">Analysis</text>
+<line x1="473.64" y1="69.00" x2="484.84" y2="69.00" stroke="#715ba5" stroke-width="0.95" stroke-linecap="butt"/>
+<line x1="473.64" y1="66.20" x2="473.64" y2="71.80" stroke="#715ba5" stroke-width="0.95" stroke-linecap="butt"/>
+<line x1="484.84" y1="66.20" x2="484.84" y2="71.80" stroke="#715ba5" stroke-width="0.95" stroke-linecap="butt"/>
+<circle cx="479.24" cy="69.00" r="1.90" fill="#715ba5" stroke="none" stroke-width="0.5"/>
+<line x1="412.99" y1="77.50" x2="486.24" y2="77.50" stroke="#e0d9ef" stroke-width="0.7" stroke-linecap="butt"/>
+<text x="412.99" y="87.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">1,000-resample bootstrap CI</text>
+<text x="412.99" y="95.40" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Paired midrank DeLong on</text>
+<text x="412.99" y="103.80" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">all 105 model pairs</text>
+<text x="412.99" y="112.20" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Calibration from exact test</text>
+<text x="412.99" y="120.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">probabilities</text>
+<text x="412.99" y="129.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">5 XAI ranking pipelines</text>
+<text x="18.00" y="155.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#2a6fa8" font-weight="bold" text-anchor="start" letter-spacing="1.7">KEY FINDINGS</text>
+<line x1="96.00" y1="152.70" x2="492.24" y2="152.70" stroke="#dde3e7" stroke-width="0.7" stroke-linecap="butt"/>
+<rect x="18.00" y="162.00" width="186.00" height="138.00" rx="2" fill="#f2f6fb" stroke="#dbe6f1" stroke-width="0.7"/>
+<rect x="18.00" y="162.00" width="186.00" height="2.60" rx="0" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<text x="26.00" y="178.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="7.2" fill="#1a1a1a" font-weight="bold" text-anchor="start">Discrimination converges near AUC 0.80</text>
+<line x1="183.00" y1="179.00" x2="195.00" y2="179.00" stroke="#2a6fa8" stroke-width="0.76" stroke-linecap="butt"/>
+<circle cx="190.40" cy="172.00" r="1.15" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<circle cx="192.60" cy="174.60" r="1.15" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<circle cx="190.00" cy="175.60" r="1.15" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<circle cx="193.00" cy="171.40" r="1.15" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<circle cx="191.60" cy="173.60" r="1.15" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<circle cx="184.60" cy="173.60" r="1.15" fill="#b0603f" stroke="none" stroke-width="0.5"/>
+<line x1="26.00" y1="184.00" x2="196.00" y2="184.00" stroke="#dbe6f1" stroke-width="0.7" stroke-linecap="butt"/>
+<rect x="214.00" y="162.00" width="132.00" height="138.00" rx="2" fill="#eff6f7" stroke="#d5e7ea" stroke-width="0.7"/>
+<rect x="214.00" y="162.00" width="132.00" height="2.60" rx="0" fill="#007f95" stroke="none" stroke-width="0.5"/>
+<text x="222.00" y="178.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="7.2" fill="#1a1a1a" font-weight="bold" text-anchor="start">No distinguishable winner</text>
+<circle cx="331.00" cy="175.00" r="6.00" fill="none" stroke="#007f95" stroke-width="0.855"/>
+<line x1="328.00" y1="173.60" x2="334.00" y2="173.60" stroke="#007f95" stroke-width="1.045" stroke-linecap="butt"/>
+<line x1="328.00" y1="176.40" x2="334.00" y2="176.40" stroke="#007f95" stroke-width="1.045" stroke-linecap="butt"/>
+<line x1="222.00" y1="184.00" x2="338.00" y2="184.00" stroke="#d5e7ea" stroke-width="0.7" stroke-linecap="butt"/>
+<rect x="356.00" y="162.00" width="136.00" height="138.00" rx="2" fill="#f6f3fb" stroke="#e4ddf1" stroke-width="0.7"/>
+<rect x="356.00" y="162.00" width="136.00" height="2.60" rx="0" fill="#715ba5" stroke="none" stroke-width="0.5"/>
+<text x="364.00" y="178.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="7.2" fill="#1a1a1a" font-weight="bold" text-anchor="start">Systolic BP and age lead</text>
+<rect x="471.40" y="170.40" width="11.40" height="2.40" rx="0.6" fill="#715ba5" stroke="none" stroke-width="0.5"/>
+<rect x="471.40" y="174.40" width="8.40" height="2.40" rx="0.6" fill="#715ba5" stroke="none" stroke-width="0.5"/>
+<rect x="471.40" y="178.40" width="5.40" height="2.40" rx="0.6" fill="#715ba5" stroke="none" stroke-width="0.5"/>
+<line x1="364.00" y1="184.00" x2="484.00" y2="184.00" stroke="#e4ddf1" stroke-width="0.7" stroke-linecap="butt"/>
+<rect x="153.28" y="210.00" width="36.75" height="40.00" rx="1" fill="#dfeaf7" stroke="none" stroke-width="0.5"/>
+<line x1="153.28" y1="210.00" x2="153.28" y2="250.00" stroke="#adc6e2" stroke-width="0.5" stroke-linecap="butt"/>
+<line x1="190.03" y1="210.00" x2="190.03" y2="250.00" stroke="#adc6e2" stroke-width="0.5" stroke-linecap="butt"/>
+<line x1="45.75" y1="210.00" x2="45.75" y2="250.00" stroke="#c6d4e3" stroke-width="0.4" stroke-linecap="butt" stroke-dasharray="1.6 1.8"/>
+<line x1="87.51" y1="210.00" x2="87.51" y2="250.00" stroke="#c6d4e3" stroke-width="0.4" stroke-linecap="butt" stroke-dasharray="1.6 1.8"/>
+<line x1="129.27" y1="210.00" x2="129.27" y2="250.00" stroke="#c6d4e3" stroke-width="0.4" stroke-linecap="butt" stroke-dasharray="1.6 1.8"/>
+<line x1="171.03" y1="210.00" x2="171.03" y2="250.00" stroke="#c6d4e3" stroke-width="0.4" stroke-linecap="butt" stroke-dasharray="1.6 1.8"/>
+<circle cx="171.87" cy="216.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="171.45" cy="223.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="171.24" cy="230.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="170.61" cy="237.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="170.20" cy="244.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="169.99" cy="216.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="169.99" cy="223.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="168.94" cy="230.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="168.32" cy="237.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="166.86" cy="244.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="156.21" cy="216.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="153.28" cy="223.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="150.36" cy="230.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="139.50" cy="237.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<circle cx="43.66" cy="244.00" r="1.85" fill="#b0603f" stroke="#ffffff" stroke-width="0.4"/>
+<text x="48.86" y="246.10" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.2" fill="#b0603f" font-weight="bold" text-anchor="start">k-NN</text>
+<circle cx="29.00" cy="192.00" r="1.85" fill="#2a6fa8" stroke="#ffffff" stroke-width="0.4"/>
+<text x="34.00" y="194.20" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#7c7c7c" font-weight="normal" text-anchor="start">one model</text>
+<circle cx="80.00" cy="192.00" r="1.85" fill="#b0603f" stroke="#ffffff" stroke-width="0.4"/>
+<text x="85.00" y="194.20" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#7c7c7c" font-weight="normal" text-anchor="start">outlier</text>
+<line x1="170.93" y1="208.50" x2="170.93" y2="204.50" stroke="#2a6fa8" stroke-width="0.6" stroke-linecap="butt"/>
+<text x="194.00" y="203.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#2a6fa8" font-weight="bold" text-anchor="end">top 6 within ΔAUC 0.0008</text>
+<line x1="28.00" y1="256.00" x2="194.00" y2="256.00" stroke="#494949" stroke-width="0.7" stroke-linecap="butt"/>
+<line x1="45.75" y1="256.00" x2="45.75" y2="259.00" stroke="#494949" stroke-width="0.6" stroke-linecap="butt"/>
+<text x="45.75" y="266.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#494949" font-weight="normal" text-anchor="middle">0.74</text>
+<line x1="87.51" y1="256.00" x2="87.51" y2="259.00" stroke="#494949" stroke-width="0.6" stroke-linecap="butt"/>
+<text x="87.51" y="266.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#494949" font-weight="normal" text-anchor="middle">0.76</text>
+<line x1="129.27" y1="256.00" x2="129.27" y2="259.00" stroke="#494949" stroke-width="0.6" stroke-linecap="butt"/>
+<text x="129.27" y="266.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#494949" font-weight="normal" text-anchor="middle">0.78</text>
+<line x1="171.03" y1="256.00" x2="171.03" y2="259.00" stroke="#494949" stroke-width="0.6" stroke-linecap="butt"/>
+<text x="171.03" y="266.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#494949" font-weight="normal" text-anchor="middle">0.80</text>
+<text x="111.00" y="277.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.8" fill="#1a1a1a" font-weight="normal" text-anchor="middle">Area under the ROC curve  (held-out test set, n = 10,281)</text>
+<text x="26.00" y="288.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#7c7c7c" font-weight="normal" text-anchor="start">Shaded: 95 % CI of the highest-AUC model (0.7915–0.8091), about</text>
+<text x="26.00" y="296.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#7c7c7c" font-weight="normal" text-anchor="start">twenty times the width of the top-six spread.</text>
+<rect x="220.00" y="187.60" width="120.00" height="11.40" rx="1" fill="#e3eff1" stroke="none" stroke-width="0.5"/>
+<text x="223.00" y="195.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Pairwise DeLong tests</text>
+<text x="337.00" y="195.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#007f95" font-weight="bold" text-anchor="end">105</text>
+<text x="223.00" y="208.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Significant among top 6</text>
+<text x="337.00" y="208.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#007f95" font-weight="bold" text-anchor="end">0 / 15</text>
+<rect x="220.00" y="213.60" width="120.00" height="11.40" rx="1" fill="#e3eff1" stroke="none" stroke-width="0.5"/>
+<text x="223.00" y="221.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Smallest q, top six</text>
+<text x="337.00" y="221.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#007f95" font-weight="bold" text-anchor="end">0.89</text>
+<text x="223.00" y="234.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Smallest q, vs MLP (BH)</text>
+<text x="337.00" y="234.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#007f95" font-weight="bold" text-anchor="end">0.078</text>
+<rect x="220.00" y="239.60" width="120.00" height="11.40" rx="1" fill="#e3eff1" stroke="none" stroke-width="0.5"/>
+<text x="223.00" y="247.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Brier score, top 6</text>
+<text x="337.00" y="247.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#007f95" font-weight="bold" text-anchor="end">0.1811–0.1817</text>
+<text x="223.00" y="260.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.1" fill="#494949" font-weight="normal" text-anchor="start">Calibration slope</text>
+<text x="337.00" y="260.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#007f95" font-weight="bold" text-anchor="end">0.985–1.042</text>
+<text x="222.00" y="279.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#7c7c7c" font-weight="normal" text-anchor="start">Five-seed split SD (conventional</text>
+<text x="222.00" y="287.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#7c7c7c" font-weight="normal" text-anchor="start">and boosting models) 0.0038–0.0042</text>
+<text x="222.00" y="295.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#7c7c7c" font-weight="normal" text-anchor="start">exceeds the top-tier AUC gap.</text>
+<text x="402.00" y="194.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="5.7" fill="#7c7c7c" font-weight="normal" text-anchor="start">rank 1</text>
+<text x="458.00" y="194.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="5.7" fill="#7c7c7c" font-weight="normal" text-anchor="end">13</text>
+<text x="484.00" y="194.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="5.7" fill="#7c7c7c" font-weight="normal" text-anchor="end">mean</text>
+<text x="396.00" y="206.10" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.5" fill="#1a1a1a" font-weight="bold" text-anchor="end">SBP</text>
+<line x1="402.00" y1="204.00" x2="458.00" y2="204.00" stroke="#ddd5ee" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="402.00" y1="204.00" x2="416.00" y2="204.00" stroke="#a294c6" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="416.00" y1="201.60" x2="416.00" y2="206.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="402.00" y1="201.60" x2="402.00" y2="206.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="402.00" y1="201.60" x2="402.00" y2="206.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="402.00" y1="201.60" x2="402.00" y2="206.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="411.33" y1="201.60" x2="411.33" y2="206.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<circle cx="406.67" cy="204.00" r="2.20" fill="#715ba5" stroke="#ffffff" stroke-width="0.5"/>
+<text x="484.00" y="206.10" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#715ba5" font-weight="bold" text-anchor="end">2.0</text>
+<text x="396.00" y="218.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.5" fill="#1a1a1a" font-weight="bold" text-anchor="end">Age</text>
+<line x1="402.00" y1="216.50" x2="458.00" y2="216.50" stroke="#ddd5ee" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="406.67" y1="216.50" x2="411.33" y2="216.50" stroke="#a294c6" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="406.67" y1="214.10" x2="406.67" y2="218.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="406.67" y1="214.10" x2="406.67" y2="218.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="406.67" y1="214.10" x2="406.67" y2="218.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="411.33" y1="214.10" x2="411.33" y2="218.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="406.67" y1="214.10" x2="406.67" y2="218.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<circle cx="407.60" cy="216.50" r="2.20" fill="#715ba5" stroke="#ffffff" stroke-width="0.5"/>
+<text x="484.00" y="218.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#715ba5" font-weight="bold" text-anchor="end">2.2</text>
+<text x="396.00" y="231.10" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.5" fill="#494949" font-weight="normal" text-anchor="end">MAP</text>
+<line x1="402.00" y1="229.00" x2="458.00" y2="229.00" stroke="#ddd5ee" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="406.67" y1="229.00" x2="434.67" y2="229.00" stroke="#a294c6" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="425.33" y1="226.60" x2="425.33" y2="231.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="411.33" y1="226.60" x2="411.33" y2="231.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="420.67" y1="226.60" x2="420.67" y2="231.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="406.67" y1="226.60" x2="406.67" y2="231.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="434.67" y1="226.60" x2="434.67" y2="231.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<circle cx="419.73" cy="229.00" r="2.20" fill="#715ba5" stroke="#ffffff" stroke-width="0.5"/>
+<text x="484.00" y="231.10" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#715ba5" font-weight="bold" text-anchor="end">4.8</text>
+<text x="396.00" y="243.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.5" fill="#494949" font-weight="normal" text-anchor="end">Pulse press.</text>
+<line x1="402.00" y1="241.50" x2="458.00" y2="241.50" stroke="#ddd5ee" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="402.00" y1="241.50" x2="430.00" y2="241.50" stroke="#a294c6" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="411.33" y1="239.10" x2="411.33" y2="243.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="430.00" y1="239.10" x2="430.00" y2="243.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="430.00" y1="239.10" x2="430.00" y2="243.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="425.33" y1="239.10" x2="425.33" y2="243.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="402.00" y1="239.10" x2="402.00" y2="243.90" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<circle cx="419.73" cy="241.50" r="2.20" fill="#715ba5" stroke="#ffffff" stroke-width="0.5"/>
+<text x="484.00" y="243.60" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#715ba5" font-weight="bold" text-anchor="end">4.8</text>
+<text x="396.00" y="256.10" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.5" fill="#494949" font-weight="normal" text-anchor="end">Cholesterol</text>
+<line x1="402.00" y1="254.00" x2="458.00" y2="254.00" stroke="#ddd5ee" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="402.00" y1="254.00" x2="458.00" y2="254.00" stroke="#a294c6" stroke-width="1.7" stroke-linecap="round"/>
+<line x1="402.00" y1="251.60" x2="402.00" y2="256.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="416.00" y1="251.60" x2="416.00" y2="256.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="416.00" y1="251.60" x2="416.00" y2="256.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="416.00" y1="251.60" x2="416.00" y2="256.40" stroke="#8878b0" stroke-width="0.9" stroke-linecap="round"/>
+<line x1="458.00" y1="251.60" x2="458.00" y2="256.40" stroke="#b0603f" stroke-width="0.9" stroke-linecap="round"/>
+<circle cx="421.60" cy="254.00" r="2.20" fill="#715ba5" stroke="#ffffff" stroke-width="0.5"/>
+<text x="484.00" y="256.10" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.4" fill="#715ba5" font-weight="bold" text-anchor="end">5.2</text>
+<text x="364.00" y="272.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#7c7c7c" font-weight="normal" text-anchor="start">Mean rank over five model–explanation</text>
+<text x="364.00" y="280.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#7c7c7c" font-weight="normal" text-anchor="start">pipelines; Kendall's W = 0.657 (p &lt; 0.001).</text>
+<text x="364.00" y="288.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#b0603f" font-weight="normal" text-anchor="start">Clay tick: SAINT-inspired cholesterol</text>
+<text x="364.00" y="296.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.0" fill="#b0603f" font-weight="normal" text-anchor="start">estimate not distinguishable from zero.</text>
+<rect x="18.00" y="310.00" width="474.24" height="44.00" rx="2" fill="#f6f8fb" stroke="#e3e9f0" stroke-width="0.7"/>
+<rect x="18.00" y="310.00" width="3.40" height="8.80" rx="0" fill="#2a6fa8" stroke="none" stroke-width="0.5"/>
+<rect x="18.00" y="318.80" width="3.40" height="8.80" rx="0" fill="#b0603f" stroke="none" stroke-width="0.5"/>
+<rect x="18.00" y="327.60" width="3.40" height="8.80" rx="0" fill="#007f95" stroke="none" stroke-width="0.5"/>
+<rect x="18.00" y="336.40" width="3.40" height="8.80" rx="0" fill="#b5822a" stroke="none" stroke-width="0.5"/>
+<rect x="18.00" y="345.20" width="3.40" height="8.80" rx="0" fill="#715ba5" stroke="none" stroke-width="0.5"/>
+<text x="32.00" y="324.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="6.6" fill="#2a6fa8" font-weight="bold" text-anchor="start" letter-spacing="0.6">KEY OUTCOME</text>
+<text x="32.00" y="337.00" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="8.0" fill="#1a1a1a" font-weight="normal" text-anchor="start">Leading models from all five implementation groups converge near AUC 0.80; no top-six pairwise difference is significant.</text>
+<text x="32.00" y="348.50" font-family="Times New Roman, Liberation Serif, Times, serif" font-size="8.0" fill="#1a1a1a" font-weight="normal" text-anchor="start">In this fixed-configuration benchmark, limited feature information appears to constrain performance; external validation required.</text>
+</svg>
