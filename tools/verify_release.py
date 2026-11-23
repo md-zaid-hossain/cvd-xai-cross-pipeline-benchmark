@@ -33,7 +33,7 @@ def sha256(path: Path) -> str:
 def main() -> None:
     failures: list[str] = []
     required = [
-        "README.md", "CITATION.cff", ".zenodo.json", "manuscript/CVD_Manuscript_2026-08-26.docx",
+        "README.md", "CITATION.cff", ".zenodo.json", "LICENSE.md",
         "results/tables/validated_primary_metrics.csv", "artifacts/predictions/y_test.npy",
     ]
     for relative in required:

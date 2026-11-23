@@ -1,0 +1,43 @@
+top6 ['Stacking Ensemble', 'XGBoost', 'CatBoost', 'FT-Transformer', 'SAINT-inspired', 'Random Forest']
+
+MLP comparisons
+     Model vs MLP  AUC model  AUC MLP  Delta AUC        z        p     BH_q  BH_significant_0.05
+Stacking Ensemble   0.800367 0.798016   0.002351 2.611657 0.009010 0.078289                False
+         CatBoost   0.800092 0.798016   0.002076 2.308972 0.020945 0.078289                False
+          XGBoost   0.800238 0.798016   0.002222 2.224775 0.026096 0.078289                False
+   FT-Transformer   0.799770 0.798016   0.001753 1.834924 0.066517 0.149663                False
+   SAINT-inspired   0.799590 0.798016   0.001574 1.616066 0.106080 0.172106                False
+         LightGBM   0.799532 0.798016   0.001516 1.526003 0.127009 0.172106                False
+    Random Forest   0.799533 0.798016   0.001517 1.499051 0.133860 0.172106                False
+VIME-inspired SSL   0.799047 0.798016   0.001031 1.192431 0.233092 0.262229                False
+           TabNet   0.798654 0.798016   0.000637 0.620698 0.534798 0.534798                False
+
+Top6 comparisons
+          Model A        Model B  Delta AUC        z        p     BH_q  BH_significant_0.05
+Stacking Ensemble  Random Forest   0.000834 1.199541 0.230318 0.886503                False
+Stacking Ensemble SAINT-inspired   0.000777 1.031177 0.302458 0.886503                False
+          XGBoost  Random Forest   0.000704 1.017843 0.308752 0.886503                False
+         CatBoost  Random Forest   0.000559 0.784479 0.432759 0.886503                False
+          XGBoost SAINT-inspired   0.000647 0.778962 0.436002 0.886503                False
+Stacking Ensemble FT-Transformer   0.000598 0.769616 0.441528 0.886503                False
+Stacking Ensemble       CatBoost   0.000275 0.621257 0.534430 0.886503                False
+         CatBoost SAINT-inspired   0.000502 0.568905 0.569421 0.886503                False
+          XGBoost FT-Transformer   0.000468 0.545386 0.585488 0.886503                False
+         CatBoost FT-Transformer   0.000322 0.377683 0.705666 0.886503                False
+Stacking Ensemble        XGBoost   0.000130 0.337297 0.735893 0.886503                False
+   FT-Transformer  Random Forest   0.000236 0.269367 0.787647 0.886503                False
+          XGBoost       CatBoost   0.000146 0.251039 0.801784 0.886503                False
+   FT-Transformer SAINT-inspired   0.000179 0.218033 0.827403 0.886503                False
+   SAINT-inspired  Random Forest   0.000057 0.059540 0.952522 0.952522                False
+
+Significant all unadjusted 60 of 105
+Significant all BH105 60
+
+Calibration top6
+            Model      AUC    Brier  Calibration intercept  Calibration slope
+Stacking Ensemble 0.800367 0.181368               0.005599           0.991810
+          XGBoost 0.800238 0.181185               0.004632           0.985308
+         CatBoost 0.800092 0.181082               0.004676           1.001052
+   FT-Transformer 0.799770 0.181496              -0.013831           1.010790
+   SAINT-inspired 0.799590 0.181730              -0.073088           1.042183
+    Random Forest 0.799533 0.181691               0.006750           1.032391

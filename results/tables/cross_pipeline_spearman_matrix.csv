@@ -1,0 +1,6 @@
+Pipeline,MLP Perm.,XGBoost SHAP,TabNet Attn.,FT-Transformer SHAP,SAINT-inspired Perm.
+MLP Perm.,1.000,0.780,0.659,0.692,0.319
+XGBoost SHAP,0.780,1.000,0.819,0.896,0.330
+TabNet Attn.,0.659,0.819,1.000,0.819,0.187
+FT-Transformer SHAP,0.692,0.896,0.819,1.000,0.214
+SAINT-inspired Perm.,0.319,0.330,0.187,0.214,1.000
