@@ -1,0 +1,627 @@
+{
+  "runs": [
+    {
+      "run": "anchor_seed42",
+      "started_utc": "2026-11-24T08:32:47+00:00",
+      "finished_utc": "2026-11-24T08:33:44+00:00",
+      "environment": {
+        "python": "3.13.9",
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "xgboost": "3.2.0",
+        "lightgbm": "4.6.0",
+        "catboost": "1.2.10",
+        "torch": "2.6.0+cu124",
+        "gpu_and_driver": "NVIDIA GeForce GTX 1650, 576.02",
+        "cuda_torch": "12.4",
+        "device": {
+          "xgboost": "cuda",
+          "lightgbm": "gpu",
+          "catboost": "GPU",
+          "torch": "cuda",
+          "random_forest_and_meta_learner": "cpu (scikit-learn)"
+        }
+      },
+      "wall_seconds": {
+        "xgboost": 0.7768251895904541,
+        "lightgbm": 2.853532314300537,
+        "catboost": 14.620347261428833,
+        "stacking": 38.80995273590088,
+        "total": 57.06075835227966
+      },
+      "models": {
+        "XGBoost": {
+          "best_iteration": 185
+        },
+        "LightGBM (standalone)": {
+          "best_iteration": 102
+        },
+        "CatBoost": {
+          "best_iteration": 216
+        },
+        "Stacking Ensemble": {
+          "trees": {
+            "xgboost": 186,
+            "lightgbm": 103,
+            "catboost": 217
+          }
+        }
+      },
+      "decision": "PROCEED"
+    },
+    {
+      "run": "seed101",
+      "started_utc": "2026-11-24T08:46:13+00:00",
+      "finished_utc": "2026-11-24T08:55:08+00:00",
+      "environment": {
+        "python": "3.13.9",
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "xgboost": "3.2.0",
+        "lightgbm": "4.6.0",
+        "catboost": "1.2.10",
+        "torch": "2.6.0+cu124",
+        "gpu_and_driver": "NVIDIA GeForce GTX 1650, 576.02",
+        "cuda_torch": "12.4",
+        "device": {
+          "xgboost": "cuda",
+          "lightgbm": "gpu",
+          "catboost": "GPU",
+          "torch": "cuda",
+          "random_forest_and_meta_learner": "cpu (scikit-learn)"
+        }
+      },
+      "saint_restore": "final",
+      "wall_seconds": {
+        "XGBoost": 1.0760095119476318,
+        "LightGBM (standalone)": 3.190861701965332,
+        "CatBoost": 21.093445301055908,
+        "Stacking Ensemble": 55.62655305862427,
+        "Random Forest": 3.3202366828918457,
+        "FT-Transformer": 114.9496099948883,
+        "SAINT-inspired": 331.56684827804565,
+        "total_this_run": 532.4366517066956
+      },
+      "eight_hour_limit_seconds": 28800,
+      "exceeds_eight_hours": false,
+      "models": {
+        "XGBoost": {
+          "best_iteration": 187,
+          "test_auc": 0.8034319409007096
+        },
+        "CatBoost": {
+          "best_iteration": 354,
+          "test_auc": 0.8040076855783075
+        },
+        "LightGBM (standalone)": {
+          "best_iteration": 114,
+          "test_auc": 0.8032185913906111
+        },
+        "Stacking Ensemble": {
+          "trees": {
+            "xgboost": 188,
+            "lightgbm": 115,
+            "catboost": 355
+          },
+          "oof_folds": [
+            {
+              "fold": 1,
+              "XGBoost": 0.7986969968119089,
+              "LightGBM": 0.7983557353136972,
+              "CatBoost": 0.7975413963428899,
+              "Random Forest": 0.7976129206856742
+            },
+            {
+              "fold": 2,
+              "XGBoost": 0.8047797809250778,
+              "LightGBM": 0.8045303491223794,
+              "CatBoost": 0.8054224405087331,
+              "Random Forest": 0.8038626985496056
+            },
+            {
+              "fold": 3,
+              "XGBoost": 0.7895283896316128,
+              "LightGBM": 0.7891613063055232,
+              "CatBoost": 0.7895770457745866,
+              "Random Forest": 0.78958456476765
+            },
+            {
+              "fold": 4,
+              "XGBoost": 0.7975086055527546,
+              "LightGBM": 0.7973862589315206,
+              "CatBoost": 0.7979799551468159,
+              "Random Forest": 0.7963942082022218
+            },
+            {
+              "fold": 5,
+              "XGBoost": 0.8086295439926288,
+              "LightGBM": 0.8079371229637871,
+              "CatBoost": 0.8084175127344796,
+              "Random Forest": 0.8074134229238017
+            }
+          ],
+          "meta_coef": [
+            1.395875134595046,
+            1.1134652986471973,
+            1.7169278288419483,
+            0.5734204828867877
+          ],
+          "meta_intercept": -2.3795468796401753,
+          "test_auc": 0.8037934844868753
+        },
+        "FT-Transformer": {
+          "best_epoch": 24,
+          "epochs_run": 44,
+          "best_val_auc": 0.8025832047004704,
+          "test_auc": 0.800779889539682
+        },
+        "SAINT-inspired": {
+          "best_epoch": 18,
+          "epochs_run": 28,
+          "best_val_auc": 0.8023175257444839,
+          "restore": "final",
+          "weights_used_epoch": 28,
+          "test_auc": 0.8010738175679639
+        },
+        "Random Forest": {
+          "test_auc": 0.8017673264819767
+        }
+      }
+    },
+    {
+      "run": "seed42",
+      "started_utc": "2026-11-24T08:55:43+00:00",
+      "finished_utc": "2026-11-24T09:02:14+00:00",
+      "environment": {
+        "python": "3.13.9",
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "xgboost": "3.2.0",
+        "lightgbm": "4.6.0",
+        "catboost": "1.2.10",
+        "torch": "2.6.0+cu124",
+        "gpu_and_driver": "NVIDIA GeForce GTX 1650, 576.02",
+        "cuda_torch": "12.4",
+        "device": {
+          "xgboost": "cuda",
+          "lightgbm": "gpu",
+          "catboost": "GPU",
+          "torch": "cuda",
+          "random_forest_and_meta_learner": "cpu (scikit-learn)"
+        }
+      },
+      "saint_restore": "final",
+      "wall_seconds": {
+        "reused_from_anchor": {
+          "xgboost": 0.7768251895904541,
+          "lightgbm": 2.853532314300537,
+          "catboost": 14.620347261428833,
+          "stacking": 38.80995273590088,
+          "total": 57.06075835227966
+        },
+        "Random Forest": 4.12073826789856,
+        "FT-Transformer": 125.03135323524475,
+        "SAINT-inspired": 259.7614052295685,
+        "total_this_run": 388.9153513908386
+      },
+      "eight_hour_limit_seconds": 28800,
+      "exceeds_eight_hours": false,
+      "models": {
+        "XGBoost": {
+          "best_iteration": 185,
+          "test_auc": 0.8002377728627448
+        },
+        "CatBoost": {
+          "best_iteration": 216,
+          "test_auc": 0.8000919632144115
+        },
+        "LightGBM (standalone)": {
+          "best_iteration": 102
+        },
+        "Stacking Ensemble": {
+          "trees": {
+            "xgboost": 186,
+            "lightgbm": 103,
+            "catboost": 217
+          },
+          "reused_from": "anchor_seed42",
+          "test_auc": 0.8005610331369599
+        },
+        "FT-Transformer": {
+          "best_epoch": 29,
+          "epochs_run": 49,
+          "best_val_auc": 0.8031073161347235,
+          "test_auc": 0.7999139827156997
+        },
+        "SAINT-inspired": {
+          "best_epoch": 19,
+          "epochs_run": 29,
+          "best_val_auc": 0.802674116777348,
+          "restore": "final",
+          "weights_used_epoch": 29,
+          "diagnostic_best_epoch_weights": {
+            "note": "Amendment 4(b): diagnostic only; does not feed any Section 5 result",
+            "best_epoch": 19,
+            "test_auc_best_epoch_weights": 0.800139765313268,
+            "test_auc_final_epoch_weights_used": 0.7995903250368621
+          },
+          "test_auc": 0.7995903250368621
+        },
+        "Random Forest": {
+          "test_auc": 0.7995334583278106
+        }
+      }
+    },
+    {
+      "run": "seed202",
+      "started_utc": "2026-11-24T09:02:24+00:00",
+      "finished_utc": "2026-11-24T09:07:12+00:00",
+      "environment": {
+        "python": "3.13.9",
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "xgboost": "3.2.0",
+        "lightgbm": "4.6.0",
+        "catboost": "1.2.10",
+        "torch": "2.6.0+cu124",
+        "gpu_and_driver": "NVIDIA GeForce GTX 1650, 576.02",
+        "cuda_torch": "12.4",
+        "device": {
+          "xgboost": "cuda",
+          "lightgbm": "gpu",
+          "catboost": "GPU",
+          "torch": "cuda",
+          "random_forest_and_meta_learner": "cpu (scikit-learn)"
+        }
+      },
+      "saint_restore": "final",
+      "wall_seconds": {
+        "XGBoost": 0.5625479221343994,
+        "LightGBM (standalone)": 3.0781991481781006,
+        "CatBoost": 12.590856075286865,
+        "Stacking Ensemble": 35.573814153671265,
+        "Random Forest": 2.870187520980835,
+        "FT-Transformer": 99.69706964492798,
+        "SAINT-inspired": 130.66149425506592,
+        "total_this_run": 285.342973947525
+      },
+      "eight_hour_limit_seconds": 28800,
+      "exceeds_eight_hours": false,
+      "models": {
+        "XGBoost": {
+          "best_iteration": 95,
+          "test_auc": 0.8016531010391034
+        },
+        "CatBoost": {
+          "best_iteration": 196,
+          "test_auc": 0.8014023387224176
+        },
+        "LightGBM (standalone)": {
+          "best_iteration": 88,
+          "test_auc": 0.8012008545788998
+        },
+        "Stacking Ensemble": {
+          "trees": {
+            "xgboost": 96,
+            "lightgbm": 89,
+            "catboost": 197
+          },
+          "oof_folds": [
+            {
+              "fold": 1,
+              "XGBoost": 0.7954138947724829,
+              "LightGBM": 0.7947605942065108,
+              "CatBoost": 0.7964325517625926,
+              "Random Forest": 0.7930340591446349
+            },
+            {
+              "fold": 2,
+              "XGBoost": 0.7994501156604706,
+              "LightGBM": 0.7988979017261297,
+              "CatBoost": 0.8005710810445608,
+              "Random Forest": 0.7986169160832574
+            },
+            {
+              "fold": 3,
+              "XGBoost": 0.8078346169225153,
+              "LightGBM": 0.8079774125971384,
+              "CatBoost": 0.8082301246501277,
+              "Random Forest": 0.8061718546270058
+            },
+            {
+              "fold": 4,
+              "XGBoost": 0.8013760191929904,
+              "LightGBM": 0.8000657151301264,
+              "CatBoost": 0.8022341840371343,
+              "Random Forest": 0.8012608004033308
+            },
+            {
+              "fold": 5,
+              "XGBoost": 0.8002318501069174,
+              "LightGBM": 0.8005963474209419,
+              "CatBoost": 0.8004953625632378,
+              "Random Forest": 0.7992288685871247
+            }
+          ],
+          "meta_coef": [
+            1.3183325617656458,
+            0.9851661941853522,
+            2.969027803473762,
+            -0.45532085114830434
+          ],
+          "meta_intercept": -2.388415373287076,
+          "test_auc": 0.8018389917822022
+        },
+        "FT-Transformer": {
+          "best_epoch": 22,
+          "epochs_run": 42,
+          "best_val_auc": 0.7990897969896429,
+          "test_auc": 0.8005162210347856
+        },
+        "SAINT-inspired": {
+          "best_epoch": 5,
+          "epochs_run": 15,
+          "best_val_auc": 0.7985801785108296,
+          "restore": "final",
+          "weights_used_epoch": 15,
+          "test_auc": 0.799919035431612
+        },
+        "Random Forest": {
+          "test_auc": 0.8000743827908811
+        }
+      }
+    },
+    {
+      "run": "seed303",
+      "started_utc": "2026-11-24T09:07:21+00:00",
+      "finished_utc": "2026-11-24T09:13:51+00:00",
+      "environment": {
+        "python": "3.13.9",
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "xgboost": "3.2.0",
+        "lightgbm": "4.6.0",
+        "catboost": "1.2.10",
+        "torch": "2.6.0+cu124",
+        "gpu_and_driver": "NVIDIA GeForce GTX 1650, 576.02",
+        "cuda_torch": "12.4",
+        "device": {
+          "xgboost": "cuda",
+          "lightgbm": "gpu",
+          "catboost": "GPU",
+          "torch": "cuda",
+          "random_forest_and_meta_learner": "cpu (scikit-learn)"
+        }
+      },
+      "saint_restore": "final",
+      "wall_seconds": {
+        "XGBoost": 0.6577136516571045,
+        "LightGBM (standalone)": 3.105072498321533,
+        "CatBoost": 14.613019466400146,
+        "Stacking Ensemble": 34.463112115859985,
+        "Random Forest": 2.3104279041290283,
+        "FT-Transformer": 81.77262330055237,
+        "SAINT-inspired": 249.128760099411,
+        "total_this_run": 387.62929487228394
+      },
+      "eight_hour_limit_seconds": 28800,
+      "exceeds_eight_hours": false,
+      "models": {
+        "XGBoost": {
+          "best_iteration": 113,
+          "test_auc": 0.8003273592190341
+        },
+        "CatBoost": {
+          "best_iteration": 255,
+          "test_auc": 0.8000029635030408
+        },
+        "LightGBM (standalone)": {
+          "best_iteration": 89,
+          "test_auc": 0.8000529229412756
+        },
+        "Stacking Ensemble": {
+          "trees": {
+            "xgboost": 114,
+            "lightgbm": 90,
+            "catboost": 256
+          },
+          "oof_folds": [
+            {
+              "fold": 1,
+              "XGBoost": 0.8069390258019504,
+              "LightGBM": 0.8063449305318734,
+              "CatBoost": 0.8070069652369098,
+              "Random Forest": 0.8054078138997436
+            },
+            {
+              "fold": 2,
+              "XGBoost": 0.7961677556870473,
+              "LightGBM": 0.7956991637754265,
+              "CatBoost": 0.7971403615209526,
+              "Random Forest": 0.794826261122457
+            },
+            {
+              "fold": 3,
+              "XGBoost": 0.8029889735922533,
+              "LightGBM": 0.8019548947340971,
+              "CatBoost": 0.8025835999026443,
+              "Random Forest": 0.8008065749900036
+            },
+            {
+              "fold": 4,
+              "XGBoost": 0.8030353479598755,
+              "LightGBM": 0.8024884390048851,
+              "CatBoost": 0.8039655951739365,
+              "Random Forest": 0.8024041437040386
+            },
+            {
+              "fold": 5,
+              "XGBoost": 0.8029950365953304,
+              "LightGBM": 0.8021619930112481,
+              "CatBoost": 0.8035696310912537,
+              "Random Forest": 0.8022225795796318
+            }
+          ],
+          "meta_coef": [
+            1.471875340934453,
+            0.8040877409255707,
+            2.5174304996820807,
+            0.0232785470706074
+          ],
+          "meta_intercept": -2.38764320956291,
+          "test_auc": 0.801014131178497
+        },
+        "FT-Transformer": {
+          "best_epoch": 15,
+          "epochs_run": 35,
+          "best_val_auc": 0.7942418277138003,
+          "test_auc": 0.8003537014682851
+        },
+        "SAINT-inspired": {
+          "best_epoch": 18,
+          "epochs_run": 28,
+          "best_val_auc": 0.794637527021983,
+          "restore": "final",
+          "weights_used_epoch": 28,
+          "test_auc": 0.799672682413831
+        },
+        "Random Forest": {
+          "test_auc": 0.7997171728075017
+        }
+      }
+    },
+    {
+      "run": "seed404",
+      "started_utc": "2026-11-24T09:14:01+00:00",
+      "finished_utc": "2026-11-24T09:20:35+00:00",
+      "environment": {
+        "python": "3.13.9",
+        "numpy": "2.3.5",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "xgboost": "3.2.0",
+        "lightgbm": "4.6.0",
+        "catboost": "1.2.10",
+        "torch": "2.6.0+cu124",
+        "gpu_and_driver": "NVIDIA GeForce GTX 1650, 576.02",
+        "cuda_torch": "12.4",
+        "device": {
+          "xgboost": "cuda",
+          "lightgbm": "gpu",
+          "catboost": "GPU",
+          "torch": "cuda",
+          "random_forest_and_meta_learner": "cpu (scikit-learn)"
+        }
+      },
+      "saint_restore": "final",
+      "wall_seconds": {
+        "XGBoost": 0.9215917587280273,
+        "LightGBM (standalone)": 3.6003379821777344,
+        "CatBoost": 10.522954940795898,
+        "Stacking Ensemble": 34.516329526901245,
+        "Random Forest": 3.5330960750579834,
+        "FT-Transformer": 99.58409118652344,
+        "SAINT-inspired": 237.73568725585938,
+        "total_this_run": 392.2160255908966
+      },
+      "eight_hour_limit_seconds": 28800,
+      "exceeds_eight_hours": false,
+      "models": {
+        "XGBoost": {
+          "best_iteration": 187,
+          "test_auc": 0.7997864726040229
+        },
+        "CatBoost": {
+          "best_iteration": 180,
+          "test_auc": 0.8000730959568659
+        },
+        "LightGBM (standalone)": {
+          "best_iteration": 130,
+          "test_auc": 0.7989938774708443
+        },
+        "Stacking Ensemble": {
+          "trees": {
+            "xgboost": 188,
+            "lightgbm": 131,
+            "catboost": 181
+          },
+          "oof_folds": [
+            {
+              "fold": 1,
+              "XGBoost": 0.7955791698865657,
+              "LightGBM": 0.7957498114990287,
+              "CatBoost": 0.7960066429862864,
+              "Random Forest": 0.7955636352859914
+            },
+            {
+              "fold": 2,
+              "XGBoost": 0.8079636350202536,
+              "LightGBM": 0.807553089306514,
+              "CatBoost": 0.8080450400723214,
+              "Random Forest": 0.8065772935101962
+            },
+            {
+              "fold": 3,
+              "XGBoost": 0.8048692434067558,
+              "LightGBM": 0.8038730854818241,
+              "CatBoost": 0.8054880391509188,
+              "Random Forest": 0.8024330244606318
+            },
+            {
+              "fold": 4,
+              "XGBoost": 0.802582621998922,
+              "LightGBM": 0.8018553875975731,
+              "CatBoost": 0.8036490803358773,
+              "Random Forest": 0.8012523035065453
+            },
+            {
+              "fold": 5,
+              "XGBoost": 0.7907224799336483,
+              "LightGBM": 0.7897415727450967,
+              "CatBoost": 0.7907321503598724,
+              "Random Forest": 0.7901630512094052
+            }
+          ],
+          "meta_coef": [
+            1.5795712699448858,
+            0.7365950919260527,
+            2.461081980631452,
+            0.012989344588947502
+          ],
+          "meta_intercept": -2.375538106190857,
+          "test_auc": 0.8003823713731815
+        },
+        "FT-Transformer": {
+          "best_epoch": 22,
+          "epochs_run": 42,
+          "best_val_auc": 0.8030651427696122,
+          "test_auc": 0.7987488112870785
+        },
+        "SAINT-inspired": {
+          "best_epoch": 17,
+          "epochs_run": 27,
+          "best_val_auc": 0.8035020505072308,
+          "restore": "final",
+          "weights_used_epoch": 27,
+          "test_auc": 0.7985634125687501
+        },
+        "Random Forest": {
+          "test_auc": 0.7980944561903794
+        }
+      }
+    }
+  ],
+  "run_order": [
+    "anchor_seed42",
+    "seed101",
+    "seed42",
+    "seed202",
+    "seed303",
+    "seed404"
+  ]
+}

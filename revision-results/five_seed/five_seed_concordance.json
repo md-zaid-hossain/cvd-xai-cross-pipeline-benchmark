@@ -1,0 +1,41 @@
+{
+  "protocol_section": "5.1 descriptive outputs",
+  "seeds_run": [
+    42,
+    101,
+    202,
+    303,
+    404
+  ],
+  "kendall_w_model_rankings_across_seeds": {
+    "W": 0.7805714285714286,
+    "chi2": 19.514285714285716,
+    "df": 5,
+    "p": 0.001541001995213762,
+    "n_models": 6,
+    "m_seeds": 5
+  },
+  "within_seed_auc_spread_among_ranked_models": {
+    "seed_42": 0.0010275748091492787,
+    "seed_101": 0.003227796038625441,
+    "seed_202": 0.0019199563505901684,
+    "seed_303": 0.001341448764665909,
+    "seed_404": 0.002287915182802025
+  },
+  "within_seed_spread_range": [
+    0.0010275748091492787,
+    0.003227796038625441
+  ],
+  "between_seed_sd_per_model": {
+    "Stacking Ensemble": 0.001391059588812797,
+    "XGBoost": 0.001483983661168773,
+    "CatBoost": 0.0017189375359413952,
+    "FT-Transformer": 0.000798928069372894,
+    "SAINT-inspired": 0.0008971580149479992,
+    "Random Forest": 0.0013158139403177565
+  },
+  "between_seed_sd_range": [
+    0.000798928069372894,
+    0.0017189375359413952
+  ]
+}

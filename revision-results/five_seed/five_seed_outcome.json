@@ -1,0 +1,36 @@
+{
+  "protocol_section": "5.2",
+  "seeds_run": [
+    42,
+    101,
+    202,
+    303,
+    404
+  ],
+  "reduction_triggered": false,
+  "leader_per_seed": {
+    "42": "Stacking Ensemble",
+    "101": "CatBoost",
+    "202": "Stacking Ensemble",
+    "303": "Stacking Ensemble",
+    "404": "Stacking Ensemble"
+  },
+  "distinct_leaders": [
+    "CatBoost",
+    "Stacking Ensemble"
+  ],
+  "k_distinct_leaders": 2,
+  "outcome": "A",
+  "outcome_label": "A (unstable ranking)",
+  "wording_values": {
+    "k": 2,
+    "between_seed_sd_range": [
+      0.000798928069372894,
+      0.0017189375359413952
+    ],
+    "within_seed_spread_range": [
+      0.0010275748091492787,
+      0.003227796038625441
+    ]
+  }
+}

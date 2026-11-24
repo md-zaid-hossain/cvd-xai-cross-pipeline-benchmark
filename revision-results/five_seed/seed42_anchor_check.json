@@ -1,0 +1,140 @@
+{
+  "protocol_section": "5.1 seed-42 anchor check",
+  "finished_utc": "2026-11-24T08:33:44+00:00",
+  "fidelity_gate": {
+    "stack_auc_retrained": 0.8005610331369599,
+    "stack_auc_deposited": 0.800367383541711,
+    "abs_delta_auc": 0.00019364959524892367,
+    "pearson_correlation": 0.9992626616210771,
+    "criteria": "|dAUC| <= 0.001 and r >= 0.999",
+    "pass": true
+  },
+  "tree_counts_reported_not_gating": {
+    "best_iteration": {
+      "xgboost": 185,
+      "lightgbm": 102,
+      "catboost": 216
+    },
+    "trees_used_best_iteration_plus_1": {
+      "xgboost": 186,
+      "lightgbm": 103,
+      "catboost": 217
+    },
+    "published": {
+      "xgboost": 186,
+      "lightgbm": 103,
+      "catboost": 217
+    }
+  },
+  "structural_guard_20pct": {
+    "xgboost": {
+      "derived_trees": 186,
+      "published": 186,
+      "pct_difference": 0.0,
+      "allowed_range": [
+        149,
+        223
+      ],
+      "breach": false
+    },
+    "lightgbm": {
+      "derived_trees": 103,
+      "published": 103,
+      "pct_difference": 0.0,
+      "allowed_range": [
+        83,
+        123
+      ],
+      "breach": false
+    },
+    "catboost": {
+      "derived_trees": 217,
+      "published": 217,
+      "pct_difference": 0.0,
+      "allowed_range": [
+        174,
+        260
+      ],
+      "breach": false
+    },
+    "any_breach": false
+  },
+  "decision": "PROCEED",
+  "standalone_test_auc": {
+    "xgboost": 0.8002377728627448,
+    "lightgbm": 0.7995316983930547,
+    "catboost": 0.8000919632144115
+  },
+  "stacking_detail": {
+    "oof_folds": [
+      {
+        "fold": 1,
+        "XGBoost": 0.8034244256238957,
+        "LightGBM": 0.802651997484568,
+        "CatBoost": 0.8042303998097784,
+        "Random Forest": 0.8017556184413568
+      },
+      {
+        "fold": 2,
+        "XGBoost": 0.8048332833730865,
+        "LightGBM": 0.8041183237713463,
+        "CatBoost": 0.8056848024318883,
+        "Random Forest": 0.8036065083141978
+      },
+      {
+        "fold": 3,
+        "XGBoost": 0.8011897393995236,
+        "LightGBM": 0.801725239477756,
+        "CatBoost": 0.8023908659446115,
+        "Random Forest": 0.8005421498235427
+      },
+      {
+        "fold": 4,
+        "XGBoost": 0.7953370508162236,
+        "LightGBM": 0.7951490542584447,
+        "CatBoost": 0.795893890926792,
+        "Random Forest": 0.7935542671372195
+      },
+      {
+        "fold": 5,
+        "XGBoost": 0.797781788390327,
+        "LightGBM": 0.7970682881034754,
+        "CatBoost": 0.7984640174892649,
+        "Random Forest": 0.7967428200135602
+      }
+    ],
+    "meta_coef": [
+      1.5605449620563472,
+      0.5478536534882892,
+      2.9311380017888204,
+      -0.2623225131710951
+    ],
+    "meta_intercept": -2.370126624956373
+  },
+  "environment": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "xgboost": "3.2.0",
+    "lightgbm": "4.6.0",
+    "catboost": "1.2.10",
+    "torch": "2.6.0+cu124",
+    "gpu_and_driver": "NVIDIA GeForce GTX 1650, 576.02",
+    "cuda_torch": "12.4",
+    "device": {
+      "xgboost": "cuda",
+      "lightgbm": "gpu",
+      "catboost": "GPU",
+      "torch": "cuda",
+      "random_forest_and_meta_learner": "cpu (scikit-learn)"
+    }
+  },
+  "wall_seconds": {
+    "xgboost": 0.7768251895904541,
+    "lightgbm": 2.853532314300537,
+    "catboost": 14.620347261428833,
+    "stacking": 38.80995273590088,
+    "total": 57.06075835227966
+  }
+}

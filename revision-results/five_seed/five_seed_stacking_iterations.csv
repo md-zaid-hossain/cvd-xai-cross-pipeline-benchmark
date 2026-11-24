@@ -1,0 +1,6 @@
+seed,xgboost_best_iteration,xgboost_trees_used,lightgbm_best_iteration,lightgbm_trees_used,catboost_best_iteration,catboost_trees_used,deposited_seed42_trees_xgb_lgb_cat
+42,185,186,102,103,216,217,186/103/217
+101,187,188,114,115,354,355,186/103/217
+202,95,96,88,89,196,197,186/103/217
+303,113,114,89,90,255,256,186/103/217
+404,187,188,130,131,180,181,186/103/217

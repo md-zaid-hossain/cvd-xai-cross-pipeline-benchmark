@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. |
+| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. |
 | Manuscript version checked | Submitted manuscript, 17 Oct 2026 (CHBR-D-26-02504): Sections 3.8–3.8.5 and Table 2 (items 1–3); Abstract, §4.6, Table 7, Figure 6, §5.4, §5.5, §6, Appendix Table S13 and the graphical abstract (item 4) |
 | Code checked | Executed notebooks in `notebooks/core/` with their stored outputs |
-| Effect on primary benchmark | None. All four affect only the explainability rankings (Table 7 / Figure 6) and how they are described. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
+| Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
 
 "Protocol §4" below means the common-sample explainability analysis prespecified in `docs/ANALYSIS_PROTOCOL.md` Section 4. All five explanation pipelines are recomputed on one shared stratified sample of n = 1,000 test records (sampling seed 42).
 
@@ -55,6 +55,17 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | **Also affected (repository, not modified)** | `results/tables/cross_pipeline_spearman_matrix.csv` in the v1.0.0 release carries the Spearman values derived from the mislabelled ranking. It is left unchanged under the protocol; the revision release should mark it as superseded. Supplementary §S5 also records that the original checkpoint metadata listed PP and MAP before Cholesterol and Glucose — the same superseded list. |
 | **Resolved by the Protocol §4 analysis?** | **Yes for the revised analysis; every location above needs correcting.** The Protocol §4.2 SAINT pipeline uses the canonical feature order from the corrected checkpoint (verified by exact reproduction of `proba_saint.npy`). The claim that SAINT diverges must be withdrawn, not merely updated: the batch-dependence of SAINT probabilities remains a valid caveat, but it is not evidence of attribution divergence. |
 
+## 5. SAINT-inspired training restores the final-epoch weights, not the best-epoch weights
+
+| | |
+| --- | --- |
+| **Manuscript claims** | §3.7.5: "…a maximum of 50 epochs, **early-stopping patience 10**, and batch_size = 256." Stating early stopping with patience implies that the weights from the best validation epoch are restored. |
+| **Code does** | `SAINT_CVD_Complete.ipynb` cell 19 saves the "best" weights with `best_model_state = model.state_dict().copy()`. `state_dict()` returns references to the live parameter tensors and `.copy()` copies only the dictionary, so the snapshot keeps changing as training continues. `model.load_state_dict(best_model_state)` therefore restores the **final-epoch** weights. (The FT-Transformer notebook uses `copy.deepcopy`, which is correct.) |
+| **Evidence** | Cell 19's stored output: best validation AUC at **epoch 19 (0.8027)**; early stopping triggered after **epoch 29** (validation AUC 0.8020). The deposited checkpoint and `proba_saint.npy` (test AUC 0.7996) therefore come from the **epoch-29** weights. A direct test in the original environment confirms that a `state_dict().copy()` snapshot follows later in-place parameter updates. |
+| **Effect** | Patience 10 means the restored weights are 10 epochs past the best validation epoch. The early-stopping rule still decided *when* training stopped, but not *which* weights were kept. The effect on test performance is quantified by the Protocol Amendment 4(b) diagnostic at seed 42 (best-epoch vs final-epoch test AUC; `revision-results/five_seed/five_seed_run_manifest.json`). |
+| **Section(s) to correct** | §3.7.5 (state that the final-epoch weights were used, or that the best-weight restoration was ineffective); **Appendix Table S10** (implementation-fidelity audit), as a known deviation. |
+| **Resolved by the Protocol analysis?** | **No change to the published model, by design.** Protocol Amendment 4(a) keeps the executed behaviour in the §5 five-seed analysis, so that only the seed varies and the seed-42 retrain stays comparable with the deposited arrays. The text must describe what was executed. |
+
 ---
 
 ## Summary
@@ -65,5 +76,6 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | 2 | FT-Transformer KernelSHAP | §3.8.3, Table 2 | Partly (sample only) | Yes: background was random, not k-means; add `nsamples=100` |
 | 3 | SAINT-inspired permutation | §3.8.5, Table 2, §3.10/S10 | Yes, for the new analysis | Yes: original used first 1,000 rows and an unseeded shuffle |
 | **4** | **SAINT-inspired permutation — most severe** | **Abstract, Table 7, Figure 6, Kendall's W, four Spearman values (§4.6, Table S13), graphical abstract, §4.6, §5.4, §5.5, §6** | **Yes, for the new analysis** | **Yes: positions 6–12 mislabelled; withdraw the SAINT-divergence claim; W 0.657 → 0.838 with labels corrected** |
+| 5 | SAINT-inspired training (benchmark model) | §3.7.5, Appendix Table S10 | No change, by design (Amendment 4(a)); effect quantified at seed 42 (4(b)) | Yes: final-epoch, not best-epoch, weights were restored |
 
 These corrections should be listed in the response to reviewers as author-identified corrections, separate from the reviewer-requested changes.

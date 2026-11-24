@@ -1,0 +1,7 @@
+model,seed_42,seed_101,seed_202,seed_303,seed_404
+Stacking Ensemble,1.0,2.0,1.0,1.0,1.0
+XGBoost,2.0,3.0,2.0,3.0,3.0
+CatBoost,3.0,1.0,3.0,4.0,2.0
+FT-Transformer,4.0,6.0,4.0,2.0,4.0
+SAINT-inspired,5.0,5.0,6.0,6.0,5.0
+Random Forest,6.0,4.0,5.0,5.0,6.0
