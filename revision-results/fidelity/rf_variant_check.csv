@@ -1,0 +1,2 @@
+model,max_abs_diff,pearson_correlation,deposited_auc,retrained_auc,delta_auc,pass,device,library,library_version,variant,n_estimators_match
+Random Forest (variant C),4.440892098500626e-16,1.0,0.7995334583278106,0.7995334583278106,0.0,True,cpu,scikit-learn,1.7.2,C,True
