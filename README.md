@@ -303,7 +303,7 @@ cvd-xai-cross-pipeline-benchmark/
 ### 1 · Verify the deposited evidence (~1 minute, no dataset needed)
 
 ```bash
-git clone https://github.com/mdzaideng/cvd-xai-cross-pipeline-benchmark.git
+git clone https://github.com/md-zaid-hossain/cvd-xai-cross-pipeline-benchmark.git
 cd cvd-xai-cross-pipeline-benchmark
 
 python -m venv .venv

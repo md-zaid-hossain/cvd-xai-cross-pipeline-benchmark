@@ -4,6 +4,7 @@
 | --- | --- |
 | Protocol version | 1.0 |
 | Date written | 2026-11-24 |
+| Lock timestamp | The header date 2026-11-24 is Bangladesh local time (UTC+6). The locking commit `4366b206485c34b29776e4d3ca58eddc53766d88` has committer timestamp **2026-11-23T21:34:22Z**, i.e. 2026-11-24 03:34 UTC+6. Both refer to the same moment. |
 | Status | **Locked when committed.** No analysis in this document had been run when it was written. |
 | Applies to | Revision analyses requested by the editor and Reviewers 1–3 (decision dated 2026-11-20) |
 | Baseline release | `cvd-xai-benchmark` v1.0.0 (Zenodo 10.5281/zenodo.22114347) |
@@ -565,4 +566,4 @@ All paths are relative to the repository root.
 
 | # | Date | Section | Change | Reason | Committed before analysis? |
 | --- | --- | --- | --- | --- | --- |
-| — | — | — | None yet | — | — |
+| 1 | 2026-11-24 (UTC+6) | Header; repository files outside the protocol | **Editorial only.** Repository URL updated after the GitHub account was renamed from `mdzaideng` to `md-zaid-hossain`: the `git clone` URL in `README.md`. The protocol text itself contains no repository URL. In the same commit, a "Lock timestamp" row was added to the header table, giving the UTC equivalent of the header date. **No analytical choice changed.** | GitHub account rename; record-keeping | Yes. Made before any analysis was run. |
