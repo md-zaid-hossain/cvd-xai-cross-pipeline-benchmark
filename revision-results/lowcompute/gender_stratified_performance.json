@@ -1,0 +1,49 @@
+{
+  "protocol_section": "Amendment 11 (prespecified)",
+  "amendment_commit": "3e2ef42e0c6fc055a80a29f1c4ba355eaacc234e",
+  "threshold": 0.5,
+  "bootstrap": {
+    "resamples": 2000,
+    "seed": 42,
+    "method": "percentile, within gender group",
+    "discarded_single_class": {
+      "female": 0,
+      "male": 0
+    }
+  },
+  "groups": {
+    "female": {
+      "code": 0,
+      "n": 6749,
+      "outcome_prevalence": 0.49370277078085645
+    },
+    "male": {
+      "code": 1,
+      "n": 3532,
+      "outcome_prevalence": 0.49575311438278596
+    }
+  },
+  "auc_difference_male_minus_female": {
+    "Stacking Ensemble": 0.009285941282458077,
+    "XGBoost": 0.009099742435005442,
+    "CatBoost": 0.007848860385056722,
+    "FT-Transformer": 0.011044661791132171,
+    "SAINT-inspired": 0.007741919031311606,
+    "Random Forest": 0.009299409366730793
+  },
+  "checks": {
+    "pred_matches_deposited_stack_corrected": true,
+    "overall_auc_stack_corrected": 0.800367383541711,
+    "pred_matches_deposited_xgb": true,
+    "overall_auc_xgb": 0.8002377728627448,
+    "pred_matches_deposited_cat": true,
+    "overall_auc_cat": 0.8000919632144115,
+    "pred_matches_deposited_ft": true,
+    "overall_auc_ft": 0.7997695355975001,
+    "pred_matches_deposited_saint": true,
+    "overall_auc_saint": 0.7995903250368621,
+    "pred_matches_deposited_rf": true,
+    "overall_auc_rf": 0.7995334583278106
+  },
+  "note": "Descriptive only; no claim of fairness or its absence is made."
+}

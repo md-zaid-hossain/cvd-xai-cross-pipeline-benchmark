@@ -202,3 +202,32 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - This is not a direct test of the grouped-permutation result (Section 3A(g)). There, single-feature permutation importances summed to 35% of the block's importance. SHAP values are additive by construction, so the members' attributions always sum to the set's, and no comparable shortfall can arise here.
   - Whether the manuscript's §5.4 wording on DBP needs revising in the light of (c) is for the author to decide.
 - **Deviations / reruns:** none. No manuscript text was changed.
+
+## 2026-11-25 — Amendment 11 (prespecified): gender-stratified performance
+
+- **Amendment:** Section 8, row 11, committed and **pushed alone** in `3e2ef42e0c6fc055a80a29f1c4ba355eaacc234e` (committer time 2026-11-25T02:31:29+06:00; GitHub CI run 45481705391 created 2026-11-24T20:31:35Z, success) **before the run**. The commit changes exactly two files and one checksum line. The run specification (deposited probability arrays, threshold 0.5, Section 3A(b) bootstrap resampled within group) was appended to the author's text, as for Amendment 9. Row 10 is reserved for the NHANES amendment.
+- **Background:** the existing per-gender output is notebook output, not a deposited file: cell 113 of `Heart_Disease_With_Optuna_GPU_Optimized.ipynb` (`group_metrics`) for "MLP (Optuna)" on that notebook's own 10,280-record test partition, outside the primary benchmark. The submitted manuscript instead states that no fairness analysis was performed (§5.6; Table S14).
+- **Script:** `src/revision/amendment11_gender_stratified.py --data-file <stage-1 CSV>` → `lowcompute/gender_stratified_performance.csv` and `.json`, LF line endings. No model is refitted.
+- **Checks:**
+  - The split identity check passed.
+  - The 0.5-threshold predictions equal the deposited `pred_*.npy` arrays for all six models.
+  - The overall AUCs reproduce Table 4.
+  - No bootstrap replicate was discarded.
+- **Groups:** female (Gender = 0) n = 6,749, prevalence 0.4937; male (Gender = 1) n = 3,532, prevalence 0.4958.
+- **Results** (AUC [95% CI], female vs male; male − female):
+
+  | Model | Female AUC | Male AUC | Δ |
+  |---|---|---|---|
+  | Stacking Ensemble | 0.7971 [0.7867–0.8081] | 0.8064 [0.7921–0.8214] | +0.0093 |
+  | XGBoost | 0.7971 [0.7868–0.8082] | 0.8062 [0.7920–0.8211] | +0.0091 |
+  | CatBoost | 0.7973 [0.7870–0.8083] | 0.8052 [0.7913–0.8206] | +0.0078 |
+  | FT-Transformer | 0.7961 [0.7855–0.8069] | 0.8071 [0.7929–0.8223] | +0.0110 |
+  | SAINT-inspired | 0.7970 [0.7863–0.8078] | 0.8047 [0.7904–0.8198] | +0.0077 |
+  | Random Forest | 0.7965 [0.7862–0.8073] | 0.8058 [0.7918–0.8210] | +0.0093 |
+
+  Accuracy, precision, recall, false positive rate and positive prediction rate per group are in the CSV.
+  - Across the six models, accuracy is 0.730–0.733 for women and 0.734–0.737 for men.
+  - False positive rate is 0.207–0.249 for women and 0.198–0.237 for men.
+  - Positive prediction rate is 0.433–0.478 for women and 0.433–0.469 for men.
+- **Interpretation:** descriptive only, as the amendment specifies; no claim of fairness or its absence is made. The between-group difference is a point estimate. Each group's CI overlaps the other's for every model, but no test of the difference was prespecified and none is reported.
+- **Deviations / reruns:** none. No manuscript text was changed.
