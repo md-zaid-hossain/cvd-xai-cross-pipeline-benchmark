@@ -231,3 +231,13 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - Positive prediction rate is 0.433–0.478 for women and 0.433–0.469 for men.
 - **Interpretation:** descriptive only, as the amendment specifies; no claim of fairness or its absence is made. The between-group difference is a point estimate. Each group's CI overlaps the other's for every model, but no test of the difference was prespecified and none is reported.
 - **Deviations / reruns:** none. No manuscript text was changed.
+
+## 2026-11-25 — Manuscript Figure 5 regenerated; correction to the Section 3A(d) note
+
+- **Figure 5 regenerated:** `src/revision/figure5_learning_curve.py` → `results/figures/main/Figure_5_RF_Learning_Curve.png`, drawn from the committed Amendment 7 output (`lowcompute/rf_learning_curve.csv`; mean AUC 0.79250 / 0.79519 / 0.79773 / 0.79863 / 0.79953). Figure only, no new analysis. Style matched from the submitted image (2070 × 1466 px, 300 dpi, matplotlib defaults), whose source code does not exist. The title now reads "re-executed; one fit at full size", because the full-size point is a single fit (SD 0 by construction).
+- **Correction (reporting error in this log, no analysis change):** the Section 3A(d) entry above states that "below p_t ≈ 0.10 and above ≈ 0.85 the margins over the better reference strategy are ≤ 0.0005". Recomputed from the deposited `decision_curve_net_benefit.csv`:
+  - The best top-six margin is at most 0.00046 below 0.10 and at most 0.00049 from 0.89 upward.
+  - At p_t 0.86–0.88 it reaches **0.0082**, so the statement is wrong there. The correct bounds are "below 0.10 and above 0.88".
+  - All six leading models exceed both reference strategies throughout 0.10–0.84.
+  - The largest between-model net-benefit difference is 0.0120 at 0.85 over the whole grid and 0.0108 at 0.77 within 0.10–0.84. The mean over the grid is 0.0037.
+  - The original line is left in place, as for the other corrections in this log.
