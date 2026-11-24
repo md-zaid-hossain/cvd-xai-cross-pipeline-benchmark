@@ -1,0 +1,30 @@
+{
+  "protocol_section": "4.1",
+  "file": "revision-results/xai/xai_common_sample_idx.npy",
+  "sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+  "n": 1000,
+  "sampling_seed": 42,
+  "method": "sklearn train_test_split(np.arange(len(y_test)), train_size=1000, stratify=y_test, random_state=42); sorted ascending",
+  "index_dtype": "int64",
+  "index_min": 13,
+  "index_max": 10277,
+  "indices_unique": true,
+  "indices_sorted": true,
+  "positions_refer_to": "rows of the seed-42 primary test set (10,281 records), artifacts/predictions/y_test.npy order",
+  "class_balance": {
+    "n_positive": 494,
+    "n_negative": 506,
+    "prevalence_sample": 0.494,
+    "prevalence_test_set": 0.49440715883668906,
+    "test_set_n_positive": 5083,
+    "test_set_n": 10281
+  },
+  "created_utc": "2026-11-24T07:21:10+00:00",
+  "environment": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.7.2",
+    "platform": "Windows-11-10.0.26300-SP0"
+  },
+  "rule": "Drawn once, before any Section 4.2 explainer or Section 3A(h) runs; every pipeline reads this file."
+}

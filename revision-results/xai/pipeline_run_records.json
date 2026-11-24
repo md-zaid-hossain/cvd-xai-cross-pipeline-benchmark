@@ -1,0 +1,159 @@
+{
+  "pipeline_1_mlp": {
+    "loading_check": {
+      "deposited_array": "proba_mlp.npy",
+      "max_abs_diff": 5.551115123125783e-16,
+      "pearson_correlation": 1.0,
+      "auc_deposited": 0.7980162242518706,
+      "auc_reproduced": 0.7980162242518706,
+      "max_abs_diff_vs_section3_retrained": 3.3306690738754696e-16
+    },
+    "device": "cpu (scikit-learn)",
+    "versions": {
+      "python": "3.13.9",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.3.5"
+    },
+    "common_sample_sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+    "wall_seconds": 4.825107574462891,
+    "finished_utc": "2026-11-24T07:25:18+00:00"
+  },
+  "pipeline_2_xgb": {
+    "loading_check": {
+      "deposited_array": "proba_xgb.npy",
+      "max_abs_diff": 1.7881393432617188e-07,
+      "pearson_correlation": 0.9999999999999939,
+      "auc_deposited": 0.8002377728627448,
+      "auc_reproduced": 0.8002377917867742,
+      "max_abs_diff_vs_section3_retrained": 1.7881393432617188e-07,
+      "best_iteration": 185,
+      "n_trees_in_booster": 216,
+      "shap_additivity_max_err_vs_all_trees": 0.1693706512451172,
+      "shap_additivity_max_err_vs_best_iteration_trees": 2.86102294921875e-06
+    },
+    "device": "cpu (shap TreeExplainer)",
+    "versions": {
+      "python": "3.13.9",
+      "xgboost": "3.2.0",
+      "shap": "0.51.0",
+      "numpy": "2.3.5"
+    },
+    "common_sample_sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+    "wall_seconds": 2.2143197059631348,
+    "finished_utc": "2026-11-24T07:25:32+00:00"
+  },
+  "pipeline_3_tabnet": {
+    "loading_check": {
+      "deposited_array": "proba_tabnet.npy",
+      "max_abs_diff": 4.410743713378906e-06,
+      "pearson_correlation": 0.9999999999999776,
+      "auc_deposited": 0.7986537180381655,
+      "auc_reproduced": 0.7986537369621953,
+      "training_set_feature_importances": {
+        "Gender": 0.0005,
+        "Age": 0.1425,
+        "BMI": 0.1304,
+        "SBP": 0.3819,
+        "DBP": 0.0199,
+        "Cholesterol": 0.1096,
+        "Glucose": 0.0554,
+        "Smoking": 0.0,
+        "Alcohol": 0.0002,
+        "Active": 0.0001,
+        "PP": 0.035,
+        "MAP": 0.1025,
+        "RiskCount": 0.0219
+      }
+    },
+    "device": "cuda",
+    "versions": {
+      "python": "3.13.9",
+      "pytorch-tabnet": "4.1.0",
+      "torch": "2.6.0+cu124",
+      "numpy": "2.3.5"
+    },
+    "common_sample_sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+    "wall_seconds": 5.443384647369385,
+    "finished_utc": "2026-11-24T07:25:48+00:00"
+  },
+  "pipeline_5_saint": {
+    "loading_check": {
+      "deposited_array": "proba_saint.npy",
+      "max_abs_diff": 0.0,
+      "pearson_correlation": 1.0,
+      "auc_deposited": 0.7995903250368621,
+      "auc_reproduced": 0.7995903250368621,
+      "checkpoint_scaler_max_abs_diff_vs_section12_scaler_mean": 7.533722907737683e-07
+    },
+    "device": "cuda",
+    "versions": {
+      "python": "3.13.9",
+      "torch": "2.6.0+cu124",
+      "numpy": "2.3.5",
+      "scikit-learn": "1.7.2"
+    },
+    "common_sample_sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+    "wall_seconds": 10.404078722000122,
+    "finished_utc": "2026-11-24T07:26:11+00:00"
+  },
+  "pipeline_4_ft_timing_probe_25_rows": {
+    "loading_check": {
+      "deposited_array": "proba_ft.npy",
+      "max_abs_diff": 5.960464477539062e-07,
+      "pearson_correlation": 0.999999999999991,
+      "auc_deposited": 0.7997695355975001,
+      "auc_reproduced": 0.7997695545215298,
+      "checkpoint_scaler_max_abs_diff_vs_section12_scaler_mean": 7.533722907737683e-07
+    },
+    "device": "cuda",
+    "versions": {
+      "python": "3.13.9",
+      "shap": "0.51.0",
+      "torch": "2.6.0+cu124",
+      "numpy": "2.3.5"
+    },
+    "rows_explained": 25,
+    "shap_seconds": 6.69268012046814,
+    "seconds_per_row": 0.26770720481872556,
+    "background_idx_first5": [
+      853,
+      19592,
+      9845,
+      39184,
+      11090
+    ],
+    "common_sample_sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+    "wall_seconds": 10.986957788467407,
+    "finished_utc": "2026-11-24T07:26:34+00:00"
+  },
+  "pipeline_4_ft": {
+    "loading_check": {
+      "deposited_array": "proba_ft.npy",
+      "max_abs_diff": 5.960464477539062e-07,
+      "pearson_correlation": 0.999999999999991,
+      "auc_deposited": 0.7997695355975001,
+      "auc_reproduced": 0.7997695545215298,
+      "checkpoint_scaler_max_abs_diff_vs_section12_scaler_mean": 7.533722907737683e-07
+    },
+    "device": "cuda",
+    "versions": {
+      "python": "3.13.9",
+      "shap": "0.51.0",
+      "torch": "2.6.0+cu124",
+      "numpy": "2.3.5"
+    },
+    "rows_explained": 1000,
+    "shap_seconds": 271.12232756614685,
+    "seconds_per_row": 0.27112232756614685,
+    "background_idx_first5": [
+      853,
+      19592,
+      9845,
+      39184,
+      11090
+    ],
+    "common_sample_sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+    "wall_seconds": 276.92124462127686,
+    "finished_utc": "2026-11-24T07:31:23+00:00"
+  }
+}

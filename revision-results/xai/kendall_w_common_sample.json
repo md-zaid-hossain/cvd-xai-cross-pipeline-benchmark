@@ -1,0 +1,114 @@
+{
+  "protocol_section": "4.3",
+  "status": "PRIMARY reported concordance result (common sample, n = 1,000)",
+  "kendall_w_common_sample": {
+    "W": 0.8356043956043956,
+    "chi2": 50.136263736263736,
+    "df": 12,
+    "p": 1.3221705975662218e-06,
+    "m_raters": 5,
+    "n_items": 13,
+    "tie_correction_sum_T": 0.0
+  },
+  "pairwise_spearman_common_sample": [
+    {
+      "pipeline_a": "MLP Perm.",
+      "pipeline_b": "XGBoost SHAP",
+      "spearman_rho": 0.7747252747252747
+    },
+    {
+      "pipeline_a": "MLP Perm.",
+      "pipeline_b": "TabNet Attn.",
+      "spearman_rho": 0.6098901098901099
+    },
+    {
+      "pipeline_a": "MLP Perm.",
+      "pipeline_b": "FT-Transformer SHAP",
+      "spearman_rho": 0.7527472527472527
+    },
+    {
+      "pipeline_a": "MLP Perm.",
+      "pipeline_b": "SAINT-inspired Perm.",
+      "spearman_rho": 0.945054945054945
+    },
+    {
+      "pipeline_a": "XGBoost SHAP",
+      "pipeline_b": "TabNet Attn.",
+      "spearman_rho": 0.8296703296703297
+    },
+    {
+      "pipeline_a": "XGBoost SHAP",
+      "pipeline_b": "FT-Transformer SHAP",
+      "spearman_rho": 0.8956043956043955
+    },
+    {
+      "pipeline_a": "XGBoost SHAP",
+      "pipeline_b": "SAINT-inspired Perm.",
+      "spearman_rho": 0.8241758241758241
+    },
+    {
+      "pipeline_a": "TabNet Attn.",
+      "pipeline_b": "FT-Transformer SHAP",
+      "spearman_rho": 0.8131868131868131
+    },
+    {
+      "pipeline_a": "TabNet Attn.",
+      "pipeline_b": "SAINT-inspired Perm.",
+      "spearman_rho": 0.7142857142857143
+    },
+    {
+      "pipeline_a": "FT-Transformer SHAP",
+      "pipeline_b": "SAINT-inspired Perm.",
+      "spearman_rho": 0.7857142857142857
+    }
+  ],
+  "spearman_range_common_sample": [
+    0.6098901098901099,
+    0.945054945054945
+  ],
+  "top3_common_sample": {
+    "MLP Perm.": [
+      "Cholesterol",
+      "PP",
+      "SBP"
+    ],
+    "XGBoost SHAP": [
+      "SBP",
+      "Age",
+      "MAP"
+    ],
+    "TabNet Attn.": [
+      "SBP",
+      "Age",
+      "BMI"
+    ],
+    "FT-Transformer SHAP": [
+      "SBP",
+      "MAP",
+      "Age"
+    ],
+    "SAINT-inspired Perm.": [
+      "Cholesterol",
+      "SBP",
+      "Age"
+    ]
+  },
+  "original_unequal_sample_sensitivity": {
+    "source": "submitted Table 7, verified against notebook stored outputs",
+    "kendall_w_recomputed": {
+      "W": 0.6571428571428571,
+      "chi2": 39.42857142857143,
+      "df": 12,
+      "p": 8.94191894927018e-05,
+      "m_raters": 5,
+      "n_items": 13,
+      "tie_correction_sum_T": 0.0
+    },
+    "published_W_chi2": {
+      "W": 0.657,
+      "chi2": 39.43,
+      "df": 12
+    },
+    "spearman_matrix_max_abs_diff_vs_committed_cross_pipeline_spearman_matrix_csv": 0.0
+  }
+}

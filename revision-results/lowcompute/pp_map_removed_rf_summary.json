@@ -1,0 +1,49 @@
+{
+  "protocol_section": "3A(h)",
+  "common_sample_sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+  "common_sample_n": 1000,
+  "identity_checks": {
+    "y_test_equals_deposited": true,
+    "y_test_equals_13_feature_split": true,
+    "shared_11_test_columns_equal_13_feature_X_test": true
+  },
+  "features_11": [
+    "Gender",
+    "Age",
+    "BMI",
+    "SBP",
+    "DBP",
+    "Cholesterol",
+    "Glucose",
+    "Smoking",
+    "Alcohol",
+    "Active",
+    "RiskCount"
+  ],
+  "test_auc_full_10281": {
+    "rf_11_features_pp_map_removed": 0.7999943341455275,
+    "rf_13_features_section3": 0.7995334583278106,
+    "difference_11_minus_13": 0.0004608758177168104
+  },
+  "table_s7_context_values": {
+    "10 variables (no PP, MAP, risk_count)": 0.799843,
+    "12 variables (original + PP + MAP)": 0.799302,
+    "13 variables (full)": 0.799534
+  },
+  "table_s7_note": "No Table S7 row matches the 11-feature set (Table S7's 10-variable row also drops risk_count); the 11-feature AUC is a new value.",
+  "permutation_importance": "sklearn permutation_importance, scoring='roc_auc', n_repeats=10, random_state=42, n_jobs=-1, on the Section 4.1 common sample",
+  "rank_method": "scipy.stats.rankdata(-mean, method='average')",
+  "cholesterol": {
+    "rank_i_of_11_in_11_feature_model": 3.0,
+    "rank_iii_of_11_shared_in_13_feature_model": 3.0,
+    "rank_ii_of_13_in_13_feature_model": 3.0,
+    "does_cholesterol_rise_in_rank": "unchanged",
+    "rule": "compare (iii) with (i); 'rises' = strictly smaller rank number in the 11-feature model"
+  },
+  "environment": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.7.2"
+  },
+  "device": "cpu (scikit-learn)"
+}

@@ -1,0 +1,334 @@
+{
+  "protocol_section": "4.3, Amendment 3 (committed and pushed alone in 4fd545d before this run)",
+  "verification": {
+    "printed_label_at_each_position_equals_cell4_feature_cols": true,
+    "corrected_vector_is_permutation_of_reported_values_only_names_moved": true,
+    "submitted_table7_saint_column_equals_ranks_of_mislabelled_vector": true,
+    "positions_mislabelled": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "baseline_auc_printed_in_cell25": 0.812,
+    "baseline_auc_recomputed_canonical_model_first_1000_test_rows": 0.8119911502654521
+  },
+  "kendall_w": {
+    "i_submitted": 0.6571428571428571,
+    "ii_original_saint_corrected": 0.8382417582417583,
+    "iii_common_sample": 0.8356043956043956
+  },
+  "decomposition_sequential_i_to_ii_to_iii": {
+    "total_change": 0.17846153846153845,
+    "label_correction_i_to_ii": 0.18109890109890114,
+    "common_sample_ii_to_iii": -0.0026373626373626946,
+    "label_correction_share": 1.014778325123153,
+    "common_sample_share": -0.014778325123153031,
+    "note": "Sequential decomposition (label correction first). The reverse order is undefined: the common-sample ranks were never mislabelled."
+  },
+  "cases": {
+    "i_submitted": {
+      "kendall_w": {
+        "W": 0.6571428571428571,
+        "chi2": 39.42857142857143,
+        "df": 12,
+        "p": 8.94191894927018e-05,
+        "m_raters": 5,
+        "n_items": 13,
+        "tie_correction_sum_T": 0.0
+      },
+      "spearman_pairs": {
+        "MLP Perm. | XGBoost SHAP": 0.7802197802197801,
+        "MLP Perm. | TabNet Attn.": 0.6593406593406593,
+        "MLP Perm. | FT-Transformer SHAP": 0.6923076923076923,
+        "MLP Perm. | SAINT-inspired Perm.": 0.3186813186813187,
+        "XGBoost SHAP | TabNet Attn.": 0.8186813186813187,
+        "XGBoost SHAP | FT-Transformer SHAP": 0.8956043956043955,
+        "XGBoost SHAP | SAINT-inspired Perm.": 0.32967032967032966,
+        "TabNet Attn. | FT-Transformer SHAP": 0.8186813186813187,
+        "TabNet Attn. | SAINT-inspired Perm.": 0.1868131868131868,
+        "FT-Transformer SHAP | SAINT-inspired Perm.": 0.21428571428571427
+      },
+      "ranks": {
+        "MLP Perm.": {
+          "Gender": 11.0,
+          "Age": 2.0,
+          "BMI": 8.0,
+          "SBP": 4.0,
+          "DBP": 5.0,
+          "Cholesterol": 1.0,
+          "Glucose": 10.0,
+          "Smoking": 12.0,
+          "Alcohol": 13.0,
+          "Active": 7.0,
+          "PP": 3.0,
+          "MAP": 6.0,
+          "RiskCount": 9.0
+        },
+        "XGBoost SHAP": {
+          "Gender": 13.0,
+          "Age": 2.0,
+          "BMI": 5.0,
+          "SBP": 1.0,
+          "DBP": 9.0,
+          "Cholesterol": 4.0,
+          "Glucose": 8.0,
+          "Smoking": 11.0,
+          "Alcohol": 12.0,
+          "Active": 6.0,
+          "PP": 7.0,
+          "MAP": 3.0,
+          "RiskCount": 10.0
+        },
+        "TabNet Attn.": {
+          "Gender": 10.0,
+          "Age": 2.0,
+          "BMI": 3.0,
+          "SBP": 1.0,
+          "DBP": 9.0,
+          "Cholesterol": 4.0,
+          "Glucose": 6.0,
+          "Smoking": 13.0,
+          "Alcohol": 11.0,
+          "Active": 12.0,
+          "PP": 7.0,
+          "MAP": 5.0,
+          "RiskCount": 8.0
+        },
+        "FT-Transformer SHAP": {
+          "Gender": 11.0,
+          "Age": 3.0,
+          "BMI": 5.0,
+          "SBP": 1.0,
+          "DBP": 9.0,
+          "Cholesterol": 4.0,
+          "Glucose": 7.0,
+          "Smoking": 8.0,
+          "Alcohol": 13.0,
+          "Active": 10.0,
+          "PP": 6.0,
+          "MAP": 2.0,
+          "RiskCount": 12.0
+        },
+        "SAINT-inspired Perm.": {
+          "Gender": 12.0,
+          "Age": 2.0,
+          "BMI": 7.0,
+          "SBP": 3.0,
+          "DBP": 5.0,
+          "Cholesterol": 13.0,
+          "Glucose": 11.0,
+          "Smoking": 9.0,
+          "Alcohol": 4.0,
+          "Active": 6.0,
+          "PP": 1.0,
+          "MAP": 8.0,
+          "RiskCount": 10.0
+        }
+      }
+    },
+    "ii_original_saint_corrected": {
+      "kendall_w": {
+        "W": 0.8382417582417583,
+        "chi2": 50.2945054945055,
+        "df": 12,
+        "p": 1.2401196920253316e-06,
+        "m_raters": 5,
+        "n_items": 13,
+        "tie_correction_sum_T": 0.0
+      },
+      "spearman_pairs": {
+        "MLP Perm. | XGBoost SHAP": 0.7802197802197801,
+        "MLP Perm. | TabNet Attn.": 0.6593406593406593,
+        "MLP Perm. | FT-Transformer SHAP": 0.6923076923076923,
+        "MLP Perm. | SAINT-inspired Perm.": 0.9505494505494506,
+        "XGBoost SHAP | TabNet Attn.": 0.8186813186813187,
+        "XGBoost SHAP | FT-Transformer SHAP": 0.8956043956043955,
+        "XGBoost SHAP | SAINT-inspired Perm.": 0.8186813186813187,
+        "TabNet Attn. | FT-Transformer SHAP": 0.8186813186813187,
+        "TabNet Attn. | SAINT-inspired Perm.": 0.7912087912087913,
+        "FT-Transformer SHAP | SAINT-inspired Perm.": 0.7527472527472527
+      },
+      "ranks": {
+        "MLP Perm.": {
+          "Gender": 11.0,
+          "Age": 2.0,
+          "BMI": 8.0,
+          "SBP": 4.0,
+          "DBP": 5.0,
+          "Cholesterol": 1.0,
+          "Glucose": 10.0,
+          "Smoking": 12.0,
+          "Alcohol": 13.0,
+          "Active": 7.0,
+          "PP": 3.0,
+          "MAP": 6.0,
+          "RiskCount": 9.0
+        },
+        "XGBoost SHAP": {
+          "Gender": 13.0,
+          "Age": 2.0,
+          "BMI": 5.0,
+          "SBP": 1.0,
+          "DBP": 9.0,
+          "Cholesterol": 4.0,
+          "Glucose": 8.0,
+          "Smoking": 11.0,
+          "Alcohol": 12.0,
+          "Active": 6.0,
+          "PP": 7.0,
+          "MAP": 3.0,
+          "RiskCount": 10.0
+        },
+        "TabNet Attn.": {
+          "Gender": 10.0,
+          "Age": 2.0,
+          "BMI": 3.0,
+          "SBP": 1.0,
+          "DBP": 9.0,
+          "Cholesterol": 4.0,
+          "Glucose": 6.0,
+          "Smoking": 13.0,
+          "Alcohol": 11.0,
+          "Active": 12.0,
+          "PP": 7.0,
+          "MAP": 5.0,
+          "RiskCount": 8.0
+        },
+        "FT-Transformer SHAP": {
+          "Gender": 11.0,
+          "Age": 3.0,
+          "BMI": 5.0,
+          "SBP": 1.0,
+          "DBP": 9.0,
+          "Cholesterol": 4.0,
+          "Glucose": 7.0,
+          "Smoking": 8.0,
+          "Alcohol": 13.0,
+          "Active": 10.0,
+          "PP": 6.0,
+          "MAP": 2.0,
+          "RiskCount": 12.0
+        },
+        "SAINT-inspired Perm.": {
+          "Gender": 12.0,
+          "Age": 2.0,
+          "BMI": 7.0,
+          "SBP": 3.0,
+          "DBP": 5.0,
+          "Cholesterol": 1.0,
+          "Glucose": 8.0,
+          "Smoking": 13.0,
+          "Alcohol": 11.0,
+          "Active": 9.0,
+          "PP": 4.0,
+          "MAP": 6.0,
+          "RiskCount": 10.0
+        }
+      }
+    },
+    "iii_common_sample": {
+      "kendall_w": {
+        "W": 0.8356043956043956,
+        "chi2": 50.136263736263736,
+        "df": 12,
+        "p": 1.3221705975662218e-06,
+        "m_raters": 5,
+        "n_items": 13,
+        "tie_correction_sum_T": 0.0
+      },
+      "spearman_pairs": {
+        "MLP Perm. | XGBoost SHAP": 0.7747252747252747,
+        "MLP Perm. | TabNet Attn.": 0.6098901098901099,
+        "MLP Perm. | FT-Transformer SHAP": 0.7527472527472527,
+        "MLP Perm. | SAINT-inspired Perm.": 0.945054945054945,
+        "XGBoost SHAP | TabNet Attn.": 0.8296703296703297,
+        "XGBoost SHAP | FT-Transformer SHAP": 0.8956043956043955,
+        "XGBoost SHAP | SAINT-inspired Perm.": 0.8241758241758241,
+        "TabNet Attn. | FT-Transformer SHAP": 0.8131868131868131,
+        "TabNet Attn. | SAINT-inspired Perm.": 0.7142857142857143,
+        "FT-Transformer SHAP | SAINT-inspired Perm.": 0.7857142857142857
+      },
+      "ranks": {
+        "MLP Perm.": {
+          "Gender": 12.0,
+          "Age": 4.0,
+          "BMI": 8.0,
+          "SBP": 3.0,
+          "DBP": 5.0,
+          "Cholesterol": 1.0,
+          "Glucose": 9.0,
+          "Smoking": 10.0,
+          "Alcohol": 13.0,
+          "Active": 7.0,
+          "PP": 2.0,
+          "MAP": 6.0,
+          "RiskCount": 11.0
+        },
+        "XGBoost SHAP": {
+          "Gender": 13.0,
+          "Age": 2.0,
+          "BMI": 5.0,
+          "SBP": 1.0,
+          "DBP": 9.0,
+          "Cholesterol": 4.0,
+          "Glucose": 8.0,
+          "Smoking": 11.0,
+          "Alcohol": 12.0,
+          "Active": 6.0,
+          "PP": 7.0,
+          "MAP": 3.0,
+          "RiskCount": 10.0
+        },
+        "TabNet Attn.": {
+          "Gender": 10.0,
+          "Age": 2.0,
+          "BMI": 3.0,
+          "SBP": 1.0,
+          "DBP": 8.0,
+          "Cholesterol": 5.0,
+          "Glucose": 6.0,
+          "Smoking": 13.0,
+          "Alcohol": 11.0,
+          "Active": 12.0,
+          "PP": 7.0,
+          "MAP": 4.0,
+          "RiskCount": 9.0
+        },
+        "FT-Transformer SHAP": {
+          "Gender": 12.0,
+          "Age": 3.0,
+          "BMI": 5.0,
+          "SBP": 1.0,
+          "DBP": 9.0,
+          "Cholesterol": 4.0,
+          "Glucose": 8.0,
+          "Smoking": 7.0,
+          "Alcohol": 13.0,
+          "Active": 10.0,
+          "PP": 6.0,
+          "MAP": 2.0,
+          "RiskCount": 11.0
+        },
+        "SAINT-inspired Perm.": {
+          "Gender": 13.0,
+          "Age": 3.0,
+          "BMI": 6.0,
+          "SBP": 2.0,
+          "DBP": 4.0,
+          "Cholesterol": 1.0,
+          "Glucose": 9.0,
+          "Smoking": 10.0,
+          "Alcohol": 12.0,
+          "Active": 8.0,
+          "PP": 5.0,
+          "MAP": 7.0,
+          "RiskCount": 11.0
+        }
+      }
+    }
+  }
+}

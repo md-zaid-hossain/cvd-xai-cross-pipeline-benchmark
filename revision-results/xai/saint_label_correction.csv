@@ -1,0 +1,14 @@
+position,printed_label,actual_feature,label_correct,importance,sd_printed,rank_as_published,rank_corrected
+1,Gender,Gender,True,-1.8e-05,0.000874,12.0,12.0
+2,Age,Age,True,0.038471,0.004654,2.0,2.0
+3,BMI,BMI,True,0.006915,0.003806,7.0,7.0
+4,SBP,SBP,True,0.022709,0.003445,3.0,3.0
+5,DBP,DBP,True,0.016863,0.003834,5.0,5.0
+6,PP,Cholesterol,False,0.038828,0.007237,1.0,1.0
+7,MAP,Glucose,False,0.004766,0.001865,8.0,8.0
+8,Cholesterol,Smoking,False,-0.000842,0.001302,13.0,13.0
+9,Glucose,Alcohol,False,0.000184,0.000737,11.0,11.0
+10,Smoking,Active,False,0.002804,0.001562,9.0,9.0
+11,Alcohol,PP,False,0.021286,0.003976,4.0,4.0
+12,Active,MAP,False,0.007583,0.002443,6.0,6.0
+13,RiskCount,RiskCount,True,0.000522,0.000569,10.0,10.0
