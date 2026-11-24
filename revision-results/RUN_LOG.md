@@ -43,3 +43,22 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
 - **3A(e): AUC-unchanged check — 56 of 60 model × target cells pass (|Δ| < 1e-12); the 4 Naive Bayes cells do not (|Δ| = 1.542×10⁻⁵ at every target).** Cause, verified: the protocol's prescribed clip `np.clip(proba, 1e-6, 1 - 1e-6)` maps 344 Naive Bayes probabilities above 1 − 10⁻⁶ (320 distinct values) to a single value, creating ties; clipping alone changes the AUC by +1.542×10⁻⁵, while the logit shift without clipping leaves AUC exactly unchanged (Δ = 0). Decision Tree and k-NN also have values beyond the clip bounds, but they are exactly 0 or 1 (already tied), so clipping does not affect them. The method was not changed (the clip is prespecified); the failure is reported as found. PPV is undefined (NaN) where a model predicts no positives at threshold 0.5 after transport to low prevalence; this is expected behaviour, not an error.
 - **3A(f):** cohort and test set built with the Section 3 functions (Sections 1.1–1.2); split identity check passed. Manuscript counts (3,333 shared profiles; 1,574 with both outcome labels) **reproduced exactly**. Grouping on the 10 recorded predictors gives the identical partition to the 13-feature grouping, as the protocol states.
 - **Deviations / reruns:** none from the protocol. Committed after author review (commit message "Section 3A(b)-(f): …").
+
+## 2026-11-24 — Section 3A(g): grouped haemodynamic permutation importance
+
+- **Protocol commit:** `16108b4`; preceding results committed through `bd892aa` (Sections 3A(b)–(f)).
+- **Script:** `src/revision/section3A_g_grouped_haemodynamic_permutation.py`.
+- **Model:** `artifacts/models-revision/rf_seed42.joblib` (Section 3, variant C). **Data:** seed-42 `X_test_sc` (10,281 records) rebuilt with the Section 3 functions from `Data/Heart_disease_clean.csv` (same file and SHA-256 as Section 3); split identity check passed. Baseline AUC 0.7995334583, equal to the Section 3 retrained RF.
+- **Environment:** as Section 3A(b)–(f); CPU (scikit-learn), per Section 6.
+- **Loop order (protocol leaves the nesting open):** block — protocol code block exactly (`default_rng(42)`, 10 repeats). Single features — a fresh `default_rng(42)`, features in column order 0–12 as the outer loop and the 10 repeats as the inner loop, one `rng.permutation(n)` per feature per repeat (the nesting used by `sklearn.inspection.permutation_importance`). SD with ddof = 1.
+- **Result:** block mean AUC drop 0.2129 (SD 0.0071); sum of the four single-feature drops (SBP 0.0538, MAP 0.0135, PP 0.0046, DBP 0.0025) = 0.0744, i.e. 34.9% of the block; block / sum = 2.86. Block ranks 1st among the block plus the nine non-haemodynamic features; Age 2nd; Cholesterol 3rd (also 3rd among the 13 single features).
+- **Note:** RF predictions carry the ≤4.4×10⁻¹⁶ thread-order jitter recorded under Section 3 (`n_jobs=-1`); it does not affect the reported precision.
+- **Deviations / reruns:** none from the protocol. Committed after author review, together with the Amendment 2 controls.
+
+## 2026-11-24 — Section 3A(g), Amendment 2: independent and partly-redundant controls
+
+- **Amendment:** Section 8, row 2, committed alone in `efb13a4` (committer time 2026-11-24T06:58:17Z) **before either control was run**.
+- **Script:** `src/revision/section3A_g_controls.py`. Same Section 3 Random Forest, same seed-42 `X_test_sc`, 10 repeats. Each block permuted as one unit with the Section 3A(g) code, each with its own fresh `default_rng(42)`, so all three blocks receive the same ten row permutations. Single-feature importances recomputed with the Section 3A(g) nesting; they match `grouped_haemodynamic_permutation.csv` to 9.1×10⁻¹⁷. The haemodynamic block reproduces Section 3A(g) exactly (0.212913). Output file name `grouped_permutation_controls.csv` chosen here (the amendment names no file).
+- **Redundancy (pairwise |Spearman ρ|, test set):** Control A max 0.170 (mean 0.077); Control B max 0.657 (mean 0.216); haemodynamic block max 0.921 (mean 0.700).
+- **Result (block drop / sum of four singles / ratio):** Control A 0.0635 / 0.0610 / 1.04; Control B 0.0693 / 0.0614 / 1.13; haemodynamic block 0.2129 / 0.0744 / 2.86.
+- **Deviations / reruns:** none. Committed after author review, together with Section 3A(g).
