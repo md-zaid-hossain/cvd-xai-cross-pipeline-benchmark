@@ -1,0 +1,245 @@
+{
+  "protocol_section": "Amendment 6 (POST HOC) \u2014 not prespecified; descriptive only; no interval estimates; no mechanism attributed",
+  "amendment_commit": "9a1b366ab02ada3534dc2fb5c5ae2ffe7904dd23",
+  "split_check": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "n_test": 10281,
+        "positive_rate": 0.49440715883668906,
+        "saved_split_equals_recomputed_from_seed": true,
+        "y_test_file_equals_y_at_test_indices": true,
+        "section5_aucs_reproduce_on_own_y_test": true,
+        "sha256_sorted_test_indices": "ab69a08c48f1c784c0b9d19d767c36d84d439ae67296f7525332f86d0bcc1d51"
+      },
+      {
+        "seed": 101,
+        "n_test": 10281,
+        "positive_rate": 0.49440715883668906,
+        "saved_split_equals_recomputed_from_seed": true,
+        "y_test_file_equals_y_at_test_indices": true,
+        "section5_aucs_reproduce_on_own_y_test": true,
+        "sha256_sorted_test_indices": "7234b06b31025a8b4c36c927164fe82ece20dc8c70864e574ede7d0d6e4d61e7"
+      },
+      {
+        "seed": 202,
+        "n_test": 10281,
+        "positive_rate": 0.49440715883668906,
+        "saved_split_equals_recomputed_from_seed": true,
+        "y_test_file_equals_y_at_test_indices": true,
+        "section5_aucs_reproduce_on_own_y_test": true,
+        "sha256_sorted_test_indices": "a42b806e33c1fe1aae29f1defb48f6531651b0d18d55b3e0854138b1aa4f329a"
+      },
+      {
+        "seed": 303,
+        "n_test": 10281,
+        "positive_rate": 0.49440715883668906,
+        "saved_split_equals_recomputed_from_seed": true,
+        "y_test_file_equals_y_at_test_indices": true,
+        "section5_aucs_reproduce_on_own_y_test": true,
+        "sha256_sorted_test_indices": "88567095a997d12352995a512ef757376def361fa97ac92e0412ecd4eb77d38f"
+      },
+      {
+        "seed": 404,
+        "n_test": 10281,
+        "positive_rate": 0.49440715883668906,
+        "saved_split_equals_recomputed_from_seed": true,
+        "y_test_file_equals_y_at_test_indices": true,
+        "section5_aucs_reproduce_on_own_y_test": true,
+        "sha256_sorted_test_indices": "7652f9143852b2bcb5772c5995e2be564db4b74fbc1dd4c6ef2e6fa9afd168f5"
+      }
+    ],
+    "pairwise_test_overlap_fraction": {
+      "42-101": 0.15037447719093475,
+      "42-202": 0.14794280711992996,
+      "42-303": 0.15445968291022275,
+      "42-404": 0.14813734072561036,
+      "101-202": 0.14483026942904387,
+      "101-303": 0.149499075965373,
+      "101-404": 0.13986966248419413,
+      "202-303": 0.1528061472619395,
+      "202-404": 0.14813734072561036,
+      "303-404": 0.13860519404727167
+    }
+  },
+  "i_reference_hanley_mcneil_se": {
+    "auc": 0.8,
+    "n_test": 10281,
+    "n_positive": 5083,
+    "n_negative": 5198,
+    "positive_rate": 0.49440715883668906,
+    "se": 0.004372930559543606
+  },
+  "i_crosscheck_delong_se_seed42_predictions": {
+    "Stacking Ensemble": 0.004338345000157477,
+    "XGBoost": 0.0043394142351919724,
+    "CatBoost": 0.004345785331296482,
+    "FT-Transformer": 0.004345672727881097,
+    "SAINT-inspired": 0.004354245835012003,
+    "Random Forest": 0.004345142081961408
+  },
+  "ii_corroboration_fixed_model_200_draws": {
+    "XGBoost": {
+      "sd_over_200_draws_ddof1": 0.004325758119999729,
+      "mean_auc_over_draws_LEAKY_LEVEL": 0.8102102539173308,
+      "draw_random_states": "1000..1199",
+      "n_draws": 200
+    },
+    "Random Forest": {
+      "sd_over_200_draws_ddof1": 0.004277672631245814,
+      "mean_auc_over_draws_LEAKY_LEVEL": 0.8152124369933896,
+      "draw_random_states": "1000..1199",
+      "n_draws": 200
+    },
+    "leakage_caveat": "about 70% of each drawn test set was in the seed-42 model's training data; the AUC LEVEL is inflated and only the SD is interpretable"
+  },
+  "iii_contrast_between_seed_sd_retrained": {
+    "Stacking Ensemble": {
+      "between_seed_sd_ddof1": 0.001391059588812797,
+      "ratio_to_hanley_mcneil_se": 0.31810694678810064
+    },
+    "XGBoost": {
+      "between_seed_sd_ddof1": 0.001483983661168773,
+      "ratio_to_hanley_mcneil_se": 0.3393567862471737
+    },
+    "CatBoost": {
+      "between_seed_sd_ddof1": 0.0017189375359413952,
+      "ratio_to_hanley_mcneil_se": 0.39308594374770894
+    },
+    "FT-Transformer": {
+      "between_seed_sd_ddof1": 0.000798928069372894,
+      "ratio_to_hanley_mcneil_se": 0.1826985492896271
+    },
+    "SAINT-inspired": {
+      "between_seed_sd_ddof1": 0.0008971580149479992,
+      "ratio_to_hanley_mcneil_se": 0.205161733700531
+    },
+    "Random Forest": {
+      "between_seed_sd_ddof1": 0.0013158139403177565,
+      "ratio_to_hanley_mcneil_se": 0.30089980218096246
+    }
+  },
+  "iv_note": "(iii) rests on five values: relative uncertainty about 1/sqrt(2*(5-1)) = 0.354; the ratio is indicative, not precise",
+  "partial_cross_evaluation_s42_row": {
+    "models": {
+      "XGBoost": {
+        "auc_by_test_set": {
+          "42": 0.8002377917867742,
+          "101": 0.8135553694776748,
+          "202": 0.8112243453553656,
+          "303": 0.8094886333572962,
+          "404": 0.809330296001345
+        },
+        "diagonal_auc_42_42": 0.8002377917867742,
+        "sd_over_t_ne_42_ddof1": 0.0019674105618376395,
+        "n_off_diagonal": 4
+      },
+      "Random Forest": {
+        "auc_by_test_set": {
+          "42": 0.7995334583278106,
+          "101": 0.8172931302668885,
+          "202": 0.8153456016051212,
+          "303": 0.8149507328027691,
+          "404": 0.8134726714681724
+        },
+        "diagonal_auc_42_42": 0.7995334583278106,
+        "sd_over_t_ne_42_ddof1": 0.0015738501934957252,
+        "n_off_diagonal": 4
+      },
+      "SAINT-inspired": {
+        "auc_by_test_set": {
+          "42": 0.7995903250368621,
+          "101": 0.8080656031008764,
+          "202": 0.8058849682420719,
+          "303": 0.8058373175354525,
+          "404": 0.805265187347515
+        },
+        "diagonal_auc_42_42": 0.7995903250368621,
+        "sd_over_t_ne_42_ddof1": 0.0012341152444576473,
+        "n_off_diagonal": 4
+      },
+      "FT-Transformer (deposited original)": {
+        "auc_by_test_set": {
+          "42": 0.7997695545215298,
+          "101": 0.8075929943847863,
+          "202": 0.8060103777864593,
+          "303": 0.8053618891389469,
+          "404": 0.8038677045311016
+        },
+        "diagonal_auc_42_42": 0.7997695545215298,
+        "sd_over_t_ne_42_ddof1": 0.001543925307368038,
+        "n_off_diagonal": 4
+      }
+    },
+    "share_of_each_test_set_in_seed42_training_data": {
+      "42": 0.0,
+      "101": 0.6983756443925688,
+      "202": 0.7033362513374185,
+      "303": 0.6996401128294913,
+      "404": 0.7040171189572999
+    },
+    "caveat": "Section 5 saved predictions, not model objects; only seed-42 models exist, so only the s = 42 row is available. Off-diagonal cells leak (~70% of each test set was seed-42 training data): LEVEL inflated; only the SD across t is of interest, and with four off-diagonal values it is imprecise. CatBoost and stacking have no saved model. The FT-Transformer is the deposited original, not Section 5's seed-42 retrain."
+  },
+  "capacity_table_data_only": [
+    {
+      "seed": 42,
+      "mean_auc_six_models": 0.799988089215748,
+      "xgboost_best_iteration": 185,
+      "lightgbm_best_iteration": 102,
+      "catboost_best_iteration": 216,
+      "stacking_trees_xgb_lgb_cat": "186/103/217",
+      "ft_best_epoch": 29,
+      "ft_epochs_run": 49,
+      "saint_best_epoch": 19,
+      "saint_epochs_run": 29
+    },
+    {
+      "seed": 101,
+      "mean_auc_six_models": 0.8024756907592524,
+      "xgboost_best_iteration": 187,
+      "lightgbm_best_iteration": 114,
+      "catboost_best_iteration": 354,
+      "stacking_trees_xgb_lgb_cat": "188/115/355",
+      "ft_best_epoch": 24,
+      "ft_epochs_run": 44,
+      "saint_best_epoch": 18,
+      "saint_epochs_run": 28
+    },
+    {
+      "seed": 202,
+      "mean_auc_six_models": 0.8009006784668337,
+      "xgboost_best_iteration": 95,
+      "lightgbm_best_iteration": 88,
+      "catboost_best_iteration": 196,
+      "stacking_trees_xgb_lgb_cat": "96/89/197",
+      "ft_best_epoch": 22,
+      "ft_epochs_run": 42,
+      "saint_best_epoch": 5,
+      "saint_epochs_run": 15
+    },
+    {
+      "seed": 303,
+      "mean_auc_six_models": 0.800181335098365,
+      "xgboost_best_iteration": 113,
+      "lightgbm_best_iteration": 89,
+      "catboost_best_iteration": 255,
+      "stacking_trees_xgb_lgb_cat": "114/90/256",
+      "ft_best_epoch": 15,
+      "ft_epochs_run": 35,
+      "saint_best_epoch": 18,
+      "saint_epochs_run": 28
+    },
+    {
+      "seed": 404,
+      "mean_auc_six_models": 0.7992747699967131,
+      "xgboost_best_iteration": 187,
+      "lightgbm_best_iteration": 130,
+      "catboost_best_iteration": 180,
+      "stacking_trees_xgb_lgb_cat": "188/131/181",
+      "ft_best_epoch": 22,
+      "ft_epochs_run": 42,
+      "saint_best_epoch": 17,
+      "saint_epochs_run": 27
+    }
+  ]
+}
