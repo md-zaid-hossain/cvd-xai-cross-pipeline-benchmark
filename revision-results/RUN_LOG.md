@@ -241,3 +241,56 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - All six leading models exceed both reference strategies throughout 0.10–0.84.
   - The largest between-model net-benefit difference is 0.0120 at 0.85 over the whole grid and 0.0108 at 0.77 within 0.10–0.84. The mean over the grid is 0.0037.
   - The original line is left in place, as for the other corrections in this log.
+
+## 2026-11-25 — Amendment 10 (prespecified): external validation on NHANES
+
+- **Amendment:** Section 8, row 10, committed and **pushed alone** in `8867e052118999347fa70edf0117ac469ff8e1c9` (committer time 2026-11-25T02:44:52+06:00; GitHub CI run 45484008400 created 2026-11-24T20:44:58Z, success) **before any model was scored on NHANES**. The commit changes exactly two files and one checksum line.
+  - Before it, a feasibility count was made with no scoring: no model loaded, no metric computed.
+  - The author approved a run specification before the push. It covers missing-data codes, the DBP = 0 rule, the 2017–20 alcohol mapping, weekly activity minutes, per-model inputs, the CatBoost and stacking refits with their fidelity gate, and the recalibration method.
+- **Script:** `src/revision/amendment10_nhanes_external_validation.py --data-file <stage-1 CSV> --nhanes-dir <XPT dir>`. Outputs in `revision-results/nhanes/`:
+  - `external_validation_metrics.csv`
+  - `cohort_flow.csv`
+  - `feature_marginals.csv`
+  - `external_validation.json`, which records the SHA-256 of every NHANES XPT file used
+
+  No patient-level NHANES data is deposited. The files are public at `https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/<year>/DataFiles/`.
+- **Fidelity gate (passed before any NHANES record was scored):**
+  - **CatBoost** (refit as in the Section 5 anchor, GPU, best iteration 216): AUC 0.800092 vs deposited 0.800092; largest |Δp| 5.5×10⁻¹⁰.
+  - **Stacking** (refit as in `src/run_corrected_stacking.py`, CPU): AUC 0.801042 vs deposited 0.800367; |ΔAUC| 0.00067, r 0.99947. Within the gate, but not identical: individual probabilities differ by up to 0.135. The CPU refit does not reproduce the deposited array bit for bit.
+  - **Loading check:** XGBoost, FT-Transformer, SAINT-inspired, Random Forest and MLP reproduce their deposited test arrays, with the largest |Δp| ≤ 6×10⁻⁷.
+- **Cohorts:**
+  - Primary (2013–16, auscultatory BP): 20,146 participants; 5,072 aged 40–65; **4,066** analysed, **361 events (8.9%)**.
+  - Secondary (2017–March 2020, oscillometric BP): 15,560 participants; 4,177 aged 40–65; **3,159** analysed, **337 events (10.7%)**.
+  - Step-by-step counts are in `cohort_flow.csv`. The primary cohort's label prevalence is 49.4%.
+- **Results, primary mapping** (AUC [95% CI]; AUC drop vs the primary-split AUC):
+
+  | Model | NHANES primary | Drop | NHANES secondary | Drop |
+  |---|---|---|---|---|
+  | Stacking Ensemble | 0.5737 [0.5460–0.6030] | 0.2266 | 0.5807 [0.5516–0.6096] | 0.2197 |
+  | XGBoost | 0.5725 [0.5463–0.6007] | 0.2278 | 0.5802 [0.5515–0.6093] | 0.2200 |
+  | CatBoost | 0.5725 [0.5443–0.6011] | 0.2276 | 0.5831 [0.5543–0.6127] | 0.2170 |
+  | FT-Transformer | 0.5735 [0.5453–0.6015] | 0.2262 | 0.5783 [0.5497–0.6063] | 0.2215 |
+  | SAINT-inspired | 0.5576 [0.5308–0.5855] | 0.2420 | 0.5706 [0.5409–0.5982] | 0.2290 |
+  | Random Forest | 0.5659 [0.5404–0.5940] | 0.2336 | 0.5825 [0.5544–0.6122] | 0.2170 |
+  | MLP | 0.5798 [0.5524–0.6082] | 0.2182 | 0.5793 [0.5514–0.6090] | 0.2187 |
+
+- **Calibration, as submitted:**
+  - Primary cohort: intercept −2.35 to −2.32, slope 0.16–0.22, mean predicted probability 0.47–0.51 against an observed prevalence of 0.089.
+  - Secondary cohort: intercept −2.17 to −2.14, slope 0.20–0.24.
+  - Brier score before recalibration: 0.273–0.311 (primary), 0.288–0.318 (secondary).
+- **After intercept-only recalibration** (in-sample, slope fixed at 1):
+  - Brier score: 0.0857–0.0870 (primary), 0.1017–0.1032 (secondary).
+  - The mean prediction now equals the observed prevalence by construction.
+  - The "as submitted" calibration intercept stays at −1.90 to −1.71 (primary) and −1.62 to −1.53 (secondary), because that intercept is estimated jointly with a slope of about 0.2. The slope is unchanged by construction.
+- **Sensitivity analyses (A)–(C), both cohorts, all models:**
+  - **(A) Fasting glucose:** n 1,971 / 1,580. AUC 0.551–0.578 (primary) and 0.579–0.587 (secondary).
+  - **(B) Ever-smoker:** AUC 0.559–0.582 and 0.569–0.583.
+  - **(C) Cholesterol cut-offs 190/230:** AUC 0.548–0.570 and 0.562–0.576.
+  - Under every scenario, AUC drops by 0.211–0.252 and the calibration slope is 0.13–0.25. Full table in the CSV.
+- **Case mix** (feature marginals, NHANES primary vs primary cohort):
+  - Alcohol = 1: 67.9% vs 5.3%. Smoking = 1: 21.6% vs 8.8%. Active = 1: 58.6% vs 80.3%.
+  - Male: 47.8% vs 34.9%. Mean RiskCount: 2.18 vs 0.74. Mean DBP: 73.3 vs 81.3.
+  - Cholesterol category 1: 53.3% vs 75.0%. Glucose category 1: 59.1% vs 85.0%.
+  - Full table in `feature_marginals.csv`.
+- **Binding rules:** reported as obtained, including the large AUC drop. No mapping was changed after any result was seen, and no sensitivity analysis beyond (A)–(C) was run. The outcome is self-reported diagnosed CVD history, a different construct from the primary label, whose provenance is undocumented. These results cannot distinguish model failure from label mismatch, or from the mapping differences visible in the marginals, and no attribution either way is made here.
+- **Deviations / reruns:** none. No manuscript text was changed.

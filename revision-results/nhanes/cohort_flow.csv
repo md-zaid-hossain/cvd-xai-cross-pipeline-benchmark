@@ -1,0 +1,105 @@
+cohort,scenario,step,n
+primary,primary mapping,all participants,20146
+primary,primary mapping,age 40-65 inclusive,5072
+primary,primary mapping,no reading with DBP = 0,5041
+primary,primary mapping,at least one BP reading,4740
+primary,primary mapping,"stage 1: SBP 80-200, DBP 40-130",4712
+primary,primary mapping,"stage 2: BMI 10-60, SBP - DBP > 0",4659
+primary,primary mapping,complete: Gender,4659
+primary,primary mapping,complete: Cholesterol,4460
+primary,primary mapping,complete: Glucose,4448
+primary,primary mapping,complete: Smoking,4447
+primary,primary mapping,complete: Alcohol,4104
+primary,primary mapping,complete: Active,4076
+primary,primary mapping,outcome determinable,4066
+primary,A fasting glucose,all participants,20146
+primary,A fasting glucose,age 40-65 inclusive,5072
+primary,A fasting glucose,no reading with DBP = 0,5041
+primary,A fasting glucose,at least one BP reading,4740
+primary,A fasting glucose,"stage 1: SBP 80-200, DBP 40-130",4712
+primary,A fasting glucose,"stage 2: BMI 10-60, SBP - DBP > 0",4659
+primary,A fasting glucose,complete: Gender,4659
+primary,A fasting glucose,complete: Cholesterol,4460
+primary,A fasting glucose,complete: Glucose,2159
+primary,A fasting glucose,complete: Smoking,2158
+primary,A fasting glucose,complete: Alcohol,1988
+primary,A fasting glucose,complete: Active,1974
+primary,A fasting glucose,outcome determinable,1971
+primary,B ever-smoker,all participants,20146
+primary,B ever-smoker,age 40-65 inclusive,5072
+primary,B ever-smoker,no reading with DBP = 0,5041
+primary,B ever-smoker,at least one BP reading,4740
+primary,B ever-smoker,"stage 1: SBP 80-200, DBP 40-130",4712
+primary,B ever-smoker,"stage 2: BMI 10-60, SBP - DBP > 0",4659
+primary,B ever-smoker,complete: Gender,4659
+primary,B ever-smoker,complete: Cholesterol,4460
+primary,B ever-smoker,complete: Glucose,4448
+primary,B ever-smoker,complete: Smoking,4447
+primary,B ever-smoker,complete: Alcohol,4104
+primary,B ever-smoker,complete: Active,4076
+primary,B ever-smoker,outcome determinable,4066
+primary,C cholesterol 190/230,all participants,20146
+primary,C cholesterol 190/230,age 40-65 inclusive,5072
+primary,C cholesterol 190/230,no reading with DBP = 0,5041
+primary,C cholesterol 190/230,at least one BP reading,4740
+primary,C cholesterol 190/230,"stage 1: SBP 80-200, DBP 40-130",4712
+primary,C cholesterol 190/230,"stage 2: BMI 10-60, SBP - DBP > 0",4659
+primary,C cholesterol 190/230,complete: Gender,4659
+primary,C cholesterol 190/230,complete: Cholesterol,4460
+primary,C cholesterol 190/230,complete: Glucose,4448
+primary,C cholesterol 190/230,complete: Smoking,4447
+primary,C cholesterol 190/230,complete: Alcohol,4104
+primary,C cholesterol 190/230,complete: Active,4076
+primary,C cholesterol 190/230,outcome determinable,4066
+secondary,primary mapping,all participants,15560
+secondary,primary mapping,age 40-65 inclusive,4177
+secondary,primary mapping,no reading with DBP = 0,4177
+secondary,primary mapping,at least one BP reading,3557
+secondary,primary mapping,"stage 1: SBP 80-200, DBP 40-130",3548
+secondary,primary mapping,"stage 2: BMI 10-60, SBP - DBP > 0",3510
+secondary,primary mapping,complete: Gender,3510
+secondary,primary mapping,complete: Cholesterol,3307
+secondary,primary mapping,complete: Glucose,3292
+secondary,primary mapping,complete: Smoking,3289
+secondary,primary mapping,complete: Alcohol,3190
+secondary,primary mapping,complete: Active,3174
+secondary,primary mapping,outcome determinable,3159
+secondary,A fasting glucose,all participants,15560
+secondary,A fasting glucose,age 40-65 inclusive,4177
+secondary,A fasting glucose,no reading with DBP = 0,4177
+secondary,A fasting glucose,at least one BP reading,3557
+secondary,A fasting glucose,"stage 1: SBP 80-200, DBP 40-130",3548
+secondary,A fasting glucose,"stage 2: BMI 10-60, SBP - DBP > 0",3510
+secondary,A fasting glucose,complete: Gender,3510
+secondary,A fasting glucose,complete: Cholesterol,3307
+secondary,A fasting glucose,complete: Glucose,1650
+secondary,A fasting glucose,complete: Smoking,1648
+secondary,A fasting glucose,complete: Alcohol,1596
+secondary,A fasting glucose,complete: Active,1588
+secondary,A fasting glucose,outcome determinable,1580
+secondary,B ever-smoker,all participants,15560
+secondary,B ever-smoker,age 40-65 inclusive,4177
+secondary,B ever-smoker,no reading with DBP = 0,4177
+secondary,B ever-smoker,at least one BP reading,3557
+secondary,B ever-smoker,"stage 1: SBP 80-200, DBP 40-130",3548
+secondary,B ever-smoker,"stage 2: BMI 10-60, SBP - DBP > 0",3510
+secondary,B ever-smoker,complete: Gender,3510
+secondary,B ever-smoker,complete: Cholesterol,3307
+secondary,B ever-smoker,complete: Glucose,3292
+secondary,B ever-smoker,complete: Smoking,3289
+secondary,B ever-smoker,complete: Alcohol,3190
+secondary,B ever-smoker,complete: Active,3174
+secondary,B ever-smoker,outcome determinable,3159
+secondary,C cholesterol 190/230,all participants,15560
+secondary,C cholesterol 190/230,age 40-65 inclusive,4177
+secondary,C cholesterol 190/230,no reading with DBP = 0,4177
+secondary,C cholesterol 190/230,at least one BP reading,3557
+secondary,C cholesterol 190/230,"stage 1: SBP 80-200, DBP 40-130",3548
+secondary,C cholesterol 190/230,"stage 2: BMI 10-60, SBP - DBP > 0",3510
+secondary,C cholesterol 190/230,complete: Gender,3510
+secondary,C cholesterol 190/230,complete: Cholesterol,3307
+secondary,C cholesterol 190/230,complete: Glucose,3292
+secondary,C cholesterol 190/230,complete: Smoking,3289
+secondary,C cholesterol 190/230,complete: Alcohol,3190
+secondary,C cholesterol 190/230,complete: Active,3174
+secondary,C cholesterol 190/230,outcome determinable,3159
