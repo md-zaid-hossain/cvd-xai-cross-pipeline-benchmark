@@ -171,3 +171,34 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
 
 - **Amendment 8 correction (reporting error, no analysis change):** in `five_seed/amendment8_bounded_reproduction.json` (committed in `e5e6841`), the fields `secondary_use_amendment6_matched_comparison.mean_sd_configuration_A` / `_B` were computed as the midpoint of each configuration's SD range (0.0015174 / 0.0014726), not the mean over the five models that their names state. They now hold the means over the five per-model between-split SDs (ddof = 1) already recorded in the same file: **0.0015505 (A) and 0.0014960 (B)**, with a `mean_sd_definition` field added. The values were recomputed from the stored per-model SDs; no model was refitted, and no other value in the file changed. `section5_amendment8_bounded_reproduction.py` now computes the means correctly. The Amendment 8 RUN_LOG entry above already reported the correct means (0.00155 / 0.00150), so neither it nor the binding conclusion changes.
 - **Manuscript Figure 6 regenerated:** `src/revision/figure6_rank_heatmap.py` → `results/figures/main/Figure_6_Cross_Pipeline_Rank_Heatmap.png`, drawn from the committed Section 4.3 common-sample rank matrix (`revision-results/xai/rank_matrix_common_sample.csv`). It is a figure only, with no new analysis. It replaces the submitted Figure 6, which showed the mislabelled SAINT-inspired ranks (discrepancy item 4). No source code for the submitted figure exists, so its style was matched from the image: the colour map, cell borders, labels, colour bar and aspect ratio (1100 × 886), with the first title line inside the top band the manuscript crops (3.583%). The baked-in title now reads "Figure 6. Cross-Pipeline …", and the anomaly line was removed because both anomalies came from the labelling defect.
+
+## 2026-11-25 — Amendment 9 (prespecified): correlation-aware attribution, XGBoost pipeline
+
+- **Original analysis (reported before the amendment):** the submitted XGBoost TreeSHAP ranking used `shap.TreeExplainer(xgb_model)` followed by `explainer.shap_values(X_test)` (`Stacking_Ensemble_CVD_GPU.ipynb` cell 29; SHAP 0.51.0 per `Versions.ipynb`). The call passes no background data and no `feature_perturbation`, so SHAP's default `"auto"` resolves to **`tree_path_dependent`**. Section 4.2 used the same call.
+- **Amendment:** Section 8, row 9, committed and **pushed alone** in `9c9f8b5d0eada3bf8cf055a2dce78d6107a8dd37` (committer time 2026-11-25T02:01:47+06:00; GitHub CI run 45476442991 created 2026-11-24T20:01:53Z, success) **before any run**. The commit changes exactly two files and one checksum line. Before pushing, the author approved adding a run specification (background, output scale, hierarchy construction, evaluation budget, ranking rule) and correcting the rationale sentence on deterministic predictors.
+- **Script:** `src/revision/amendment9_correlation_aware_attribution.py --data-file <stage-1 CSV>` (original Anaconda environment; shap 0.51.0, xgboost CPU inference). Outputs: `xai/amendment9_attribution_by_feature.csv` and `xai/amendment9_correlation_aware_attribution.json`, LF line endings.
+- **Inputs:** the seed-42 XGBoost model explained on the Section 4.1 common sample (n = 1,000), raw log-odds margin, with 200 training rows as background.
+- **Checks:**
+  - All three attributions add up to the same best-iteration margin: max error 1.9×10⁻⁶ (interventional), 2.9×10⁻⁶ (tree_path_dependent), 1.3×10⁻¹⁵ (Partition).
+  - `tree_path_dependent` reproduces the deposited Section 4.2 XGBoost TreeSHAP importances (max |Δ| 4.5×10⁻⁹).
+  - The Partition hierarchy was fully expanded: values for the first 50 records are identical at 2,000 and 4,000 evaluations. Partition run time was 156 s.
+- **(a) TreeSHAP, interventional vs tree_path_dependent:** Spearman between the rankings **0.9835**.
+  - Ranks change by at most one place. Cholesterol (3 vs 4), Smoking (10 vs 11) and PP (6 vs 7) rank higher under interventional; Active (7 vs 6), MAP (4 vs 3) and RiskCount (11 vs 10) rank lower. Every other feature keeps its rank.
+  - Top five under interventional: SBP 0.649, Age 0.237, Cholesterol 0.233, MAP 0.214, BMI 0.113.
+- **(b) Partition (Owen values):** Spearman with interventional **0.9945**, with tree_path_dependent **0.9725**.
+  - Ranking: SBP, Age, Cholesterol, MAP, BMI, PP, Glucose, Active, DBP, Smoking, RiskCount, Alcohol, Gender.
+  - Dendrogram (|ρ| at each merge): SBP+MAP 0.927; +DBP 0.830; Cholesterol+RiskCount 0.654; +PP 0.549 (completing the haemodynamic cluster); Glucose joins Cholesterol/RiskCount 0.479; Smoking+Alcohol 0.341; BMI joins the haemodynamic cluster 0.254; Gender joins Smoking/Alcohol 0.253; Age joins the BMI/haemodynamic cluster 0.175; Active joins Glucose/Cholesterol/RiskCount 0.162; the top two merges at 0.103 and 0.056.
+- **(c) Haemodynamic set {SBP, DBP, PP, MAP}:** summed mean |attribution| (shares SBP / DBP / PP / MAP):
+
+  | Method | Sum | Share of all 13 | SBP | DBP | PP | MAP |
+  |---|---|---|---|---|---|---|
+  | interventional | 0.9526 | 55.7% | 68.1% | 3.3% | 6.1% | 22.5% |
+  | tree_path_dependent | 0.9496 | 55.1% | 69.5% | 2.8% | 4.9% | 22.8% |
+  | Partition (Owen) | 0.9555 | 55.6% | 68.2% | 3.2% | 6.0% | 22.6% |
+- **Against the prespecified expectation (reported as obtained, per the binding rule):**
+  - *Total similar across methods:* **met** (0.9496–0.9555).
+  - *Distribution among the four members differs:* **not met.** All three methods divide the set almost identically: SBP 68–70%, MAP about 23%, PP 5–6%, DBP 3%.
+  - The correlation-aware variants therefore do not redistribute attribution within the haemodynamic set; DBP stays ninth of 13 under every method.
+  - This is not a direct test of the grouped-permutation result (Section 3A(g)). There, single-feature permutation importances summed to 35% of the block's importance. SHAP values are additive by construction, so the members' attributions always sum to the set's, and no comparable shortfall can arise here.
+  - Whether the manuscript's §5.4 wording on DBP needs revising in the light of (c) is for the author to decide.
+- **Deviations / reruns:** none. No manuscript text was changed.

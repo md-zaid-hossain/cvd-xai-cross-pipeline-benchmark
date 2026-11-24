@@ -1,0 +1,682 @@
+{
+  "protocol_section": "Amendment 9 (prespecified)",
+  "amendment_commit": "9c9f8b5d0eada3bf8cf055a2dce78d6107a8dd37",
+  "run_specification": {
+    "model": "artifacts/models-revision/xgb_seed42.json (raw features; best-iteration margin)",
+    "rows": "Section 4.1 common sample",
+    "common_sample_n": 1000,
+    "common_sample_sha256": "1ac3a13250abb951e176b3283d073d009de41379958dab8d6ac0788ef9275924",
+    "output": "raw log-odds margin",
+    "background": "200 training rows, np.random.seed(42); np.random.choice(len(X_train), 200, replace=False)",
+    "background_row_indices_first5": [
+      853,
+      19592,
+      9845,
+      39184,
+      11090
+    ],
+    "hierarchy": "|Spearman rho| on the training set (n = 47971); distance 1 - |rho|; average linkage",
+    "partition_max_evals": 2000,
+    "ranks": "rankdata(-mean|attribution|, method='average')",
+    "versions": {
+      "shap": "0.51.0",
+      "xgboost": "3.2.0",
+      "numpy": "2.3.5"
+    }
+  },
+  "a_treeshap": {
+    "spearman_interventional_vs_tree_path_dependent": 0.9835164835164836,
+    "rank_change_interventional_minus_tree_path_dependent": {
+      "Gender": 0.0,
+      "Age": 0.0,
+      "BMI": 0.0,
+      "SBP": 0.0,
+      "DBP": 0.0,
+      "Cholesterol": -1.0,
+      "Glucose": 0.0,
+      "Smoking": -1.0,
+      "Alcohol": 0.0,
+      "Active": 1.0,
+      "PP": -1.0,
+      "MAP": 1.0,
+      "RiskCount": 1.0
+    }
+  },
+  "b_partition": {
+    "spearman_vs_interventional": 0.9945054945054945,
+    "spearman_vs_tree_path_dependent": 0.9725274725274725,
+    "dendrogram": [
+      {
+        "merge": 1,
+        "joins": [
+          [
+            "SBP"
+          ],
+          [
+            "MAP"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.07333246747135791,
+        "abs_spearman_at_merge": 0.9266675325286421,
+        "cluster_size": 2
+      },
+      {
+        "merge": 2,
+        "joins": [
+          [
+            "DBP"
+          ],
+          [
+            "SBP",
+            "MAP"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.16962647758186594,
+        "abs_spearman_at_merge": 0.8303735224181341,
+        "cluster_size": 3
+      },
+      {
+        "merge": 3,
+        "joins": [
+          [
+            "Cholesterol"
+          ],
+          [
+            "RiskCount"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.3463780000761979,
+        "abs_spearman_at_merge": 0.6536219999238021,
+        "cluster_size": 2
+      },
+      {
+        "merge": 4,
+        "joins": [
+          [
+            "PP"
+          ],
+          [
+            "DBP",
+            "SBP",
+            "MAP"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.45082985694381406,
+        "abs_spearman_at_merge": 0.5491701430561859,
+        "cluster_size": 4
+      },
+      {
+        "merge": 5,
+        "joins": [
+          [
+            "Glucose"
+          ],
+          [
+            "Cholesterol",
+            "RiskCount"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.5209934113664043,
+        "abs_spearman_at_merge": 0.4790065886335957,
+        "cluster_size": 3
+      },
+      {
+        "merge": 6,
+        "joins": [
+          [
+            "Smoking"
+          ],
+          [
+            "Alcohol"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.6589930969842022,
+        "abs_spearman_at_merge": 0.34100690301579784,
+        "cluster_size": 2
+      },
+      {
+        "merge": 7,
+        "joins": [
+          [
+            "BMI"
+          ],
+          [
+            "PP",
+            "DBP",
+            "SBP",
+            "MAP"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.7461148230755457,
+        "abs_spearman_at_merge": 0.25388517692445434,
+        "cluster_size": 5
+      },
+      {
+        "merge": 8,
+        "joins": [
+          [
+            "Gender"
+          ],
+          [
+            "Smoking",
+            "Alcohol"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.747177763085398,
+        "abs_spearman_at_merge": 0.25282223691460204,
+        "cluster_size": 3
+      },
+      {
+        "merge": 9,
+        "joins": [
+          [
+            "Age"
+          ],
+          [
+            "BMI",
+            "PP",
+            "DBP",
+            "SBP",
+            "MAP"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.8248153878599253,
+        "abs_spearman_at_merge": 0.17518461214007475,
+        "cluster_size": 6
+      },
+      {
+        "merge": 10,
+        "joins": [
+          [
+            "Active"
+          ],
+          [
+            "Glucose",
+            "Cholesterol",
+            "RiskCount"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.838149198419419,
+        "abs_spearman_at_merge": 0.16185080158058096,
+        "cluster_size": 4
+      },
+      {
+        "merge": 11,
+        "joins": [
+          [
+            "Age",
+            "BMI",
+            "PP",
+            "DBP",
+            "SBP",
+            "MAP"
+          ],
+          [
+            "Active",
+            "Glucose",
+            "Cholesterol",
+            "RiskCount"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.8972963900550953,
+        "abs_spearman_at_merge": 0.10270360994490468,
+        "cluster_size": 10
+      },
+      {
+        "merge": 12,
+        "joins": [
+          [
+            "Gender",
+            "Smoking",
+            "Alcohol"
+          ],
+          [
+            "Age",
+            "BMI",
+            "PP",
+            "DBP",
+            "SBP",
+            "MAP",
+            "Active",
+            "Glucose",
+            "Cholesterol",
+            "RiskCount"
+          ]
+        ],
+        "distance_1_minus_abs_rho": 0.9442209317101451,
+        "abs_spearman_at_merge": 0.055779068289854905,
+        "cluster_size": 13
+      }
+    ],
+    "abs_spearman_matrix_training_set": {
+      "Gender": {
+        "Gender": 1.0,
+        "Age": 0.01966931751492092,
+        "BMI": 0.08810860363546187,
+        "SBP": 0.06328793131503985,
+        "DBP": 0.06813917174571442,
+        "Cholesterol": 0.03620745327166742,
+        "Glucose": 0.018726163850728457,
+        "Smoking": 0.33668457158676174,
+        "Alcohol": 0.16895990224244242,
+        "Active": 0.005636802104668503,
+        "PP": 0.03282405060900831,
+        "MAP": 0.06672581331548709,
+        "RiskCount": 0.1134341561164818
+      },
+      "Age": {
+        "Gender": 0.01966931751492092,
+        "Age": 1.0,
+        "BMI": 0.1088007276142331,
+        "SBP": 0.22226768393117305,
+        "DBP": 0.1587514430891435,
+        "Cholesterol": 0.14230706938958543,
+        "Glucose": 0.08741455748150972,
+        "Smoking": 0.04704439731644728,
+        "Alcohol": 0.023795032928123665,
+        "Active": 0.012851323413883894,
+        "PP": 0.18167745093148727,
+        "MAP": 0.20442575513433714,
+        "RiskCount": 0.08408465203975564
+      },
+      "BMI": {
+        "Gender": 0.08810860363546187,
+        "Age": 0.10880072761423308,
+        "BMI": 0.9999999999999999,
+        "SBP": 0.2831546176244963,
+        "DBP": 0.24721070356767214,
+        "Cholesterol": 0.17578114227423028,
+        "Glucose": 0.13223536453156134,
+        "Smoking": 0.02631715481561373,
+        "Alcohol": 0.02509342837595466,
+        "Active": 0.008264008434785659,
+        "PP": 0.2011523729162837,
+        "MAP": 0.2840230135893652,
+        "RiskCount": 0.1388491970804368
+      },
+      "SBP": {
+        "Gender": 0.06328793131503983,
+        "Age": 0.22226768393117305,
+        "BMI": 0.2831546176244963,
+        "SBP": 1.0,
+        "DBP": 0.742690892754678,
+        "Cholesterol": 0.20464544536131962,
+        "Glucose": 0.10409561314061538,
+        "Smoking": 0.024767380508601188,
+        "Alcohol": 0.0356904763499073,
+        "Active": 0.006461171852098923,
+        "PP": 0.8033676074166377,
+        "MAP": 0.9266675325286421,
+        "RiskCount": 0.16058669273999762
+      },
+      "DBP": {
+        "Gender": 0.06813917174571442,
+        "Age": 0.15875144308914346,
+        "BMI": 0.24721070356767214,
+        "SBP": 0.742690892754678,
+        "DBP": 0.9999999999999999,
+        "Cholesterol": 0.16528141175146463,
+        "Glucose": 0.08254030102431122,
+        "Smoking": 0.021044307163635433,
+        "Alcohol": 0.03629531410500772,
+        "Active": 0.0005429674931157471,
+        "PP": 0.2738189401199862,
+        "MAP": 0.9180561520815901,
+        "RiskCount": 0.12857616041013525
+      },
+      "Cholesterol": {
+        "Gender": 0.03620745327166742,
+        "Age": 0.14230706938958546,
+        "BMI": 0.17578114227423028,
+        "SBP": 0.2046454453613196,
+        "DBP": 0.16528141175146466,
+        "Cholesterol": 0.9999999999999998,
+        "Glucose": 0.4044309697408361,
+        "Smoking": 0.011132207754720735,
+        "Alcohol": 0.04365260464830266,
+        "Active": 0.005459997231558727,
+        "PP": 0.16004363108847466,
+        "MAP": 0.2003407552100568,
+        "RiskCount": 0.6536219999238021
+      },
+      "Glucose": {
+        "Gender": 0.01872616385072846,
+        "Age": 0.08741455748150974,
+        "BMI": 0.13223536453156132,
+        "SBP": 0.10409561314061537,
+        "DBP": 0.08254030102431122,
+        "Cholesterol": 0.40443096974083603,
+        "Glucose": 0.9999999999999998,
+        "Smoking": 0.0025963367601258636,
+        "Alcohol": 0.01724737919026261,
+        "Active": 0.010172455421613425,
+        "PP": 0.08138850491153195,
+        "MAP": 0.10063792096435115,
+        "RiskCount": 0.5535822075263551
+      },
+      "Smoking": {
+        "Gender": 0.33668457158676174,
+        "Age": 0.04704439731644728,
+        "BMI": 0.026317154815613735,
+        "SBP": 0.024767380508601188,
+        "DBP": 0.021044307163635433,
+        "Cholesterol": 0.011132207754720735,
+        "Glucose": 0.0025963367601258636,
+        "Smoking": 1.0,
+        "Alcohol": 0.3410069030157978,
+        "Active": 0.0255480399416321,
+        "PP": 0.018080296399205147,
+        "MAP": 0.02411718244916111,
+        "RiskCount": 0.3698788976270628
+      },
+      "Alcohol": {
+        "Gender": 0.16895990224244242,
+        "Age": 0.02379503292812367,
+        "BMI": 0.02509342837595466,
+        "SBP": 0.035690476349907296,
+        "DBP": 0.03629531410500773,
+        "Cholesterol": 0.04365260464830266,
+        "Glucose": 0.017247379190262608,
+        "Smoking": 0.3410069030157978,
+        "Alcohol": 1.0,
+        "Active": 0.024722267710543748,
+        "PP": 0.022795753535999087,
+        "MAP": 0.0378677060528579,
+        "RiskCount": 0.3229264215833018
+      },
+      "Active": {
+        "Gender": 0.005636802104668504,
+        "Age": 0.012851323413883895,
+        "BMI": 0.008264008434785659,
+        "SBP": 0.006461171852098922,
+        "DBP": 0.0005429674931157471,
+        "Cholesterol": 0.005459997231558727,
+        "Glucose": 0.010172455421613427,
+        "Smoking": 0.025548039941632104,
+        "Alcohol": 0.024722267710543748,
+        "Active": 1.0,
+        "PP": 0.0033878379612360893,
+        "MAP": 0.004194444607787442,
+        "RiskCount": 0.46991995208857085
+      },
+      "PP": {
+        "Gender": 0.03282405060900831,
+        "Age": 0.18167745093148727,
+        "BMI": 0.20115237291628368,
+        "SBP": 0.8033676074166378,
+        "DBP": 0.2738189401199862,
+        "Cholesterol": 0.1600436310884747,
+        "Glucose": 0.08138850491153196,
+        "Smoking": 0.01808029639920515,
+        "Alcohol": 0.022795753535999087,
+        "Active": 0.0033878379612360893,
+        "PP": 1.0,
+        "MAP": 0.5703238816319339,
+        "RiskCount": 0.12401228865028761
+      },
+      "MAP": {
+        "Gender": 0.06672581331548709,
+        "Age": 0.20442575513433717,
+        "BMI": 0.28402301358936527,
+        "SBP": 0.9266675325286421,
+        "DBP": 0.9180561520815901,
+        "Cholesterol": 0.2003407552100568,
+        "Glucose": 0.10063792096435113,
+        "Smoking": 0.024117182449161112,
+        "Alcohol": 0.0378677060528579,
+        "Active": 0.004194444607787442,
+        "PP": 0.5703238816319339,
+        "MAP": 1.0,
+        "RiskCount": 0.15636417686518012
+      },
+      "RiskCount": {
+        "Gender": 0.11343415611648179,
+        "Age": 0.08408465203975565,
+        "BMI": 0.1388491970804368,
+        "SBP": 0.16058669273999762,
+        "DBP": 0.12857616041013525,
+        "Cholesterol": 0.6536219999238021,
+        "Glucose": 0.5535822075263551,
+        "Smoking": 0.3698788976270628,
+        "Alcohol": 0.3229264215833018,
+        "Active": 0.4699199520885709,
+        "PP": 0.1240122886502876,
+        "MAP": 0.15636417686518012,
+        "RiskCount": 1.0
+      }
+    }
+  },
+  "c_haemodynamic_set": {
+    "interventional": {
+      "summed_mean_abs_attribution": 0.9525785117500862,
+      "share_of_all_13_features": 0.5574683856693388,
+      "member_share_of_set": {
+        "SBP": 0.6808071397363924,
+        "DBP": 0.03281246117043838,
+        "PP": 0.06125181168236896,
+        "MAP": 0.22512858741080025
+      },
+      "member_mean_abs": {
+        "SBP": 0.6485222519589257,
+        "DBP": 0.03125644542859368,
+        "PP": 0.05834715961438757,
+        "MAP": 0.2144526547481793
+      }
+    },
+    "tree_path_dependent": {
+      "summed_mean_abs_attribution": 0.9496410600841045,
+      "share_of_all_13_features": 0.550847053527832,
+      "member_share_of_set": {
+        "SBP": 0.6949133482022845,
+        "DBP": 0.02792319757968908,
+        "PP": 0.04897291192806345,
+        "MAP": 0.22819054228996302
+      },
+      "member_mean_abs": {
+        "SBP": 0.6599182486534119,
+        "DBP": 0.02651701495051384,
+        "PP": 0.04650668799877167,
+        "MAP": 0.21669910848140717
+      }
+    },
+    "partition_owen": {
+      "summed_mean_abs_attribution": 0.9555438366699551,
+      "share_of_all_13_features": 0.5557028839290435,
+      "member_share_of_set": {
+        "SBP": 0.6819792251637572,
+        "DBP": 0.032054661034083394,
+        "PP": 0.060201964890933095,
+        "MAP": 0.22576414891122634
+      },
+      "member_mean_abs": {
+        "SBP": 0.6516610453421797,
+        "DBP": 0.030629633787662956,
+        "PP": 0.05752561650695215,
+        "MAP": 0.2157275410331603
+      }
+    }
+  },
+  "per_feature": {
+    "interventional": {
+      "Gender": {
+        "mean_abs": 0.01619743176449295,
+        "rank": 13.0
+      },
+      "Age": {
+        "mean_abs": 0.23683835992787788,
+        "rank": 2.0
+      },
+      "BMI": {
+        "mean_abs": 0.11304195825756576,
+        "rank": 5.0
+      },
+      "SBP": {
+        "mean_abs": 0.6485222519589257,
+        "rank": 1.0
+      },
+      "DBP": {
+        "mean_abs": 0.03125644542859368,
+        "rank": 9.0
+      },
+      "Cholesterol": {
+        "mean_abs": 0.232864082631273,
+        "rank": 3.0
+      },
+      "Glucose": {
+        "mean_abs": 0.0419206462239859,
+        "rank": 8.0
+      },
+      "Smoking": {
+        "mean_abs": 0.028821226268066633,
+        "rank": 10.0
+      },
+      "Alcohol": {
+        "mean_abs": 0.01884687775606461,
+        "rank": 12.0
+      },
+      "Active": {
+        "mean_abs": 0.042243593703486695,
+        "rank": 7.0
+      },
+      "PP": {
+        "mean_abs": 0.05834715961438757,
+        "rank": 6.0
+      },
+      "MAP": {
+        "mean_abs": 0.2144526547481793,
+        "rank": 4.0
+      },
+      "RiskCount": {
+        "mean_abs": 0.025405218421259687,
+        "rank": 11.0
+      }
+    },
+    "tree_path_dependent": {
+      "Gender": {
+        "mean_abs": 0.014854743145406246,
+        "rank": 13.0
+      },
+      "Age": {
+        "mean_abs": 0.27046680450439453,
+        "rank": 2.0
+      },
+      "BMI": {
+        "mean_abs": 0.11341479420661926,
+        "rank": 5.0
+      },
+      "SBP": {
+        "mean_abs": 0.6599182486534119,
+        "rank": 1.0
+      },
+      "DBP": {
+        "mean_abs": 0.02651701495051384,
+        "rank": 9.0
+      },
+      "Cholesterol": {
+        "mean_abs": 0.20733846724033356,
+        "rank": 4.0
+      },
+      "Glucose": {
+        "mean_abs": 0.04388027638196945,
+        "rank": 8.0
+      },
+      "Smoking": {
+        "mean_abs": 0.025237897410988808,
+        "rank": 11.0
+      },
+      "Alcohol": {
+        "mean_abs": 0.017785146832466125,
+        "rank": 12.0
+      },
+      "Active": {
+        "mean_abs": 0.05589471384882927,
+        "rank": 6.0
+      },
+      "PP": {
+        "mean_abs": 0.04650668799877167,
+        "rank": 7.0
+      },
+      "MAP": {
+        "mean_abs": 0.21669910848140717,
+        "rank": 3.0
+      },
+      "RiskCount": {
+        "mean_abs": 0.025451211258769035,
+        "rank": 10.0
+      }
+    },
+    "partition_owen": {
+      "Gender": {
+        "mean_abs": 0.017547634677355935,
+        "rank": 13.0
+      },
+      "Age": {
+        "mean_abs": 0.23901932937785092,
+        "rank": 2.0
+      },
+      "BMI": {
+        "mean_abs": 0.1154563967392363,
+        "rank": 5.0
+      },
+      "SBP": {
+        "mean_abs": 0.6516610453421797,
+        "rank": 1.0
+      },
+      "DBP": {
+        "mean_abs": 0.030629633787662956,
+        "rank": 9.0
+      },
+      "Cholesterol": {
+        "mean_abs": 0.23261205635507703,
+        "rank": 3.0
+      },
+      "Glucose": {
+        "mean_abs": 0.044284158253245796,
+        "rank": 7.0
+      },
+      "Smoking": {
+        "mean_abs": 0.02987406881824793,
+        "rank": 10.0
+      },
+      "Alcohol": {
+        "mean_abs": 0.01915944009580532,
+        "rank": 12.0
+      },
+      "Active": {
+        "mean_abs": 0.041046944662254475,
+        "rank": 8.0
+      },
+      "PP": {
+        "mean_abs": 0.05752561650695215,
+        "rank": 6.0
+      },
+      "MAP": {
+        "mean_abs": 0.2157275410331603,
+        "rank": 4.0
+      },
+      "RiskCount": {
+        "mean_abs": 0.024979038234202364,
+        "rank": 11.0
+      }
+    }
+  },
+  "checks": {
+    "additivity_max_abs_err_interventional": 1.8974982678443553e-06,
+    "additivity_max_abs_err_tree_path_dependent": 2.86102294921875e-06,
+    "tree_path_dependent_vs_section4_2_max_abs_diff": 4.504394524040833e-09,
+    "additivity_max_abs_err_partition": 1.3322676295501878e-15,
+    "partition_full_expansion_check": {
+      "first_n_records": 50,
+      "max_evals_primary": 2000,
+      "max_evals_check": 4000,
+      "max_abs_diff": 0.0,
+      "fully_expanded": true
+    }
+  },
+  "timing_seconds": {
+    "treeshap_interventional_s": 4.5434863567352295,
+    "treeshap_tree_path_dependent_s": 0.23390483856201172,
+    "partition_s": 155.87218141555786
+  },
+  "prespecified_expectation": "haemodynamic set's total attribution similar across the three methods; its distribution among the four members differs"
+}
