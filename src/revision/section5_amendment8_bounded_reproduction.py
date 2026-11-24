@@ -234,8 +234,11 @@ def main() -> None:
             "note": "A vs B on the same model set and splits is a matched test of the refitting-stabiliser effect "
                     "reported in Amendment 6 (where the comparison was between retrained §5 models and a single "
                     "fixed model over 200 drawn test sets, a different design).",
-            "mean_sd_configuration_A": float(np.mean(summary["A_per_split_refitting"]["sd_range_across_models"])),
-            "mean_sd_configuration_B": float(np.mean(summary["B_fixed_capacity"]["sd_range_across_models"])),
+            # Mean of the five per-model between-split SDs. (Corrected: the first committed version took the
+            # midpoint of the SD range here; see revision-results/RUN_LOG.md, Amendment 8 correction.)
+            "mean_sd_configuration_A": float(np.mean([v["sd_auc_ddof1"] for v in summary["A_per_split_refitting"]["per_model"].values()])),
+            "mean_sd_configuration_B": float(np.mean([v["sd_auc_ddof1"] for v in summary["B_fixed_capacity"]["per_model"].values()])),
+            "mean_sd_definition": "mean over the five models of the between-split SD (ddof = 1)",
         },
     }
     with open(OUT / "amendment8_bounded_reproduction.json", "w", encoding="utf-8", newline="\n") as fh:

@@ -219,7 +219,8 @@
   "binding_conclusion": "not reproduced under either prespecified configuration",
   "secondary_use_amendment6_matched_comparison": {
     "note": "A vs B on the same model set and splits is a matched test of the refitting-stabiliser effect reported in Amendment 6 (where the comparison was between retrained \u00a75 models and a single fixed model over 200 drawn test sets, a different design).",
-    "mean_sd_configuration_A": 0.0015173757381295758,
-    "mean_sd_configuration_B": 0.0014726149467857786
+    "mean_sd_configuration_A": 0.0015504803077517543,
+    "mean_sd_configuration_B": 0.001496031077980787,
+    "mean_sd_definition": "mean over the five models of the between-split SD (ddof = 1)"
   }
 }
