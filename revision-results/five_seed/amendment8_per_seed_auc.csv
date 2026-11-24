@@ -1,0 +1,51 @@
+configuration,model,seed,auc
+A_per_split_refitting,XGBoost,42,0.8002377728627448
+A_per_split_refitting,XGBoost,101,0.8034319409007096
+A_per_split_refitting,XGBoost,202,0.8016531010391034
+A_per_split_refitting,XGBoost,303,0.8003273592190341
+A_per_split_refitting,XGBoost,404,0.7997864726040229
+A_per_split_refitting,LightGBM,42,0.7995316983930547
+A_per_split_refitting,LightGBM,101,0.8032185913906111
+A_per_split_refitting,LightGBM,202,0.8012008545788998
+A_per_split_refitting,LightGBM,303,0.8000529229412756
+A_per_split_refitting,LightGBM,404,0.7989938774708443
+A_per_split_refitting,CatBoost,42,0.8000919632144115
+A_per_split_refitting,CatBoost,101,0.8040076855783075
+A_per_split_refitting,CatBoost,202,0.8014023387224176
+A_per_split_refitting,CatBoost,303,0.8000029635030408
+A_per_split_refitting,CatBoost,404,0.8000730959568659
+A_per_split_refitting,Random Forest,42,0.7995334583278106
+A_per_split_refitting,Random Forest,101,0.8017673264819767
+A_per_split_refitting,Random Forest,202,0.8000743827908811
+A_per_split_refitting,Random Forest,303,0.7997171728075017
+A_per_split_refitting,Random Forest,404,0.7980944561903794
+A_per_split_refitting,MLP,42,0.7980162242518706
+A_per_split_refitting,MLP,101,0.8000574457843583
+A_per_split_refitting,MLP,202,0.7996442017492313
+A_per_split_refitting,MLP,303,0.797895394322655
+A_per_split_refitting,MLP,404,0.7961602878935337
+B_fixed_capacity,XGBoost,42,0.8002377728627448
+B_fixed_capacity,XGBoost,101,0.803439945765245
+B_fixed_capacity,XGBoost,202,0.8022454988627794
+B_fixed_capacity,XGBoost,303,0.80043005992786
+B_fixed_capacity,XGBoost,404,0.7997629878832466
+B_fixed_capacity,LightGBM,42,0.7995219146697337
+B_fixed_capacity,LightGBM,101,0.8032339955507336
+B_fixed_capacity,LightGBM,202,0.8011434390729889
+B_fixed_capacity,LightGBM,303,0.7999526634322724
+B_fixed_capacity,LightGBM,404,0.7992554832565106
+B_fixed_capacity,CatBoost,42,0.8005683188883692
+B_fixed_capacity,CatBoost,101,0.8042613432715271
+B_fixed_capacity,CatBoost,202,0.801936904711531
+B_fixed_capacity,CatBoost,303,0.8011350557278609
+B_fixed_capacity,CatBoost,404,0.8005091434477023
+B_fixed_capacity,Random Forest,42,0.7995334583278106
+B_fixed_capacity,Random Forest,101,0.8017673264819767
+B_fixed_capacity,Random Forest,202,0.8000743827908811
+B_fixed_capacity,Random Forest,303,0.7997171728075017
+B_fixed_capacity,Random Forest,404,0.7980944561903794
+B_fixed_capacity,MLP,42,0.7979517690069358
+B_fixed_capacity,MLP,101,0.8010105734609256
+B_fixed_capacity,MLP,202,0.7997781081829245
+B_fixed_capacity,MLP,303,0.7977230721088039
+B_fixed_capacity,MLP,404,0.7981057159880118

@@ -1,0 +1,225 @@
+{
+  "protocol_section": "Amendment 8 (prespecified)",
+  "amendment_commit": "5fc0f37671b2b1bc9f5d5493ba3fafba7e32b120",
+  "seeds": [
+    42,
+    101,
+    202,
+    303,
+    404
+  ],
+  "models": [
+    "CatBoost",
+    "XGBoost",
+    "LightGBM",
+    "Random Forest",
+    "MLP"
+  ],
+  "original_submitted_values": {
+    "mean_auc_range": [
+      0.7958,
+      0.7988
+    ],
+    "sd_range": [
+      0.0038,
+      0.0042
+    ]
+  },
+  "analytic_se_hanley_mcneil_amendment6": 0.00437,
+  "configuration_A_per_split_refitting": {
+    "per_model": {
+      "XGBoost": {
+        "auc_by_seed": {
+          "42": 0.8002377728627448,
+          "101": 0.8034319409007096,
+          "202": 0.8016531010391034,
+          "303": 0.8003273592190341,
+          "404": 0.7997864726040229
+        },
+        "mean_auc": 0.8010873293251229,
+        "sd_auc_ddof1": 0.001483983661168773,
+        "min_auc": 0.7997864726040229,
+        "max_auc": 0.8034319409007096,
+        "source": "reused deposited revision-results/five_seed/proba_xgb_seed{s}.npy"
+      },
+      "LightGBM": {
+        "auc_by_seed": {
+          "42": 0.7995316983930547,
+          "101": 0.8032185913906111,
+          "202": 0.8012008545788998,
+          "303": 0.8000529229412756,
+          "404": 0.7989938774708443
+        },
+        "mean_auc": 0.8005995889549371,
+        "sd_auc_ddof1": 0.001676174025975777,
+        "min_auc": 0.7989938774708443,
+        "max_auc": 0.8032185913906111,
+        "source": "reused deposited revision-results/five_seed/proba_lgbm_standalone_seed{s}.npy"
+      },
+      "CatBoost": {
+        "auc_by_seed": {
+          "42": 0.8000919632144115,
+          "101": 0.8040076855783075,
+          "202": 0.8014023387224176,
+          "303": 0.8000029635030408,
+          "404": 0.8000730959568659
+        },
+        "mean_auc": 0.8011156093950087,
+        "sd_auc_ddof1": 0.0017189375359413952,
+        "min_auc": 0.8000029635030408,
+        "max_auc": 0.8040076855783075,
+        "source": "reused deposited revision-results/five_seed/proba_cat_seed{s}.npy"
+      },
+      "Random Forest": {
+        "auc_by_seed": {
+          "42": 0.7995334583278106,
+          "101": 0.8017673264819767,
+          "202": 0.8000743827908811,
+          "303": 0.7997171728075017,
+          "404": 0.7980944561903794
+        },
+        "mean_auc": 0.7998373593197099,
+        "sd_auc_ddof1": 0.0013158139403177565,
+        "min_auc": 0.7980944561903794,
+        "max_auc": 0.8017673264819767,
+        "source": "reused deposited revision-results/five_seed/proba_rf_seed{s}.npy"
+      },
+      "MLP": {
+        "auc_by_seed": {
+          "42": 0.7980162242518706,
+          "101": 0.8000574457843583,
+          "202": 0.7996442017492313,
+          "303": 0.797895394322655,
+          "404": 0.7961602878935337
+        },
+        "mean_auc": 0.7983547108003298,
+        "sd_auc_ddof1": 0.0015574923753550699,
+        "min_auc": 0.7961602878935337,
+        "max_auc": 0.8000574457843583,
+        "source": "fit fresh (not part of Section 5's model set)",
+        "n_iter_by_seed": {
+          "42": 38,
+          "101": 27,
+          "202": 25,
+          "303": 35,
+          "404": 19
+        }
+      }
+    },
+    "mean_auc_range_across_models": [
+      0.7983547108003298,
+      0.8011156093950087
+    ],
+    "sd_range_across_models": [
+      0.0013158139403177565,
+      0.0017189375359413952
+    ]
+  },
+  "configuration_B_fixed_capacity": {
+    "per_model": {
+      "XGBoost": {
+        "auc_by_seed": {
+          "42": 0.8002377728627448,
+          "101": 0.803439945765245,
+          "202": 0.8022454988627794,
+          "303": 0.80043005992786,
+          "404": 0.7997629878832466
+        },
+        "mean_auc": 0.801223253060375,
+        "sd_auc_ddof1": 0.0015565517965427187,
+        "min_auc": 0.7997629878832466,
+        "max_auc": 0.803439945765245,
+        "fixed_capacity": 186,
+        "fixed_capacity_source": "published (= Section 5 seed-42 derived)"
+      },
+      "LightGBM": {
+        "auc_by_seed": {
+          "42": 0.7995219146697337,
+          "101": 0.8032339955507336,
+          "202": 0.8011434390729889,
+          "303": 0.7999526634322724,
+          "404": 0.7992554832565106
+        },
+        "mean_auc": 0.8006214991964479,
+        "sd_auc_ddof1": 0.0016294159532538007,
+        "min_auc": 0.7992554832565106,
+        "max_auc": 0.8032339955507336,
+        "fixed_capacity": 103,
+        "fixed_capacity_source": "published (= Section 5 seed-42 derived)"
+      },
+      "CatBoost": {
+        "auc_by_seed": {
+          "42": 0.8005683188883692,
+          "101": 0.8042613432715271,
+          "202": 0.801936904711531,
+          "303": 0.8011350557278609,
+          "404": 0.8005091434477023
+        },
+        "mean_auc": 0.8016821532093982,
+        "sd_auc_ddof1": 0.0015518548703457899,
+        "min_auc": 0.8005091434477023,
+        "max_auc": 0.8042613432715271,
+        "fixed_capacity": 217,
+        "fixed_capacity_source": "published (= Section 5 seed-42 derived)"
+      },
+      "Random Forest": {
+        "auc_by_seed": {
+          "42": 0.7995334583278106,
+          "101": 0.8017673264819767,
+          "202": 0.8000743827908811,
+          "303": 0.7997171728075017,
+          "404": 0.7980944561903794
+        },
+        "mean_auc": 0.7998373593197099,
+        "sd_auc_ddof1": 0.0013158139403177565,
+        "min_auc": 0.7980944561903794,
+        "max_auc": 0.8017673264819767,
+        "note": "identical to Configuration A by construction: n_estimators fixed at 300 in both configurations; no capacity-selection step exists to fix.",
+        "fixed_capacity": 300
+      },
+      "MLP": {
+        "auc_by_seed": {
+          "42": 0.7979517690069358,
+          "101": 0.8010105734609256,
+          "202": 0.7997781081829245,
+          "303": 0.7977230721088039,
+          "404": 0.7981057159880118
+        },
+        "mean_auc": 0.7989138477495203,
+        "sd_auc_ddof1": 0.0014265188294438687,
+        "min_auc": 0.7977230721088039,
+        "max_auc": 0.8010105734609256,
+        "fixed_capacity": 38,
+        "fixed_capacity_source": "Configuration A's own seed-42 n_iter_ (no published MLP epoch count exists)",
+        "n_iter_by_seed_actually_run": {
+          "42": 38,
+          "101": 38,
+          "202": 38,
+          "303": 38,
+          "404": 38
+        },
+        "truncated_before_fixed_capacity": {
+          "42": false,
+          "101": false,
+          "202": false,
+          "303": false,
+          "404": false
+        }
+      }
+    },
+    "mean_auc_range_across_models": [
+      0.7989138477495203,
+      0.8016821532093982
+    ],
+    "sd_range_across_models": [
+      0.0013158139403177565,
+      0.0016294159532538007
+    ]
+  },
+  "binding_conclusion": "not reproduced under either prespecified configuration",
+  "secondary_use_amendment6_matched_comparison": {
+    "note": "A vs B on the same model set and splits is a matched test of the refitting-stabiliser effect reported in Amendment 6 (where the comparison was between retrained \u00a75 models and a single fixed model over 200 drawn test sets, a different design).",
+    "mean_sd_configuration_A": 0.0015173757381295758,
+    "mean_sd_configuration_B": 0.0014726149467857786
+  }
+}
