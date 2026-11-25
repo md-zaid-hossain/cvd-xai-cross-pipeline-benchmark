@@ -9,10 +9,14 @@ code for the submitted figure exists, so the style was matched from the image. C
 data; row order follows the common-sample mean rank (as in Table 7); the baked-in title now reads
 "Figure 6" and "Cross-Pipeline", matching the caption; the anomaly line (double dagger / dagger) is
 removed because both anomalies were artefacts of the SAINT labelling defect.
+Revision (2026-11-26): no in-image title or subtitle (the manuscript caption carries both), the fifth column is
+labelled "SAINT-inspired Permutation", and a vector PDF is written as the submitted figure. Earlier versions drew
+the two title lines and the label "SAINT Permutation", which the submitted figure does not carry.
 
 Run from the repository root:
     python src/revision/figure6_rank_heatmap.py
-Writes: results/figures/main/Figure_6_Cross_Pipeline_Rank_Heatmap.png
+Writes: results/figures/main/Figure_6_Cross_Pipeline_Rank_Heatmap.pdf  (vector; the submitted Figure 6)
+        results/figures/main/Figure_6_Cross_Pipeline_Rank_Heatmap.png  (300 dpi raster of the same figure)
 """
 from __future__ import annotations
 
@@ -33,8 +37,10 @@ import seaborn as sns
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "revision-results" / "xai" / "rank_matrix_common_sample.csv"
 OUT = ROOT / "results" / "figures" / "main" / "Figure_6_Cross_Pipeline_Rank_Heatmap.png"
+OUT_PDF = OUT.with_suffix(".pdf")
+PDF_META = {"Creator": None, "Producer": None, "CreationDate": None}
 COLUMNS = {"MLP Perm.": "MLP\nPermutation", "XGBoost SHAP": "XGBoost\nSHAP", "TabNet Attn.": "TabNet\nAttention",
-           "FT-Transformer SHAP": "FT-Transformer\nSHAP", "SAINT-inspired Perm.": "SAINT\nPermutation"}
+           "FT-Transformer SHAP": "FT-Transformer\nSHAP", "SAINT-inspired Perm.": "SAINT-inspired\nPermutation"}
 
 
 def main() -> None:
@@ -43,9 +49,7 @@ def main() -> None:
     if not ((ranks.values >= 1) & (ranks.values <= 13)).all():
         raise SystemExit("ranks outside 1-13")
 
-    # Same aspect ratio as the submitted image (1100 x 886 px), so the manuscript's existing frame
-    # (5.0 x 3.88 in) and top crop (srcRect t = 3.583%) apply without distortion. As in the submitted
-    # image, the first title line sits inside that cropped top band.
+    # Canvas of the submitted image (1100 x 886 px aspect); the saved files are cropped to the drawing.
     fig, ax = plt.subplots(figsize=(10, 10 * 886 / 1100))
     sns.heatmap(ranks, cmap="RdYlGn_r", vmin=1, vmax=13, annot=False, linewidths=2, linecolor="white",
                 cbar_kws={"ticks": [1, 4, 7, 10, 13], "shrink": 0.7, "aspect": 25,
@@ -59,16 +63,12 @@ def main() -> None:
     ax.tick_params(axis="x", labelsize=11, rotation=0, length=0)
     ax.tick_params(axis="y", labelsize=12, rotation=0, length=0)
     ax.figure.axes[-1].tick_params(labelsize=13)
-    band = 0.03583  # manuscript crop: top 3.583% of the image height
-    fig.text(0.5, 1 - band / 2, "Figure 6. Cross-Pipeline Feature Importance Rank Heatmap",
-             ha="center", va="center", fontsize=12, fontweight="bold")
-    fig.text(0.5, 1 - band - 0.022, "5 pipelines · 13 features · common 1,000-record sample · "
-             "green = important · red = unimportant", ha="center", va="center", fontsize=12, fontweight="bold")
     fig.subplots_adjust(left=0.115, right=0.985, top=0.915, bottom=0.085)
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(OUT, dpi=300)
+    fig.savefig(OUT, dpi=300, bbox_inches="tight", pad_inches=0.04)
+    fig.savefig(OUT_PDF, format="pdf", bbox_inches="tight", pad_inches=0.04, metadata=PDF_META)
     plt.close(fig)
-    print(f"wrote {OUT.relative_to(ROOT)}")
+    print(f"wrote {OUT.relative_to(ROOT)} and {OUT_PDF.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

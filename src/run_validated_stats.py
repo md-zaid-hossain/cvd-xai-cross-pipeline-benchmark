@@ -228,11 +228,13 @@ def main() -> None:
     plt.plot([0, 1], [0, 1], "--", linewidth=1, label="Perfect calibration")
     plt.xlabel("Mean predicted probability")
     plt.ylabel("Observed proportion")
-    plt.title("Calibration curves for the six highest-AUC primary models")
     plt.legend(fontsize=8)
     plt.grid(alpha=0.25)
     plt.tight_layout()
     plt.savefig(args.output_dir / "exact_primary_calibration_top6.png", dpi=300)
+    # Manuscript Figure 3 (vector, as submitted; no in-image title: the caption carries it)
+    plt.savefig(args.output_dir / "exact_primary_calibration_top6.pdf", format="pdf", bbox_inches="tight",
+                pad_inches=0.04, metadata={"Creator": None, "Producer": None, "CreationDate": None})
     plt.close()
 
     matrix = np.ones((len(ranked), len(ranked)))

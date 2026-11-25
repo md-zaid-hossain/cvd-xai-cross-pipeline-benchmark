@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). Item 9: 2026-11-25, in the feasibility check for Protocol Amendment 12. Item 10: 2026-11-26, while preparing vector figures for submission. Item 11: 2026-11-26, while regenerating Figure 4. |
+| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). Item 9: 2026-11-25, in the feasibility check for Protocol Amendment 12. Item 10: 2026-11-26, while preparing vector figures for submission. Item 11: 2026-11-26, while regenerating Figure 4. Item 12: 2026-11-26, while checking that the deposited scripts reproduce the submitted figures. |
 | Manuscript version checked | Submitted manuscript, 17 Oct 2026 (CHBR-D-26-02504): Sections 3.8–3.8.5 and Table 2 (items 1–3); Abstract, §4.6, Table 7, Figure 6, §5.4, §5.5, §6, Appendix Table S13 and the graphical abstract (item 4) |
 | Code checked | Executed notebooks in `notebooks/core/` with their stored outputs |
 | Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Items 6 and 7 affect how the VIME-inspired and LightGBM models' **training is described**; their effect on test AUC is not quantified (item 6: not quantifiable from the deposited artefacts; item 7: not measured). Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. Item 9 is a reproducibility gap in the ablation archive (no models or predictions kept); the refits under Amendment 12 reproduced every recorded ablation AUC exactly. Item 10 was a provenance gap for Figure 2 and Table 4: their 1,000-resample intervals were in no deposited output file. The manuscript now reports the deposited 2,000-resample intervals, which differ by at most 0.0008. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
@@ -135,6 +135,12 @@ Notebook cell 15 of `Statistical_Significance_Tests.ipynb` depended on earlier n
 
 ---
 
+## 12. The deposited plotting scripts drew figures that differed from the submitted ones
+
+`src/run_validated_stats.py` (Figure 3), `src/revision/figure5_learning_curve.py` (Figure 5) and `src/revision/figure6_rank_heatmap.py` (Figure 6) drew in-image titles, and Figure 6 also carried the axis label "SAINT Permutation". The submitted vector figures had both removed at save time by an undeposited wrapper, so running the deposited scripts gave a different figure from the one submitted. **Resolved (2026-11-26):** the three scripts now draw no in-image title, Figure 6's fifth column is labelled "SAINT-inspired Permutation", and each writes the submitted vector PDF directly (`results/figures/main/Figure_3_Top6_Calibration.pdf`, `Figure_5_RF_Learning_Curve.pdf`, `Figure_6_Cross_Pipeline_Rank_Heatmap.pdf`). The wrapper is retired. Rerunning the scripts from a fresh clone reproduces each submitted PDF byte for byte (RUN_LOG). Figure 1's draw.io source is now deposited (`Figure_1_Methodology_Workflow.drawio`) beside its PDF.
+
+---
+
 ## Summary
 
 | # | Pipeline | Manuscript section(s) | Protocol §4 analysis resolves? | Text correction still needed? |
@@ -150,5 +156,6 @@ Notebook cell 15 of `Statistical_Significance_Tests.ipynb` depended on earlier n
 | 9 | Guideline-defined feature ablation (Random Forest) | Appendix A4, Table S7, Table S8 | Yes: Amendment 12 refitted the models (all matched) and deposited the predictions | No change to any value; A4 and Table S7 now state the refit and give the intervals |
 | 10 | Figure 2 and Table 4 (AUC with 95% intervals) | Figure 2, Table 4, §3.9, §4.2, abstract, A8 | Yes: script deposited; the manuscript now reports the deposited 2,000-resample intervals | Done: 1,000-resample values replaced (largest change 0.0008) |
 | 11 | Figure 4 (pairwise DeLong heatmap) | Figure 4 | Yes: drawn from the deposited DeLong table; all 210 labels match | None: only the shading gradient differs |
+| 12 | Plotting scripts for Figures 3, 5, 6 | Figures 3, 5, 6 | Yes: the scripts now write the submitted PDFs directly | None: titles and the old Figure 6 label removed |
 
 These corrections should be listed in the response to reviewers as author-identified corrections, separate from the reviewer-requested changes.

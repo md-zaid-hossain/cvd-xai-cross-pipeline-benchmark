@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT" scale="3" border="0">
+  <diagram name="Copy of Methodology Workflow" id="kaES55jIkfh_LkB4Rxuq">
+    <mxGraphModel dx="1713" dy="1485" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-0" />
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-1" parent="pjLGdx1AHQoLrxVdM5ww-0" />
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-3" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;1. Source Dataset&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Kaggle CVD dataset: 70,000 records&lt;br&gt;10 predictors + one binary CVD outcome" vertex="1">
+          <mxGeometry height="100" width="800" x="350" y="91" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-4" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;2. Data Cleaning and Analytical Cohort&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Remove implausible SBP/DBP values, BMI outliers, and DBP ≥ SBP&lt;br&gt;Final analytical cohort: n = 68,534; no missing values" vertex="1">
+          <mxGeometry height="105" width="800" x="350" y="223" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-5" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;3. Feature Engineering&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Create PP, MAP, and RiskCount from existing variables&lt;br&gt;Final predictor matrix: 13 clinical, lifestyle, and haemodynamic features" vertex="1">
+          <mxGeometry height="105" width="800" x="350" y="357" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-6" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;4. Stratified Train / Validation / Test Split&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Train: 47,971 (70%); Validation: 10,282 (15%); Test: 10,281 (15%)&lt;br&gt;Fixed random seed; test set kept independent" vertex="1">
+          <mxGeometry height="105" width="800" x="350" y="491" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-7" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;font style=&quot;font-size: 26px;&quot;&gt;&lt;b style=&quot;&quot;&gt;5. Model-Specific Preprocessing&lt;/b&gt;&lt;br&gt;&lt;/font&gt;Training-only StandardScaler for scale-sensitive models&lt;br&gt;Raw numeric matrix for XGBoost, LightGBM, and CatBoost" vertex="1">
+          <mxGeometry height="105" width="800" x="350" y="626" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-8" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;font style=&quot;font-size: 26px;&quot;&gt;&lt;b style=&quot;&quot;&gt;6. Train 15 Models Across Five Families&lt;/b&gt;&lt;br&gt;&lt;/font&gt;Classical ML (7) • Gradient Boosting (3) • Stacking Ensemble (1)&lt;br&gt;Tabular Deep Learning (2) • Self-Supervised Learning (2)" vertex="1">
+          <mxGeometry height="105" width="800" x="350" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-9" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;7A. Performance Evaluation&lt;/font&gt;&lt;/b&gt;&lt;br&gt;AUC, accuracy, F1, precision, recall&lt;br&gt;ROC/PR curves and confusion matrices" vertex="1">
+          <mxGeometry height="142" width="410" x="79" y="936" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-10" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;7B. Statistical Testing&lt;/b&gt;&lt;br&gt;Bootstrap 95% confidence intervals&lt;br&gt;DeLong pairwise AUC tests" vertex="1">
+          <mxGeometry height="142" width="410" x="545" y="936" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-11" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;7C. XAI Consistency Analysis&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Permutation, TreeSHAP, KernelSHAP,&lt;br&gt;TabNet attention, SAINT-inspired permutation" vertex="1">
+          <mxGeometry height="142" width="410" x="1010" y="936" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-12" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;8. Cross-Method Interpretation&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Integrate performance, statistical significance, and XAI agreement&lt;br&gt;Assess model complexity versus dataset information content" vertex="1">
+          <mxGeometry height="105" width="800" x="350" y="1145" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-13" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;9. Final Reporting Outputs&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Publication-ready cohort, model comparison, AUC CI, DeLong, and XAI figures&lt;br&gt;Interpretation focused on performance ceiling and stable clinical predictors" vertex="1">
+          <mxGeometry height="105" width="800" x="350" y="1282" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-14" parent="pjLGdx1AHQoLrxVdM5ww-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=24;align=center;verticalAlign=middle;spacing=8;arcSize=10;strokeWidth=2;fontFamily=Times New Roman;shadow=0;" value="&lt;b&gt;&lt;font style=&quot;font-size: 26px;&quot;&gt;Reproducibility Controls&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Same cleaned cohort; identical split; fixed seed; training-only scaling&lt;br&gt;Common held-out test set; documented software and GPU environment" vertex="1">
+          <mxGeometry height="100" width="800" x="350" y="1421" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-16" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-17" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-18" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-19" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-20" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-21" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-22" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-23" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-24" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-25" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-26" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-27" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pjLGdx1AHQoLrxVdM5ww-28" edge="1" parent="pjLGdx1AHQoLrxVdM5ww-1" source="pjLGdx1AHQoLrxVdM5ww-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=24;endSize=8;startSize=8;shadow=0;" target="pjLGdx1AHQoLrxVdM5ww-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
