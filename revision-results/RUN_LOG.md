@@ -346,3 +346,46 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - Apart from the protocol, RUN_LOG and the Amendment 8 script, they occur in one output file, `five_seed/amendment8_bounded_reproduction.json`. There they appear as `original_submitted_values`: the submitted figure quoted for comparison, not a computed result.
   - The other string match, in `five_seed/five_seed_posthoc_amendment6.json`, is coincidental (an SD of 0.004278).
 - **Deviations / reruns:** none. No analysis was run.
+
+## 2026-11-25 — Amendment 12 (prespecified): ablation refits; feature-set and gender-difference intervals; discrepancy item 9
+
+- **Amendment:** Section 8, row 12, committed and **pushed alone** in `c5f2041e91798cf730008cd0e577d932ceaf646d` (committer time 2026-11-25T17:05:52+06:00; GitHub CI run 45601287513 created 2026-11-25T11:06:21Z, success) **before any refit, scoring or interval**. The commit changes exactly two files and one checksum line; the fresh-clone check passed before the push.
+- **Before the amendment:** the feasibility check found no deposited models or predictions for the ablation sets, and no prediction array for the 11-feature model. It also found that `artifacts/predictions/proba_rf.npy` (Section 3 Random Forest, scaled inputs; AUC 0.7995334583) is not the 13-feature ablation model (table AUC 0.7995343667). The author therefore chose to refit all five ablation sets, including the 13-feature set, and set the match rule at six decimal places, the precision of manuscript Table S7.
+- **Script:** `src/revision/amendment12_ablation_and_gender_ci.py --data-file <stage-1 CSV>`, original Anaconda environment (Python 3.13.9, numpy 2.3.5, pandas 2.3.3, scikit-learn 1.7.2), CPU. Outputs: `ablation/proba_ablation_{3,6,10,12,13}feat_seed42.npy`, `ablation/proba_rf_11feat_seed42.npy`, `ablation/feature_set_auc_ci.csv`, `ablation/amendment12_summary.json`, `lowcompute/gender_auc_difference_ci.csv`, LF line endings.
+- **Identity checks:** the test labels of all five refits and of the rebuilt 11-feature test set equal `artifacts/predictions/y_test.npy`.
+- **Match requirement (Step 2):** every set matched, so the bootstrap ran for all six.
+
+  | Set | Refit / scored AUC | Recorded AUC | Difference (full precision) | Match at 6 dp |
+  |---|---|---|---|---|
+  | 3 features (refit) | 0.7928910671540387 | 0.7928910671540387 | 0 | Yes |
+  | 6 features (refit) | 0.7944424780274985 | 0.7944424780274985 | 0 | Yes |
+  | 10 features (refit) | 0.7998434150091929 | 0.7998434150091929 | 0 | Yes |
+  | 11 features, PP and MAP removed (deposited model, scored) | 0.7999943341455275 | 0.799994 (JSON: 0.7999943341455275) | 3.3e-7 against the rounded target; 0 against the JSON value | Yes |
+  | 12 features (refit) | 0.7993019606732928 | 0.7993019606732928 | 0 | Yes |
+  | 13 features (refit) | 0.7995343666812331 | 0.7995343666812331 | 0 | Yes |
+
+  The refits reproduce the table exactly under scikit-learn 1.7.2, although the table was probably produced under the later correction environment (scikit-learn 1.8.0).
+- **Feature-set AUC intervals (Section 3A(b) convention: 2,000 resamples, seed 42, shared index vectors; 0 replicates discarded):** 3: 0.784129–0.801476; 6: 0.785511–0.803035; 10: 0.791321–0.808189; 11: 0.791445–0.808185; 12: 0.790831–0.807701; 13: 0.790982–0.807970.
+- **Male-minus-female AUC difference (Amendment 11 convention: 2,000 within-group resamples, seed 42, female drawn first; 0 replicate pairs discarded).** The per-group intervals reproduce `lowcompute/gender_stratified_performance.csv` exactly for all twelve model-group cells.
+
+  | Model | Δ (male − female) | 95% CI |
+  |---|---|---|
+  | Stacking Ensemble | +0.0093 | −0.0086 to 0.0280 |
+  | XGBoost | +0.0091 | −0.0088 to 0.0277 |
+  | CatBoost | +0.0078 | −0.0104 to 0.0266 |
+  | FT-Transformer | +0.0110 | −0.0074 to 0.0299 |
+  | SAINT-inspired | +0.0077 | −0.0100 to 0.0266 |
+  | Random Forest | +0.0093 | −0.0087 to 0.0277 |
+
+- **Prespecified expectations:**
+  - **E1 (six- and thirteen-feature intervals overlap): HELD.** 0.785511–0.803035 against 0.790982–0.807970.
+  - **E2 (the male-minus-female interval includes zero for all six models): HELD.** Every lower limit is negative and every upper limit positive.
+  - As the amendment states, overlapping intervals and an interval that includes zero are not evidence of equivalence.
+- **Discrepancy item 9** (`docs/CODE_MANUSCRIPT_DISCREPANCIES.md`): `src/run_guideline_ablation.py` kept neither fitted models nor predictions, a reproducibility gap. Closed by the refits and the deposited arrays above. The fitted ablation models are not deposited (about 22 MB each). No reported value changes.
+- **Manuscript changes (revision copy):**
+  - §4.5: intervals for the six feature sets, the E1 result, and the male-minus-female difference intervals.
+  - Table 6 and Table S8: the gender row gains the difference intervals; Table S8 also lists `gender_auc_difference_ci.csv`.
+  - Table S7: intervals in the AUC column, and a new 11-variable row.
+  - Appendix A4: the interval method, the reason for the refit, and the status of the 11-variable row.
+  - Appendix A12.4 is unchanged: no discrepancy arose in the results.
+- **Deviations / reruns:** none.

@@ -1,0 +1,7 @@
+feature_set,subset,source,auc,table_auc,difference_full_precision,auc_6dp,table_auc_6dp,matched_6dp,ci_low,ci_high,bootstrap_replicates_used,interval
+3,"Core clinical 3 (Age, SBP, Cholesterol)",refit (src/run_guideline_ablation.py procedure),0.7928910671540387,0.7928910671540387,0.0,0.792891,0.792891,True,0.7841292806864153,0.8014758836135991,2000,computed
+6,"Guideline-aligned 6 (Age, Sex, SBP, Cholesterol, Glucose, Smoking)",refit (src/run_guideline_ablation.py procedure),0.7944424780274985,0.7944424780274985,0.0,0.794442,0.794442,True,0.785511356876972,0.8030354431369988,2000,computed
+10,Original 10 variables,refit (src/run_guideline_ablation.py procedure),0.7998434150091929,0.7998434150091929,0.0,0.799843,0.799843,True,0.7913205248487888,0.8081891588032545,2000,computed
+11,PP and MAP removed (11 variables),inference from deposited rf_11feat_seed42.joblib + scaler_11feat_seed42.joblib,0.7999943341455275,0.799994,3.3414552746968695e-07,0.799994,0.799994,True,0.791444970605405,0.808185204500274,2000,computed
+12,Original + PP + MAP (12 variables),refit (src/run_guideline_ablation.py procedure),0.7993019606732928,0.7993019606732928,0.0,0.799302,0.799302,True,0.7908311772504757,0.8077006552220872,2000,computed
+13,Full 13 variables,refit (src/run_guideline_ablation.py procedure),0.7995343666812331,0.7995343666812331,0.0,0.799534,0.799534,True,0.7909816768032681,0.8079699527712251,2000,computed

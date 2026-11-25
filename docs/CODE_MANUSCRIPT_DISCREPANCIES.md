@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). |
+| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). Item 9: 2026-11-25, in the feasibility check for Protocol Amendment 12. |
 | Manuscript version checked | Submitted manuscript, 17 Oct 2026 (CHBR-D-26-02504): Sections 3.8–3.8.5 and Table 2 (items 1–3); Abstract, §4.6, Table 7, Figure 6, §5.4, §5.5, §6, Appendix Table S13 and the graphical abstract (item 4) |
 | Code checked | Executed notebooks in `notebooks/core/` with their stored outputs |
-| Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Items 6 and 7 affect how the VIME-inspired and LightGBM models' **training is described**; their effect on test AUC is not quantified (item 6: not quantifiable from the deposited artefacts; item 7: not measured). Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
+| Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Items 6 and 7 affect how the VIME-inspired and LightGBM models' **training is described**; their effect on test AUC is not quantified (item 6: not quantifiable from the deposited artefacts; item 7: not measured). Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. Item 9 is a reproducibility gap in the ablation archive (no models or predictions kept); the refits under Amendment 12 reproduced every recorded ablation AUC exactly. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
 
 "Protocol §4" below means the common-sample explainability analysis prespecified in `docs/ANALYSIS_PROTOCOL.md` Section 4. All five explanation pipelines are recomputed on one shared stratified sample of n = 1,000 test records (sampling seed 42).
 
@@ -101,6 +101,20 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 
 ---
 
+## 9. The feature-ablation script deposited neither its fitted models nor its predictions
+
+| | |
+| --- | --- |
+| **Manuscript claims** | Appendix A4 and Table S7 report the five guideline-defined ablation AUCs; Table S8 gives `results/tables/guideline_defined_feature_ablation.csv` as the deposited output. The manuscript does not claim that the ablation models or predictions were deposited. |
+| **Code does** | `src/run_guideline_ablation.py` fits each Random Forest, computes `p = m.predict_proba(Xte)[:, 1]` in memory and writes only the AUC table. Neither the fitted models nor the test-set predictions are saved. |
+| **Evidence** | The script itself; no ablation model or prediction array exists under `artifacts/` or `revision-results/` before Amendment 12. The deposited `artifacts/predictions/proba_rf.npy` is not the 13-feature ablation model: it is the Section 3 Random Forest fitted on scaled inputs (AUC 0.7995334583 against the table's 0.7995343667). The Section 3A(h) 11-feature model was deposited (`artifacts/models-revision/rf_11feat_seed42.joblib` with its scaler), but its predictions were not. |
+| **Effect** | A reproducibility gap, not an error in any reported number. Confidence intervals for the ablation AUCs, requested by Reviewer 3, could not be computed from the archive as it stood. |
+| **What was done** | Protocol Amendment 12 (prespecified, pushed alone in `c5f2041`) refitted all five ablation models with the script's seed, split and hyperparameters and scored the deposited 11-feature model. **All six reproduced their recorded AUCs exactly**, at full double precision for the five refits and for the 11-feature model against `pp_map_removed_rf_summary.json`. The six test-set probability arrays are now deposited in `revision-results/ablation/`, with the interval outputs. The fitted ablation models are not deposited (about 22 MB each); the arrays and `src/revision/amendment12_ablation_and_gender_ci.py` reproduce every reported quantity. |
+| **Section(s) to correct** | None for the reported values. Appendix A4 and Table S7 now give the intervals and state that the models were refitted because the original run kept neither models nor predictions. |
+| **Resolved?** | **Yes: arrays deposited under Amendment 12; every refit matched.** |
+
+---
+
 ## Summary
 
 | # | Pipeline | Manuscript section(s) | Protocol §4 analysis resolves? | Text correction still needed? |
@@ -113,5 +127,6 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | 6 | VIME-inspired training (benchmark model) | §3.7.5, Appendix Table S16 | No (effect not quantifiable without retraining) | Yes: final-epoch, not best-epoch, weights were restored |
 | 7 | LightGBM training (benchmark model and stacking base learner) | §3.7.2, Appendix Table S16 | No (effect not measured) | Yes: early stopping monitored binary log-loss, not AUC |
 | 8 | VIME-inspired KernelSHAP (claimed supplementary analysis) | §3.8, §3.8.3, Table 2 | Not applicable: no analysis exists | Yes: claim removed; recorded in Appendix A12.4 |
+| 9 | Guideline-defined feature ablation (Random Forest) | Appendix A4, Table S7, Table S8 | Yes: Amendment 12 refitted the models (all matched) and deposited the predictions | No change to any value; A4 and Table S7 now state the refit and give the intervals |
 
 These corrections should be listed in the response to reviewers as author-identified corrections, separate from the reviewer-requested changes.
