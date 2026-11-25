@@ -409,3 +409,27 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - The stacking interval would read 0.7918–0.8089 instead of 0.7915–0.8091.
 - **Not changed:** the submitted PNG, Table 4, §3.9, the abstract and Appendix A8. Reconciling them is the authors' decision, recorded as discrepancy item 10.
 - **Deviations / reruns:** none. Figure only; no statistic was recomputed.
+
+## 2026-11-26 — Deposited bootstrap intervals adopted; Figure 1 and Figure 4 vector versions; discrepancy item 10 resolved
+
+- **Interval source (discrepancy item 10):**
+  - The submitted Figure 2 and Table 4 used 1,000-resample AUC intervals. Those exist only as printed output in `notebooks/core/Statistical_Significance_Tests.ipynb` (cell 9, 14 models) and as README / `.zenodo.json` text (corrected stacking). No deposited output file holds them.
+  - The authors decided to report the deposited Protocol §3A(b) intervals instead (`revision-results/lowcompute/bootstrap_auc_by_model.csv`; 2,000 resamples, seed 42).
+  - Changed in the revised manuscript:
+    - Figure 2, now drawn by `src/revision/figure2_auc_ci.py`;
+    - all 15 rows of Table 4, and its caption;
+    - §3.9;
+    - the abstract and §4.2 (stacking 0.7915–0.8091 → 0.7918–0.8089; MLP 0.7892–0.8065 → 0.7895–0.8064);
+    - Appendix A8.
+  - Largest change in any limit: **0.0008** (k-NN lower limit, 0.7281 → 0.7289). Point AUCs are unchanged.
+- **Figure 1:**
+  - Vector PDF exported with draw.io Desktop 32.4.1 (installed for the user with winget; installer hash verified) from the diagram source embedded in `Figure_1_Methodology_Workflow.png`.
+  - All 36 text lines of the source appear in the PDF as text (Times New Roman embedded; no raster images). A side-by-side render shows the same boxes, arrows, text and line breaks; the outer size differs by 3 px in 4,200.
+  - New file: `results/figures/main/Figure_1_Methodology_Workflow.pdf`.
+- **Figure 4:**
+  - The notebook cell that drew it (cell 15) depends on earlier notebook state and cannot run alone. `src/revision/figure4_delong_heatmap.py` keeps its visual encoding but rebuilds `p_matrix` from `results/tables/validated_delong_all_pairs.csv` (105 pairs).
+  - All 210 significance labels of the submitted figure agree with the categories those deposited p-values imply.
+  - The submitted figure's continuous shading agrees only approximately: median |Δ(−log10 p)| 0.04, maximum 0.24 (Decision Tree vs Naive Bayes). Its colour map is not exactly the notebook's.
+  - The new figure is drawn at its print width (165.1 mm). Its layout is recomputed because the notebook's fixed axes positions cannot hold larger text; the smallest text is 6.5 pt as drawn (7.3 pt when placed at 165.1 mm). The bold title is omitted.
+  - Output: `results/figures/main/Figure_4_DeLong_Heatmap_v2.pdf`. The submitted PNG and PDF are left unchanged.
+- **Deviations / reruns:** none. No statistic was recomputed; the figures draw deposited values only.
