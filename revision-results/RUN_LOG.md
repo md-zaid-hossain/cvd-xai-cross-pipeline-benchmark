@@ -310,3 +310,22 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - **The only code file containing them** is `09_Audit_and_Metadata/apply_results_revisions.py` (SHA-256 `fb6d7bf3816a4633c0ef676b98c85521161a9510622048efa6e9934d9ecf58c9`). It has the same zip timestamp as the Q1 results draft. It computes nothing for these values: it writes the sentence into the manuscript as a fixed string (line 106) with python-docx. It is not part of this repository.
   - **No notebook, script output, CSV, log or figure contains them.** The other string matches are coincidental: data rows, an SVM confidence bound (0.7988), a SAINT importance SD (0.003806) and an Optuna parameter. The reviewers' report quotes the SD range from the submission.
   - **Conclusion:** the values enter the manuscript on 28 July 2026 as hard-coded text, with no recorded computation behind them. This supports the statement in manuscript Appendix A12.3. No analysis was run and no manuscript text was changed by this entry.
+
+## 2026-11-25 — Discrepancy items 6 and 7: VIME-inspired shallow copy; LightGBM early-stopping metric
+
+- **How found:** while compiling manuscript Appendix Table S16 (model configurations and early stopping) from the executed notebooks. Both are recorded in `docs/CODE_MANUSCRIPT_DISCREPANCIES.md` (items 6 and 7) and in manuscript Appendix A12.4. No model was refitted or retrained.
+- **Item 6, VIME-inspired fine-tuning (`VIME_Pretraining_CVD_FIXED.ipynb` cell 26):**
+  - The cell saves the "best" weights with `best_model_state = vime_model.state_dict().copy()` and restores them with `vime_model.load_state_dict(best_model_state)`. This is the same shallow-copy pattern as item 5 (SAINT-inspired), so the **final-epoch** weights were used.
+  - From the stored output: early stopping at **epoch 63**; best validation AUC **0.8025**. With patience 15, the last improvement was at **epoch 48**. That epoch is inferred from the patience rule; it is not printed.
+  - Validation AUC is printed only every tenth epoch (epoch 50: 0.8017; epoch 60: 0.8018). The **epoch-63 validation AUC was not logged**.
+  - **Effect: not quantifiable from the deposited artefacts.** Quantifying it would require retraining, which was not done. The deposited VIME probabilities (test AUC 0.7990) are from the epoch-63 weights.
+- **Item 7, LightGBM early stopping (`Stacking_Ensemble_CVD_GPU.ipynb` cell 16):**
+  - `LGBMClassifier` was constructed with no `metric`, and `fit()` was called with `eval_set=[(X_val, y_val)]` and `lgb.early_stopping(30)` but no `eval_metric`. Early stopping therefore monitored LightGBM's default validation **binary log-loss**.
+  - Library check, no benchmark refit: the same configuration and `fit()` call under lightgbm 4.6.0, the version printed in cell 3, on synthetic data records only `binary_logloss` in `evals_result_` and `best_score_`.
+  - The reported best iteration (102) is therefore the log-loss-selected iteration. **Effect: not measured.**
+  - **XGBoost** (cell 15: `eval_metric = 'auc'`, `early_stopping_rounds = 30`, `eval_set=[(X_val, y_val)]`) and **CatBoost** (cell 17: `eval_metric = 'AUC'`, `early_stopping_rounds = 30`, `eval_set=(X_val, y_val)`) did monitor validation AUC, as the manuscript states.
+- **Manuscript changes (revision copy):**
+  - §3.7.2 now states per booster what early stopping monitored.
+  - §3.7.5 states that the VIME-inspired fine-tuning, like the SAINT-inspired model, retained the final-epoch weights.
+  - The Appendix Table S16 rows and Appendix A12.4 (two new entries) are updated to match.
+- **Deviations / reruns:** none. No analysis was run beyond the synthetic library check above.

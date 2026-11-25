@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. |
+| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. |
 | Manuscript version checked | Submitted manuscript, 17 Oct 2026 (CHBR-D-26-02504): Sections 3.8–3.8.5 and Table 2 (items 1–3); Abstract, §4.6, Table 7, Figure 6, §5.4, §5.5, §6, Appendix Table S13 and the graphical abstract (item 4) |
 | Code checked | Executed notebooks in `notebooks/core/` with their stored outputs |
-| Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
+| Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Items 6 and 7 affect how the VIME-inspired and LightGBM models' **training is described**; their effect on test AUC is not quantified (item 6: not quantifiable from the deposited artefacts; item 7: not measured). Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
 
 "Protocol §4" below means the common-sample explainability analysis prespecified in `docs/ANALYSIS_PROTOCOL.md` Section 4. All five explanation pipelines are recomputed on one shared stratified sample of n = 1,000 test records (sampling seed 42).
 
@@ -66,6 +66,28 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | **Section(s) to correct** | §3.7.5 (state that the final-epoch weights were used, or that the best-weight restoration was ineffective); **Appendix Table S10** (implementation-fidelity audit), as a known deviation. |
 | **Resolved by the Protocol analysis?** | **No change to the published model, by design.** Protocol Amendment 4(a) keeps the executed behaviour in the §5 five-seed analysis, so that only the seed varies and the seed-42 retrain stays comparable with the deposited arrays. The text must describe what was executed. |
 
+## 6. VIME-inspired fine-tuning restores the final-epoch weights, not the best-epoch weights
+
+| | |
+| --- | --- |
+| **Manuscript claims** | §3.7.5 (submitted) gave no early-stopping details for the VIME-inspired model. The revised Appendix Table S16 describes its fine-tuning schedule, which uses early stopping with patience 15 on validation AUC. Stating early stopping with patience implies that the weights from the best validation epoch are restored. |
+| **Code does** | `VIME_Pretraining_CVD_FIXED.ipynb` cell 26 saves the "best" weights with `best_model_state = vime_model.state_dict().copy()` and later calls `vime_model.load_state_dict(best_model_state)`. As in item 5, `state_dict()` returns references to the live parameter tensors and `.copy()` copies only the dictionary, so the restored weights are the **final-epoch** weights. |
+| **Evidence** | Cell 26's stored output: "Early stopping at epoch 63"; "Fine-tuning Complete! Best Val AUC: 0.8025". With `patience = 15` and the counter reset at each improvement, the last improvement, and therefore the best epoch, was **epoch 48**. The notebook does not print that epoch: it prints validation AUC only every tenth epoch (epoch 50: 0.8017; epoch 60: 0.8018). The **final-epoch (63) validation AUC was not logged.** The deposited VIME probabilities (test AUC 0.7990) therefore come from the epoch-63 weights. |
+| **Effect** | Not quantifiable from the deposited artefacts: neither the epoch-63 validation AUC nor a best-epoch test AUC is recorded, and establishing it would require retraining, which was not done. |
+| **Section(s) to correct** | §3.7.5 (state that the final-epoch weights were used); Appendix Table S16 (VIME-inspired row); Appendix A12.4. |
+| **Resolved?** | **Text corrected, model unchanged.** The deposited model and all reported VIME results stand as executed. |
+
+## 7. LightGBM early stopping monitored binary log-loss, not AUC
+
+| | |
+| --- | --- |
+| **Manuscript claims** | §3.7.2 (submitted): the three gradient-boosting frameworks were trained "with early stopping monitored on the validation set. **The checkpoint at the best validation AUC iteration** was used for test evaluation." |
+| **Code does** | `Stacking_Ensemble_CVD_GPU.ipynb` cell 16 builds `lgb.LGBMClassifier(...)` with **no `metric` parameter** and calls `lgb_model.fit(X_train, y_train, eval_set=[(X_val, y_val)], callbacks=[lgb.early_stopping(30, verbose=False), lgb.log_evaluation(-1)])` with **no `eval_metric`**. LightGBM therefore evaluates only its objective's default metric, **binary log-loss**, and early stopping monitors that metric. XGBoost (cell 15: `eval_metric = 'auc'`, `early_stopping_rounds = 30`, `eval_set=[(X_val, y_val)]`) and CatBoost (cell 17: `eval_metric = 'AUC'`, `early_stopping_rounds = 30`, `eval_set=(X_val, y_val)`) did monitor validation AUC, as stated. |
+| **Evidence** | The executed environment's `lightgbm` version is 4.6.0 (cell 3 output). Running the same `LGBMClassifier` configuration and `fit()` call under lightgbm 4.6.0 on synthetic data records only `binary_logloss` in `evals_result_` and `best_score_`, confirming the default. No benchmark model was refitted for this check. Cell 16's stored output: `Best iter=102`, which is the log-loss-selected iteration. |
+| **Effect** | Not measured. An AUC-monitored run could select a different iteration; the LightGBM test AUC (0.7995) and the stacking tree count (103) derive from the log-loss-selected iteration. |
+| **Section(s) to correct** | §3.7.2 (state per booster what was monitored); Appendix Table S16 (LightGBM row); Appendix A12.4. |
+| **Resolved?** | **Text corrected, model unchanged.** |
+
 ---
 
 ## Summary
@@ -77,5 +99,7 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | 3 | SAINT-inspired permutation | §3.8.5, Table 2, §3.10/S10 | Yes, for the new analysis | Yes: original used first 1,000 rows and an unseeded shuffle |
 | **4** | **SAINT-inspired permutation — most severe** | **Abstract, Table 7, Figure 6, Kendall's W, four Spearman values (§4.6, Table S13), graphical abstract, §4.6, §5.4, §5.5, §6** | **Yes, for the new analysis** | **Yes: positions 6–12 mislabelled; withdraw the SAINT-divergence claim; W 0.657 → 0.838 with labels corrected** |
 | 5 | SAINT-inspired training (benchmark model) | §3.7.5, Appendix Table S10 | No change, by design (Amendment 4(a)); effect quantified at seed 42 (4(b)) | Yes: final-epoch, not best-epoch, weights were restored |
+| 6 | VIME-inspired training (benchmark model) | §3.7.5, Appendix Table S16 | No (effect not quantifiable without retraining) | Yes: final-epoch, not best-epoch, weights were restored |
+| 7 | LightGBM training (benchmark model and stacking base learner) | §3.7.2, Appendix Table S16 | No (effect not measured) | Yes: early stopping monitored binary log-loss, not AUC |
 
 These corrections should be listed in the response to reviewers as author-identified corrections, separate from the reviewer-requested changes.
