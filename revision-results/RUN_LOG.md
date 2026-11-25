@@ -329,3 +329,20 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - §3.7.5 states that the VIME-inspired fine-tuning, like the SAINT-inspired model, retained the final-epoch weights.
   - The Appendix Table S16 rows and Appendix A12.4 (two new entries) are updated to match.
 - **Deviations / reruns:** none. No analysis was run beyond the synthetic library check above.
+
+## 2026-11-25 — Discrepancy item 8 (VIME KernelSHAP claim); evidence for the protocol-lock timing; decision-curve figures
+
+- **Item 8, recorded in `docs/CODE_MANUSCRIPT_DISCREPANCIES.md`:**
+  - The submitted manuscript described a supplementary KernelSHAP analysis of the VIME-inspired model (§3.8, §3.8.3, Table 2). **No code or output for it exists.**
+  - Searched: every tracked file name; the text of every tracked CSV, JSON, Markdown and log file; every cell and stored output of the 11 notebooks in `notebooks/core/`; and the 10 executed PDFs. The only notebook hit was base64 image data. The authors' local project folder, including all zip members and the 26 August 2026 supplementary file, was searched too, with no hit.
+  - The revised manuscript removes the claim and records it in Appendix A12.4.
+- **Evidence for the protocol-lock timing**, now stated in manuscript Appendix A12.1:
+  - Locking commit `4366b206485c34b29776e4d3ca58eddc53766d88`, committer timestamp 2026-11-23T21:34:22Z.
+  - The commit is **unsigned**: the GitHub API reports `verification.verified: false, reason: unsigned`. Its timestamp is therefore author-supplied.
+  - **The earliest independent, server-side record** is the GitHub Actions run created at **2026-11-23T21:37:11Z** on commit `7867143`, which was pushed together with the locking commit. That run failed on the pip-cache path fixed in `16108b4`; its creation time is what matters here.
+  - GitHub's push-event log for the repository reaches back to 2026-11-24T05:12:47Z (`7867143..16108b4`). The first analysis results (`e885309`) were pushed at 2026-11-24T05:48:50Z.
+- **Decision-curve figures** (from `lowcompute/decision_curve_summary.csv` and the 3A(d) correction above): the largest net-benefit difference among the six leading models is **0.0108 at p_t 0.77 within 0.10–0.84** and **0.0120 at p_t 0.85 over the whole grid**. The manuscript's single figure "0.011" is replaced by both, each with its range.
+- **Withdrawn SDs (0.0038–0.0042):**
+  - Apart from the protocol, RUN_LOG and the Amendment 8 script, they occur in one output file, `five_seed/amendment8_bounded_reproduction.json`. There they appear as `original_submitted_values`: the submitted figure quoted for comparison, not a computed result.
+  - The other string match, in `five_seed/five_seed_posthoc_amendment6.json`, is coincidental (an SD of 0.004278).
+- **Deviations / reruns:** none. No analysis was run.

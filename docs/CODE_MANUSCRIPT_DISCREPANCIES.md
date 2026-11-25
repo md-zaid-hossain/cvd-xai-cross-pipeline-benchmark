@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. |
+| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). |
 | Manuscript version checked | Submitted manuscript, 17 Oct 2026 (CHBR-D-26-02504): Sections 3.8–3.8.5 and Table 2 (items 1–3); Abstract, §4.6, Table 7, Figure 6, §5.4, §5.5, §6, Appendix Table S13 and the graphical abstract (item 4) |
 | Code checked | Executed notebooks in `notebooks/core/` with their stored outputs |
 | Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Items 6 and 7 affect how the VIME-inspired and LightGBM models' **training is described**; their effect on test AUC is not quantified (item 6: not quantifiable from the deposited artefacts; item 7: not measured). Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
@@ -88,6 +88,17 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | **Section(s) to correct** | §3.7.2 (state per booster what was monitored); Appendix Table S16 (LightGBM row); Appendix A12.4. |
 | **Resolved?** | **Text corrected, model unchanged.** |
 
+## 8. A supplementary VIME-inspired KernelSHAP analysis was described but never performed
+
+| | |
+| --- | --- |
+| **Manuscript claims** | §3.8 (submitted): "Additional KernelSHAP analyses for TabNet and the VIME-inspired model were provided as supplementary material". §3.8.3: KernelExplainer was applied "to TabNet and VIME as supplementary checks". Table 2 (KernelExplainer row): "TabNet, VIME (supplementary)". |
+| **Code does** | Nothing. `VIME_Pretraining_CVD_FIXED.ipynb` contains no SHAP or KernelExplainer code and no SHAP output. |
+| **Evidence** | **Not found** in an archive-wide search on 2026-11-25. The search covered: every tracked file name; the text of every tracked CSV, JSON, Markdown and log file; every cell and stored output of all 11 notebooks in `notebooks/core/`; and the 10 executed PDFs in `notebooks/executed-pdf/`. The only notebook hit was base64 image data. The authors' local project folder, including the members of every zip archive and the 26 August 2026 supplementary file, was also searched, with no hit. |
+| **Effect** | None on any reported number: the VIME analysis was never part of the main average-rank table. The manuscript described an analysis that was not performed. |
+| **Section(s) to correct** | §3.8, §3.8.3, Table 2 (remove the claim); Appendix A12.4 (record it). |
+| **Resolved?** | **Yes: claim removed from the revised manuscript and recorded in A12.4.** |
+
 ---
 
 ## Summary
@@ -101,5 +112,6 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | 5 | SAINT-inspired training (benchmark model) | §3.7.5, Appendix Table S10 | No change, by design (Amendment 4(a)); effect quantified at seed 42 (4(b)) | Yes: final-epoch, not best-epoch, weights were restored |
 | 6 | VIME-inspired training (benchmark model) | §3.7.5, Appendix Table S16 | No (effect not quantifiable without retraining) | Yes: final-epoch, not best-epoch, weights were restored |
 | 7 | LightGBM training (benchmark model and stacking base learner) | §3.7.2, Appendix Table S16 | No (effect not measured) | Yes: early stopping monitored binary log-loss, not AUC |
+| 8 | VIME-inspired KernelSHAP (claimed supplementary analysis) | §3.8, §3.8.3, Table 2 | Not applicable: no analysis exists | Yes: claim removed; recorded in Appendix A12.4 |
 
 These corrections should be listed in the response to reviewers as author-identified corrections, separate from the reviewer-requested changes.
