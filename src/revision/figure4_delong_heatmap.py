@@ -9,7 +9,7 @@ order, family divider lines and family label colours, colour bar ticks, and the 
     artifacts/predictions/y_test.npy;
   - the figure is drawn at its print width (165.1 mm, the manuscript text width) with every text at least 6.5 pt,
     so its layout is recomputed: the notebook's fixed axes positions at 16 x 12 in cannot hold larger labels;
-  - the bold in-image title is omitted (the caption carries it); the grey line giving n, sidedness and alpha is kept.
+  - no in-image title or subtitle: the caption carries the title and the line giving n, sidedness and alpha.
 Checks: 105 pairs, 15 models, a symmetric matrix and a unit diagonal.
 
 Run from the repository root:
@@ -72,6 +72,7 @@ def main() -> None:
     assert np.allclose(p_matrix, p_matrix.T) and np.all(np.diag(p_matrix) == 1)
     model_names = [label for _, label in MODELS]
     n_test = len(np.load(Y_TEST))
+    assert n_test == 10281, n_test  # the caption states n = 10,281
 
     log_p = -np.log10(np.clip(p_matrix, 1e-10, 1.0))
     np.fill_diagonal(log_p, np.nan)
@@ -119,8 +120,6 @@ def main() -> None:
     cbar.outline.set_linewidth(0.5)
     cbar.ax.tick_params(length=2)
 
-    fig.text(0.515, 0.885, f"{n_models} models · held-out test set (n = {n_test:,}) · two-sided · α = 0.05",
-             ha="center", fontsize=PT_SMALL, color="#555555")
     family_handles = [mpatches.Patch(facecolor="#5C3690", edgecolor="none", label="Classical ML (7 models)"),
                       mpatches.Patch(facecolor="#0D6B8A", edgecolor="none", label="Gradient Boosting & Stacking (4)"),
                       mpatches.Patch(facecolor="#B5370F", edgecolor="none", label="Deep Learning & Self-Supervised (4)")]

@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). Item 9: 2026-11-25, in the feasibility check for Protocol Amendment 12. Item 10: 2026-11-26, while preparing vector figures for submission. |
+| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). Item 9: 2026-11-25, in the feasibility check for Protocol Amendment 12. Item 10: 2026-11-26, while preparing vector figures for submission. Item 11: 2026-11-26, while regenerating Figure 4. |
 | Manuscript version checked | Submitted manuscript, 17 Oct 2026 (CHBR-D-26-02504): Sections 3.8–3.8.5 and Table 2 (items 1–3); Abstract, §4.6, Table 7, Figure 6, §5.4, §5.5, §6, Appendix Table S13 and the graphical abstract (item 4) |
 | Code checked | Executed notebooks in `notebooks/core/` with their stored outputs |
 | Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Items 6 and 7 affect how the VIME-inspired and LightGBM models' **training is described**; their effect on test AUC is not quantified (item 6: not quantifiable from the deposited artefacts; item 7: not measured). Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. Item 9 is a reproducibility gap in the ablation archive (no models or predictions kept); the refits under Amendment 12 reproduced every recorded ablation AUC exactly. Item 10 was a provenance gap for Figure 2 and Table 4: their 1,000-resample intervals were in no deposited output file. The manuscript now reports the deposited 2,000-resample intervals, which differ by at most 0.0008. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
@@ -129,6 +129,12 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 
 ---
 
+## 11. Figure 4 had no runnable deposited source; the redrawn figure's shading differs slightly
+
+Notebook cell 15 of `Statistical_Significance_Tests.ipynb` depended on earlier notebook state, so no deposited code could redraw Figure 4. It is now drawn by `src/revision/figure4_delong_heatmap.py` from the deposited `results/tables/validated_delong_all_pairs.csv`. All 210 significance labels match the submitted figure, so the information content is identical. Only the shading gradient differs (median |Δ(−log10 p)| 0.04, maximum 0.24 for Decision Tree vs Naive Bayes), because the submitted figure's colour map is not the notebook's. **Resolved: Figure 4 is now drawn from the deposited DeLong table.**
+
+---
+
 ## Summary
 
 | # | Pipeline | Manuscript section(s) | Protocol §4 analysis resolves? | Text correction still needed? |
@@ -143,5 +149,6 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | 8 | VIME-inspired KernelSHAP (claimed supplementary analysis) | §3.8, §3.8.3, Table 2 | Not applicable: no analysis exists | Yes: claim removed; recorded in Appendix A12.4 |
 | 9 | Guideline-defined feature ablation (Random Forest) | Appendix A4, Table S7, Table S8 | Yes: Amendment 12 refitted the models (all matched) and deposited the predictions | No change to any value; A4 and Table S7 now state the refit and give the intervals |
 | 10 | Figure 2 and Table 4 (AUC with 95% intervals) | Figure 2, Table 4, §3.9, §4.2, abstract, A8 | Yes: script deposited; the manuscript now reports the deposited 2,000-resample intervals | Done: 1,000-resample values replaced (largest change 0.0008) |
+| 11 | Figure 4 (pairwise DeLong heatmap) | Figure 4 | Yes: drawn from the deposited DeLong table; all 210 labels match | None: only the shading gradient differs |
 
 These corrections should be listed in the response to reviewers as author-identified corrections, separate from the reviewer-requested changes.

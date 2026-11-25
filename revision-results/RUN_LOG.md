@@ -433,3 +433,9 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - The new figure is drawn at its print width (165.1 mm). Its layout is recomputed because the notebook's fixed axes positions cannot hold larger text; the smallest text is 6.5 pt as drawn (7.3 pt when placed at 165.1 mm). The bold title is omitted.
   - Output: `results/figures/main/Figure_4_DeLong_Heatmap_v2.pdf`. The submitted PNG and PDF are left unchanged.
 - **Deviations / reruns:** none. No statistic was recomputed; the figures draw deposited values only.
+
+## 2026-11-26 — Figure 4: in-image line moved to the caption; discrepancy item 11
+
+- `figure4_delong_heatmap.py` no longer draws the grey line "15 models · held-out test set (n = 10,281) · two-sided · α = 0.05"; the manuscript caption now states n = 10,281, two-sided tests and α = 0.05.
+- Discrepancy item 11 (one line): the information content of the regenerated Figure 4 is identical (all 210 significance labels match); only the shading gradient differs (median |Δ(−log10 p)| 0.04, maximum 0.24 for Decision Tree vs Naive Bayes); it is drawn from the deposited DeLong table.
+- **Deviations / reruns:** none.
