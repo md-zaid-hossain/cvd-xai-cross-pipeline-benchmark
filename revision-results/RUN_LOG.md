@@ -389,3 +389,23 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - Appendix A4: the interval method, the reason for the refit, and the status of the 11-variable row.
   - Appendix A12.4 is unchanged: no discrepancy arose in the results.
 - **Deviations / reruns:** none.
+
+## 2026-11-26 — Figure 2 regenerated from deposited output; discrepancy item 10
+
+- **Gap:** no deposited script or notebook produced Figure 2. Its title occurs in no repository file.
+- **What the submitted figure shows:** a digitisation of `results/figures/main/Figure_2_Corrected_AUC_95CI.png` matches Table 4 to four decimals for all 15 models. So the figure plots the 1,000-resample intervals that §3.9 and the Table 4 caption describe.
+- **Where those intervals survive:**
+  - for 14 models, only as printed output in `Statistical_Significance_Tests.ipynb` cell 9;
+  - for the corrected stacking ensemble, only as text in `README.md` and `.zenodo.json` (0.791538–0.809095).
+  - No output file holds them.
+- **Script:** `src/revision/figure2_auc_ci.py` reads only `results/tables/validated_primary_metrics.csv` and `revision-results/lowcompute/bootstrap_auc_by_model.csv` (Protocol §3A(b): 2,000 resamples, seed 42).
+  - It checks that the two files agree on every AUC (to 1e-12).
+  - It asserts that every drawn point and interval equals the deposited value.
+  - Output: `results/figures/main/Figure_2_AUC_95CI.pdf`, vector, 190 mm wide, no in-image title.
+  - Original Anaconda environment.
+- **Value comparison:**
+  - The point AUCs are identical.
+  - The deposited 2,000-resample limits differ from the plotted 1,000-resample limits by at most 0.0008 (k-NN lower limit; 0.7281 against 0.7289).
+  - The stacking interval would read 0.7918–0.8089 instead of 0.7915–0.8091.
+- **Not changed:** the submitted PNG, Table 4, §3.9, the abstract and Appendix A8. Reconciling them is the authors' decision, recorded as discrepancy item 10.
+- **Deviations / reruns:** none. Figure only; no statistic was recomputed.

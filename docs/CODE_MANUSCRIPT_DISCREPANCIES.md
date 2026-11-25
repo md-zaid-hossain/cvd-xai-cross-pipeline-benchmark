@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). Item 9: 2026-11-25, in the feasibility check for Protocol Amendment 12. |
+| Date identified | Items 1–3: 2026-11-24, while writing `docs/ANALYSIS_PROTOCOL.md`. Item 4: 2026-11-24, while running Protocol §4.2–4.3. Item 5: 2026-11-24, while preparing Protocol §5. Items 6–7: 2026-11-25, while compiling manuscript Appendix Table S16 from the executed notebooks. Item 8: 2026-11-25, while correcting the Table 2 KernelSHAP row (archive-wide search). Item 9: 2026-11-25, in the feasibility check for Protocol Amendment 12. Item 10: 2026-11-26, while preparing vector figures for submission. |
 | Manuscript version checked | Submitted manuscript, 17 Oct 2026 (CHBR-D-26-02504): Sections 3.8–3.8.5 and Table 2 (items 1–3); Abstract, §4.6, Table 7, Figure 6, §5.4, §5.5, §6, Appendix Table S13 and the graphical abstract (item 4) |
 | Code checked | Executed notebooks in `notebooks/core/` with their stored outputs |
-| Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Items 6 and 7 affect how the VIME-inspired and LightGBM models' **training is described**; their effect on test AUC is not quantified (item 6: not quantifiable from the deposited artefacts; item 7: not measured). Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. Item 9 is a reproducibility gap in the ablation archive (no models or predictions kept); the refits under Amendment 12 reproduced every recorded ablation AUC exactly. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
+| Effect on primary benchmark | Items 1–4 affect only the explainability rankings (Table 7 / Figure 6) and how they are described. Items 6 and 7 affect how the VIME-inspired and LightGBM models' **training is described**; their effect on test AUC is not quantified (item 6: not quantifiable from the deposited artefacts; item 7: not measured). Item 5 affects how the SAINT-inspired model's **training is described**, not any reported number: the reported SAINT AUC (0.7996) is correct for the deposited model as it was actually trained. Item 9 is a reproducibility gap in the ablation archive (no models or predictions kept); the refits under Amendment 12 reproduced every recorded ablation AUC exactly. Item 10 is a provenance gap for Figure 2: its plotted intervals are in no deposited output file, and the deposited intervals differ from them by at most 0.0008. No AUC, DeLong, calibration or ablation value is affected. **Item 4 is the most severe: it changes a headline explainability claim.** |
 
 "Protocol §4" below means the common-sample explainability analysis prespecified in `docs/ANALYSIS_PROTOCOL.md` Section 4. All five explanation pipelines are recomputed on one shared stratified sample of n = 1,000 test records (sampling seed 42).
 
@@ -115,6 +115,20 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 
 ---
 
+## 10. Figure 2 had no deposited script, and its plotted intervals are in no deposited output file
+
+| | |
+| --- | --- |
+| **Manuscript claims** | Figure 2 shows each model's test-set AUC with a 95% bootstrap interval. §3.9 and the Table 4 caption state 1,000 resamples. The README lists the figure's source as "Saved predictions + bootstrap". |
+| **Code does** | No deposited script or notebook draws Figure 2: its in-image title occurs in no file in the repository. The plotted 1,000-resample intervals survive only as printed output in `notebooks/core/Statistical_Significance_Tests.ipynb` (cell 9; 14 models to four decimals). That cell's stacking line is the original, pre-correction ensemble (0.8005 [0.7915–0.8093]). The corrected stacking interval that is plotted (0.791538–0.809095) appears only as text in `README.md` and `.zenodo.json`. |
+| **Evidence** | Archive-wide search for the figure title. The manuscript figure was digitised from `results/figures/main/Figure_2_Corrected_AUC_95CI.png`, and its intervals match Table 4 to four decimals for all 15 models. |
+| **Effect** | A reproducibility gap, not an error in a point estimate. The deposited intervals, Protocol §3A(b) in `revision-results/lowcompute/bootstrap_auc_by_model.csv` (2,000 resamples, seed 42), differ from the plotted 1,000-resample limits by at most 0.0008 (k-NN lower limit). The point AUCs are identical. |
+| **What was done** | `src/revision/figure2_auc_ci.py` draws Figure 2 from `results/tables/validated_primary_metrics.csv` and `bootstrap_auc_by_model.csv` only. It stops if the two disagree on any AUC and asserts that every drawn point and interval equals the deposited value. Output: `results/figures/main/Figure_2_AUC_95CI.pdf` (vector, 190 mm wide, no in-image title). The submitted PNG is left unchanged as the record of the submitted figure. |
+| **Section(s) to correct** | Pending the authors' decision. Either the manuscript adopts the deposited 2,000-resample intervals (Figure 2, Table 4 and its caption, §3.9, the abstract's 0.7915–0.8091, and Appendix A8's stacking-interval sentence), or the 1,000-resample intervals are re-derived and deposited as an output table. |
+| **Resolved?** | **Partly: script and vector figure deposited; the manuscript reconciliation is open.** |
+
+---
+
 ## Summary
 
 | # | Pipeline | Manuscript section(s) | Protocol §4 analysis resolves? | Text correction still needed? |
@@ -128,5 +142,6 @@ A point that applies to items 2 and 3: `train_test_split` shuffles by default. T
 | 7 | LightGBM training (benchmark model and stacking base learner) | §3.7.2, Appendix Table S16 | No (effect not measured) | Yes: early stopping monitored binary log-loss, not AUC |
 | 8 | VIME-inspired KernelSHAP (claimed supplementary analysis) | §3.8, §3.8.3, Table 2 | Not applicable: no analysis exists | Yes: claim removed; recorded in Appendix A12.4 |
 | 9 | Guideline-defined feature ablation (Random Forest) | Appendix A4, Table S7, Table S8 | Yes: Amendment 12 refitted the models (all matched) and deposited the predictions | No change to any value; A4 and Table S7 now state the refit and give the intervals |
+| 10 | Figure 2 (AUC with 95% intervals) | Figure 2, Table 4, §3.9 | Partly: script deposited; plotted 1,000-resample intervals are in no output file, deposited intervals use 2,000 | Pending: adopt the deposited intervals or deposit the 1,000-resample ones |
 
 These corrections should be listed in the response to reviewers as author-identified corrections, separate from the reviewer-requested changes.
