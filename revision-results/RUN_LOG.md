@@ -294,3 +294,19 @@ Per `docs/ANALYSIS_PROTOCOL.md` Section 6.
   - Full table in `feature_marginals.csv`.
 - **Binding rules:** reported as obtained, including the large AUC drop. No mapping was changed after any result was seen, and no sensitivity analysis beyond (A)–(C) was run. The outcome is self-reported diagnosed CVD history, a different construct from the primary label, whose provenance is undocumented. These results cannot distinguish model failure from label mismatch, or from the mapping differences visible in the marginals, and no attribution either way is made here.
 - **Deviations / reruns:** none. No manuscript text was changed.
+
+## 2026-11-25 — Correction to the Amendment 4(b) rank statement; search of manuscript drafts for the withdrawn SDs
+
+- **Correction (reporting error in this log, no analysis change):** the Amendment 4(b) entry above says that with best-epoch weights SAINT "would rank 4th rather than 5th at seed 42". It would rank **3rd**. Its best-epoch test AUC (0.80014) is above CatBoost (0.80009; seed-42 retrain and deposited array identical) and the FT-Transformer (0.79991 seed-42 retrain; 0.79977 deposited), and below the Stacking Ensemble (0.80056 seed-42 retrain; 0.80037 deposited) and XGBoost (0.80024). The order is the same against the seed-42 retrained arrays (`five_seed/seed42_vs_deposited.csv`) and against the deposited arrays. The original line is left in place, as for the other corrections in this log.
+- **Search of manuscript drafts for the withdrawn five-seed values (0.0038–0.0042 SD; 0.7958–0.7988 mean AUC):**
+  - **Scope:** every .docx, .pdf, .py, .ipynb, .txt, .md, .csv and .json file in the authors' local project folder, including the members of every .zip archive. This is 187 files. It covers every manuscript draft from 28 July to 17 October 2026, the earlier section drafts (April–July), the Q1 reproducibility package and the executed notebooks. Excluded: this repository and the revision outputs. Search strings: `0.0038`, `0.0042`, `0.7958`, `0.7988`.
+  - **Where the values appear:** they appear together, as prose, in every manuscript draft from 28 July onward:
+    - `CVD_Benchmark_Manuscript_Q1_Results_Final.docx` (zip member dated 2026-07-28 20:36);
+    - `CVD_Manuscript_4.08.26.docx`;
+    - `CVD_Manuscript_26.08.26.docx`;
+    - `CVD_Manuscript_27.08.26.docx` and its red-marked copy;
+    - the submitted `CVD_Manuscript_17.10.26.docx`.
+  - **No earlier draft contains them**, including `CVD_Benchmark_Manuscript_Final1.docx` and `CVD_Benchmark_Manuscript_Revised.docx`, both in `Writing/` with a 2026-07-28 file date, and their earlier versions in `Files/`.
+  - **The only code file containing them** is `09_Audit_and_Metadata/apply_results_revisions.py` (SHA-256 `fb6d7bf3816a4633c0ef676b98c85521161a9510622048efa6e9934d9ecf58c9`). It has the same zip timestamp as the Q1 results draft. It computes nothing for these values: it writes the sentence into the manuscript as a fixed string (line 106) with python-docx. It is not part of this repository.
+  - **No notebook, script output, CSV, log or figure contains them.** The other string matches are coincidental: data rows, an SVM confidence bound (0.7988), a SAINT importance SD (0.003806) and an Optuna parameter. The reviewers' report quotes the SD range from the submission.
+  - **Conclusion:** the values enter the manuscript on 28 July 2026 as hard-coded text, with no recorded computation behind them. This supports the statement in manuscript Appendix A12.3. No analysis was run and no manuscript text was changed by this entry.
